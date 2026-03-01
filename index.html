@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MM Digital Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --bg-main:#0F1115;
+  --blue:#2D6BFF;
+  --blue-light:#4C82FF;
+  --text:#F5F7FA;
+  --gray:#9CA3AF;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--bg-main);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0 20px;
+  overflow:hidden;
+}
+
+/* Grid digital sutil */
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size:60px 60px;
+  z-index:1;
+  pointer-events:none;
+}
+
+/* Canvas partículas */
+
+canvas{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+}
+
+/* Logo */
+
+.mm-logo{
+  font-family:'Sora',sans-serif;
+  font-size:120px;
+  font-weight:700;
+  color:var(--blue);
+  transition:transform .4s ease-in-out, filter .4s ease-in-out;
+}
+
+.mm-logo.pulse{
+  transform:scale(1.02);
+  filter:brightness(1.15) drop-shadow(0 0 18px rgba(45,107,255,.35));
+}
+
+/* Headline */
+
+h1{
+  font-family:'Sora',sans-serif;
+  font-size:48px;
+  margin-top:20px;
+  font-weight:600;
+}
+
+p{
+  margin-top:20px;
+  font-size:18px;
+  color:var(--gray);
+  line-height:1.6;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Botones */
+
+.buttons{
+  margin-top:40px;
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn-primary{
+  background:var(--blue);
+  color:#fff;
+  padding:14px 32px;
+  border-radius:6px;
+  font-weight:500;
+  text-decoration:none;
+  transition:.3s ease;
+}
+
+.btn-primary:hover{
+  background:var(--blue-light);
+  transform:translateY(-3px);
+}
+
+.btn-secondary{
+  border:1px solid var(--blue);
+  color:var(--blue);
+  padding:14px 32px;
+  border-radius:6px;
+  text-decoration:none;
+  transition:.3s ease;
+}
+
+.btn-secondary:hover{
+  background:var(--blue);
+  color:#fff;
+  transform:translateY(-3px);
+}
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+<canvas id="particles"></canvas>
+
+<div class="hero-content">
+  <div class="mm-logo" id="logo">MM</div>
+
+  <h1>Arquitectura digital para empresas que buscan crecer</h1>
+
+  <p>
+    Diseñamos y desarrollamos plataformas web estratégicas orientadas a conversión,
+    rendimiento y posicionamiento digital sostenible.
+  </p>
+
+  <div class="buttons">
+    <a href="#" class="btn-primary">Solicitar proyecto</a>
+    <a href="#" class="btn-secondary">Ver nuestro trabajo</a>
+  </div>
+</div>
+</section>
+
+<script>
+
+/* LATIDO ORGÁNICO */
+
+const logo = document.getElementById("logo");
+
+function pulse(){
+  logo.classList.add("pulse");
+
+  setTimeout(()=>{
+    logo.classList.remove("pulse");
+  },800);
+
+  const next = Math.random()*2000 + 6000; 
+  setTimeout(pulse,next);
+}
+
+pulse();
+
+
+/* PARTÍCULAS SUAVES */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+
+let particlesArray = [];
+
+class Particle{
+  constructor(){
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height;
+    this.size = Math.random()*1.8;
+    this.speedX = (Math.random()-0.5)*0.15;
+    this.speedY = (Math.random()-0.5)*0.15;
+  }
+
+  update(){
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+    if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+  }
+
+  draw(){
+    ctx.fillStyle = "rgba(45,107,255,0.18)";
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function init(){
+  particlesArray = [];
+  for(let i=0;i<80;i++){
+    particlesArray.push(new Particle());
+  }
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particlesArray.forEach(p=>{
+    p.update();
+    p.draw();
+  });
+  requestAnimationFrame(animate);
+}
+
+init();
+animate();
+
+window.addEventListener("resize",()=>{
+  resizeCanvas();
+  init();
+});
+
+</script>
+
+</body>
+</html>
