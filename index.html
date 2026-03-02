@@ -345,6 +345,22 @@ h2{
   font-size:28px;
   cursor:pointer;
 }
+
+.visit-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 30px;
+  border-radius:40px;
+  text-decoration:none;
+  background:linear-gradient(90deg,#a855f7,#7e22ce);
+  color:white;
+  font-size:14px;
+  transition:.3s ease;
+}
+
+.visit-btn:hover{
+  transform:scale(1.08);
+}
   
 </style>
 </head>
@@ -468,11 +484,12 @@ h2{
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script>
 
 /* Animaciones */
 
+gsap.registerPlugin(ScrollTrigger);  
 gsap.from(".logo",{y:-80,opacity:0,duration:1.2,ease:"power4.out"});
 gsap.from(".menu a",{y:-60,opacity:0,duration:1.2,stagger:.12,ease:"power4.out"});
 gsap.from(".hero h1",{y:50,opacity:0,duration:1.4,delay:.4});
@@ -499,7 +516,7 @@ gsap.utils.toArray(".card, .project").forEach(el=>{
 });
   
 </script>
-  <script>
+<script>
 
 const projects = document.querySelectorAll(".project");
 const modal = document.getElementById("projectModal");
@@ -541,22 +558,6 @@ function closeModal(){
   });
 }
     
-.visit-btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 30px;
-  border-radius:40px;
-  text-decoration:none;
-  background:linear-gradient(90deg,#a855f7,#7e22ce);
-  color:white;
-  font-size:14px;
-  transition:.3s ease;
-}
-
-.visit-btn:hover{
-  transform:scale(1.08);
-}
-
 gsap.utils.toArray(".client").forEach(el=>{
   gsap.from(el,{
     scrollTrigger:{
@@ -586,6 +587,7 @@ gsap.utils.toArray(".client").forEach(el=>{
 </div>
 </body>
 </html>
+
 
 
 
