@@ -158,8 +158,6 @@ section{
 
 /* PORTAFOLIO */
 
-/* PORTAFOLIO */
-
 .portfolio{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
@@ -258,7 +256,67 @@ h2{
   margin-bottom:60px;
   text-align:center;
 }
+  
+/* MODAL */
 
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(8px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:.4s ease;
+  z-index:2000;
+}
+
+.modal.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.modal-content{
+  background:#15151c;
+  width:90%;
+  max-width:700px;
+  border-radius:20px;
+  padding:40px;
+  text-align:center;
+  position:relative;
+  transform:translateY(50px);
+  opacity:0;
+}
+
+.modal-content img{
+  width:100%;
+  border-radius:15px;
+  margin-bottom:25px;
+}
+
+.modal-content h3{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.modal-content p{
+  opacity:.8;
+  margin-bottom:15px;
+}
+
+.close{
+  position:absolute;
+  top:20px;
+  right:25px;
+  font-size:28px;
+  cursor:pointer;
+}
+  
 </style>
 </head>
 
@@ -298,29 +356,44 @@ h2{
 
   <div class="portfolio">
 
-    <div class="project">
-      <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200" alt="">
-      <div class="overlay">
-        <h3>Nova Studio</h3>
-        <p>Diseño Web Corporativo</p>
-      </div>
-    </div>
+   <div class="project"
+     data-title="Nova Studio"
+     data-category="Diseño Web Corporativo"
+     data-description="Desarrollo de sitio institucional moderno con enfoque en conversión y experiencia de usuario."
+     data-image="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200">
 
-    <div class="project">
-      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200" alt="">
-      <div class="overlay">
-        <h3>Orion Shop</h3>
-        <p>Ecommerce Premium</p>
-      </div>
-    </div>
+  <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200" alt="">
+  <div class="overlay">
+    <h3>Nova Studio</h3>
+    <p>Diseño Web Corporativo</p>
+  </div>
+</div>
 
-    <div class="project">
-      <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200" alt="">
-      <div class="overlay">
-        <h3>Alpha Branding</h3>
-        <p>Identidad Visual</p>
-      </div>
-    </div>
+<div class="project"
+     data-title="Orion Shop"
+     data-category="Ecommerce Premium"
+     data-description="Tienda online optimizada para ventas con integración de pagos y automatizaciones."
+     data-image="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200">
+
+  <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200" alt="">
+  <div class="overlay">
+    <h3>Orion Shop</h3>
+    <p>Ecommerce Premium</p>
+  </div>
+</div>
+
+<div class="project"
+     data-title="Alpha Branding"
+     data-category="Identidad Visual"
+     data-description="Creación de identidad visual completa incluyendo logotipo, paleta y sistema gráfico."
+     data-image="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200">
+
+  <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200" alt="">
+  <div class="overlay">
+    <h3>Alpha Branding</h3>
+    <p>Identidad Visual</p>
+  </div>
+</div>
 
   </div>
 </section>
@@ -371,9 +444,63 @@ gsap.utils.toArray(".card, .project").forEach(el=>{
     duration:1
   });
 });
+  
+</script>
+  <script>
+
+const projects = document.querySelectorAll(".project");
+const modal = document.getElementById("projectModal");
+const modalContent = document.querySelector(".modal-content");
+
+projects.forEach(project=>{
+  project.addEventListener("click", ()=>{
+
+    document.getElementById("modalTitle").innerText = project.dataset.title;
+    document.getElementById("modalCategory").innerText = project.dataset.category;
+    document.getElementById("modalDescription").innerText = project.dataset.description;
+    document.getElementById("modalImage").src = project.dataset.image;
+
+    modal.classList.add("active");
+
+    gsap.to(modalContent,{
+      y:0,
+      opacity:1,
+      duration:.6,
+      ease:"power3.out"
+    });
+
+  });
+});
+
+document.querySelector(".close").addEventListener("click", closeModal);
+modal.addEventListener("click", (e)=>{
+  if(e.target === modal) closeModal();
+});
+
+function closeModal(){
+  gsap.to(modalContent,{
+    y:50,
+    opacity:0,
+    duration:.4,
+    ease:"power3.in",
+    onComplete:()=> modal.classList.remove("active")
+  });
+}
 
 </script>
+  
+<!-- MODAL PROYECTOS -->
 
+<div class="modal" id="projectModal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="modalImage" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <p id="modalCategory"></p>
+    <p id="modalDescription"></p>
+  </div>
+</div>
 </body>
 </html>
+
 
