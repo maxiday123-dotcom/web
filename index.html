@@ -239,6 +239,43 @@ section{
   filter:grayscale(0%);
   transform:scale(1.1);
 }
+
+/* CLIENTES CARRUSEL */
+
+.clients-wrapper{
+  overflow:hidden;
+  margin-top:60px;
+  position:relative;
+}
+
+.clients-track{
+  display:flex;
+  gap:80px;
+  align-items:center;
+  animation:scrollClients 25s linear infinite;
+}
+
+.clients-track img{
+  height:40px;
+  filter:grayscale(100%);
+  opacity:.6;
+  transition:.4s ease;
+}
+
+.clients-track img:hover{
+  filter:grayscale(0%);
+  opacity:1;
+  transform:scale(1.1);
+}
+
+@keyframes scrollClients{
+  from{
+    transform:translateX(0);
+  }
+  to{
+    transform:translateX(-50%);
+  }
+}
   
 /* TESTIMONIOS */
 
@@ -455,16 +492,25 @@ h2{
 <section id="clientes">
   <h2>Clientes</h2>
 
-  <div class="clients">
-    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung"></div>
-    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"></div>
-    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"></div>
-    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix"></div>
-    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM"></div>
-    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg" alt="Twitter"></div>
+  <div class="clients-wrapper">
+    <div class="clients-track">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg" alt="Twitter">
+
+      <!-- Duplicamos para efecto infinito -->
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg" alt="Twitter">
+    </div>
   </div>
 </section>
-
 
   
 <section>
@@ -587,6 +633,7 @@ gsap.utils.toArray(".client").forEach(el=>{
 </div>
 </body>
 </html>
+
 
 
 
