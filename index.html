@@ -356,11 +356,12 @@ h2{
 
   <div class="portfolio">
 
-   <div class="project"
+  <div class="project"
      data-title="Nova Studio"
      data-category="Diseño Web Corporativo"
      data-description="Desarrollo de sitio institucional moderno con enfoque en conversión y experiencia de usuario."
-     data-image="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200">
+     data-image="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200"
+     data-link="https://example.com">
 
   <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200" alt="">
   <div class="overlay">
@@ -369,11 +370,13 @@ h2{
   </div>
 </div>
 
+
 <div class="project"
      data-title="Orion Shop"
      data-category="Ecommerce Premium"
      data-description="Tienda online optimizada para ventas con integración de pagos y automatizaciones."
-     data-image="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200">
+     data-image="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200"
+     data-link="https://example.com">
 
   <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200" alt="">
   <div class="overlay">
@@ -382,11 +385,13 @@ h2{
   </div>
 </div>
 
+
 <div class="project"
      data-title="Alpha Branding"
      data-category="Identidad Visual"
      data-description="Creación de identidad visual completa incluyendo logotipo, paleta y sistema gráfico."
-     data-image="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200">
+     data-image="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200"
+     data-link="https://example.com">
 
   <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200" alt="">
   <div class="overlay">
@@ -394,8 +399,6 @@ h2{
     <p>Identidad Visual</p>
   </div>
 </div>
-
-  </div>
 </section>
 
 <section>
@@ -459,6 +462,7 @@ projects.forEach(project=>{
     document.getElementById("modalCategory").innerText = project.dataset.category;
     document.getElementById("modalDescription").innerText = project.dataset.description;
     document.getElementById("modalImage").src = project.dataset.image;
+    document.getElementById("modalLink").href = project.dataset.link;
 
     modal.classList.add("active");
 
@@ -486,7 +490,24 @@ function closeModal(){
     onComplete:()=> modal.classList.remove("active")
   });
 }
+    
+.visit-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 30px;
+  border-radius:40px;
+  text-decoration:none;
+  background:linear-gradient(90deg,#a855f7,#7e22ce);
+  color:white;
+  font-size:14px;
+  transition:.3s ease;
+}
 
+.visit-btn:hover{
+  transform:scale(1.08);
+}
+
+    
 </script>
   
 <!-- MODAL PROYECTOS -->
@@ -498,9 +519,11 @@ function closeModal(){
     <h3 id="modalTitle"></h3>
     <p id="modalCategory"></p>
     <p id="modalDescription"></p>
+    <a id="modalLink" href="#" target="_blank" class="visit-btn">Ver sitio</a>
   </div>
 </div>
 </body>
 </html>
+
 
 
