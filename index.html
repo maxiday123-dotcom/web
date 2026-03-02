@@ -211,6 +211,35 @@ section{
   opacity:1;
 }
 
+/* CLIENTES */
+
+.clients{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:50px;
+  align-items:center;
+  justify-items:center;
+  margin-top:60px;
+}
+
+.client{
+  opacity:.6;
+  filter:grayscale(100%);
+  transition:.4s ease;
+}
+
+.client img{
+  max-width:120px;
+  max-height:50px;
+  object-fit:contain;
+}
+
+.client:hover{
+  opacity:1;
+  filter:grayscale(0%);
+  transform:scale(1.1);
+}
+  
 /* TESTIMONIOS */
 
 .testimonial{
@@ -341,6 +370,8 @@ h2{
   <h1>Construimos experiencias digitales con <span>estrategia y diseño</span>.</h1>
 </section>
 
+*---SERVICIOS---*
+  
 <section id="servicios">
   <h2>Servicios</h2>
   <div class="services">
@@ -351,6 +382,8 @@ h2{
   </div>
 </section>
 
+*---PROYECTOS---*
+  
 <section id="proyectos">
   <h2>Proyectos</h2>
 
@@ -400,7 +433,24 @@ h2{
   </div>
 </div>
 </section>
+  
+*---CLIENTES---*
+  
+<section id="clientes">
+  <h2>Clientes</h2>
 
+  <div class="clients">
+    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung"></div>
+    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"></div>
+    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"></div>
+    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix"></div>
+    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM"></div>
+    <div class="client"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg" alt="Twitter"></div>
+  </div>
+</section>
+
+*---TESTIMONIO---*
+  
 <section>
   <h2>Testimonios</h2>
   <div class="testimonial">
@@ -507,6 +557,18 @@ function closeModal(){
   transform:scale(1.08);
 }
 
+gsap.utils.toArray(".client").forEach(el=>{
+  gsap.from(el,{
+    scrollTrigger:{
+      trigger:el,
+      start:"top 85%"
+    },
+    y:40,
+    opacity:0,
+    duration:1,
+    ease:"power3.out"
+  });
+});
     
 </script>
   
@@ -524,6 +586,7 @@ function closeModal(){
 </div>
 </body>
 </html>
+
 
 
 
