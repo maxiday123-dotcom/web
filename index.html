@@ -6,11 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MM Web & Design</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 /* RESET */
+
 *{
   margin:0;
   padding:0;
@@ -19,9 +20,9 @@
 }
 
 body{
-  background:#0a0a0a;
+  background:#0b0b0f;
   color:white;
-  min-height:200vh;
+  overflow-x:hidden;
 }
 
 /* HEADER */
@@ -30,17 +31,33 @@ body{
   position:fixed;
   top:0;
   width:100%;
-  padding:40px 80px; /* Aire premium */
-  transition:all .4s ease;
+  padding:45px 90px;
+  transition:all .45s cubic-bezier(.4,0,.2,1);
   z-index:1000;
 }
 
-.main-header.scrolled{
-  background:rgba(0,0,0,0.92);
-  backdrop-filter:blur(10px);
-  box-shadow:0 8px 30px rgba(0,0,0,.4);
-  padding:25px 80px;
+.main-header::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:0%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#a855f7,transparent);
+  transition:.5s ease;
 }
+
+.main-header.scrolled{
+  background:rgba(10,10,15,.95);
+  backdrop-filter:blur(12px);
+  padding:28px 90px;
+}
+
+.main-header.scrolled::after{
+  width:100%;
+}
+
+/* CONTAINER */
 
 .container{
   display:flex;
@@ -54,37 +71,52 @@ body{
   display:flex;
   flex-direction:column;
   cursor:pointer;
-  transition:.3s ease;
+  transition:.4s ease;
 }
 
 .logo:hover{
-  transform:scale(1.03);
+  transform:scale(1.05);
 }
 
 .mm{
-  font-size:42px;
-  font-weight:700;
-  background:linear-gradient(180deg,#c084fc,#7e22ce);
+  font-size:48px;
+  font-weight:800;
+  letter-spacing:-2px;
+  background:linear-gradient(180deg,#d8b4fe,#7e22ce);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  text-shadow:0 0 20px rgba(168,85,247,.35);
+  text-shadow:0 0 25px rgba(168,85,247,.4);
+  transition:.4s ease;
   line-height:1;
+}
+
+.main-header.scrolled .mm{
+  font-size:42px;
+  text-shadow:0 0 15px rgba(168,85,247,.3);
 }
 
 .tagline{
   font-size:11px;
-  letter-spacing:6px;
+  letter-spacing:7px;
+  margin-top:6px;
   color:white;
-  margin-top:4px;
+  opacity:.85;
+  transition:.4s ease;
+}
+
+.main-header.scrolled .tagline{
+  letter-spacing:6px;
+  opacity:.7;
 }
 
 /* MENU */
 
 .menu a{
-  margin-left:50px;
+  margin-left:55px;
   text-decoration:none;
   color:white;
   font-size:15px;
+  font-weight:500;
   position:relative;
   transition:.3s ease;
 }
@@ -94,26 +126,56 @@ body{
   position:absolute;
   width:0%;
   height:2px;
-  bottom:-6px;
+  bottom:-8px;
   left:0;
   background:#a855f7;
-  transition:.3s ease;
+  transition:.35s ease;
+}
+
+.menu a:hover{
+  color:#d8b4fe;
 }
 
 .menu a:hover::after{
   width:100%;
 }
 
-/* HERO DEMO */
+/* HERO */
 
 .hero{
   height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:40px;
-  font-weight:600;
   text-align:center;
+  padding:0 20px;
+  position:relative;
+  background:radial-gradient(circle at 30% 30%,rgba(168,85,247,.2),transparent 60%),
+             radial-gradient(circle at 70% 70%,rgba(139,92,246,.15),transparent 60%);
+}
+
+.hero h1{
+  font-size:52px;
+  font-weight:700;
+  max-width:800px;
+  line-height:1.2;
+}
+
+.hero span{
+  background:linear-gradient(90deg,#c084fc,#7e22ce);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* SECCIÓN EXTRA PARA SCROLL */
+
+.section{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  opacity:.6;
 }
 
 </style>
@@ -140,38 +202,52 @@ body{
 </header>
 
 <section class="hero">
-  Digital Studio Premium
+  <h1>Construimos experiencias digitales con <span>identidad</span> y precisión.</h1>
+</section>
+
+<section class="section">
+  Scroll para ver el efecto del header
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <script>
 
-/* Animación entrada */
+/* Animación inicial más fluida */
 
 gsap.from(".logo",{
-  y:-50,
+  y:-80,
   opacity:0,
-  duration:1,
-  ease:"power3.out"
+  duration:1.2,
+  ease:"power4.out"
 });
 
 gsap.from(".menu a",{
-  y:-40,
+  y:-60,
   opacity:0,
-  duration:1,
-  stagger:0.15,
+  duration:1.2,
+  stagger:.12,
+  ease:"power4.out"
+});
+
+gsap.from(".hero h1",{
+  y:50,
+  opacity:0,
+  duration:1.4,
+  delay:.4,
   ease:"power3.out"
 });
 
-/* Scroll effect */
+/* Scroll header */
 
 window.addEventListener("scroll",function(){
   const header=document.querySelector(".main-header");
-  header.classList.toggle("scrolled",window.scrollY>50);
+  header.classList.toggle("scrolled",window.scrollY>60);
 });
 
 </script>
 
 </body>
 </html>
+
+
