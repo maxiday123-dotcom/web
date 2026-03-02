@@ -1,327 +1,487 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MM Digital Studio</title>
+<title>Maxi Medina | Web Estratégica</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
-  --bg-main:#0F1115;
-  --blue:#2D6BFF;
-  --blue-light:#4C82FF;
-  --text:#F5F7FA;
-  --gray:#9CA3AF;
-}
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
+  font-family:'Montserrat',sans-serif;
 }
 
-body{
-  background:var(--bg-main);
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-  overflow-x:hidden;
-}
 html{
   scroll-behavior:smooth;
 }
 
-.section{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:60px 20px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:all 1s ease;
+body{
+  background:#0b0b12;
+  color:#eaeaf0;
+  overflow-x:hidden;
+  cursor:none;
 }
 
-.section.visible{
-  opacity:1;
-  transform:translateY(0);
-}
+/* PARTICLES BACKGROUND */
 
-.section-dark{
-  background:#0d0f14;
-}
-
-.section-light{
-  background:#12141c;
-}
-/* HERO */
-
-.hero{
-  position:relative;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:0 20px;
-  overflow:hidden;
-}
-
-/* Grid digital sutil */
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size:60px 60px;
-  z-index:1;
-  pointer-events:none;
-}
-
-/* Canvas partículas */
-
-canvas{
-  position:absolute;
+#particles{
+  position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  z-index:0;
+  z-index:-2;
 }
 
-.hero-content{
-  position:relative;
-  z-index:2;
-  max-width:900px;
+.grid-overlay{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background-image:linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size:60px 60px;
+  z-index:-1;
 }
 
-/* Logo */
+/* LOADER */
 
-.mm-logo{
-  font-family:'Sora',sans-serif;
-  font-size:120px;
-  font-weight:700;
-  color:var(--blue);
-  transition:transform .4s ease-in-out, filter .4s ease-in-out;
-}
-
-.mm-logo.pulse{
-  transform:scale(1.02);
-  filter:brightness(1.15) drop-shadow(0 0 18px rgba(45,107,255,.35));
-}
-
-/* Headline */
-
-h1{
-  font-family:'Sora',sans-serif;
-  font-size:48px;
-  margin-top:20px;
-  font-weight:600;
-}
-
-p{
-  margin-top:20px;
-  font-size:18px;
-  color:var(--gray);
-  line-height:1.6;
-  max-width:700px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-/* Botones */
-
-.buttons{
-  margin-top:40px;
+#loader{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:#0b0b12;
   display:flex;
-  gap:20px;
+  align-items:center;
   justify-content:center;
-  flex-wrap:wrap;
+  z-index:9999;
+}
+
+.loader-logo{
+  font-size:40px;
+  font-weight:700;
+  letter-spacing:6px;
+  color:#4b1bbd;
+  animation:pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse{
+  from{opacity:0.4;}
+  to{opacity:1;}
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  width:100%;
+  padding:20px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(14px);
+  background:rgba(12,12,20,0.4);
+  transition:0.4s;
+  z-index:1000;
+}
+
+nav.scrolled{
+  background:rgba(12,12,20,0.95);
+}
+
+nav a{
+  color:#eaeaf0;
+  text-decoration:none;
+  margin-left:25px;
+  font-weight:500;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#6d28ff;
+}
+
+.cta-btn{
+  background:#4b1bbd;
+  padding:10px 22px;
+  border-radius:30px;
+}
+
+/* SECTIONS */
+
+section{
+  padding:140px 8%;
+  min-height:100vh;
+  opacity:0;
+  transform:translateY(60px);
+  transition:1s ease;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* HERO */
+
+.hero{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+}
+
+.hero h1{
+  font-size:54px;
+  max-width:750px;
+  line-height:1.2;
+}
+
+.hero p{
+  margin-top:20px;
+  max-width:500px;
+  color:#aaa;
+}
+
+.hero-buttons{
+  margin-top:35px;
+}
+
+.hero-buttons a{
+  display:inline-block;
+  margin-right:20px;
+  padding:14px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  transition:0.3s;
 }
 
 .btn-primary{
-  background:var(--blue);
-  color:#fff;
-  padding:14px 32px;
-  border-radius:6px;
-  font-weight:500;
-  text-decoration:none;
-  transition:.3s ease;
+  background:#4b1bbd;
+  color:white;
 }
 
 .btn-primary:hover{
-  background:var(--blue-light);
-  transform:translateY(-3px);
+  transform:translateY(-4px);
 }
 
 .btn-secondary{
-  border:1px solid var(--blue);
-  color:var(--blue);
-  padding:14px 32px;
-  border-radius:6px;
-  text-decoration:none;
-  transition:.3s ease;
+  border:1px solid #4b1bbd;
+  color:#4b1bbd;
 }
 
 .btn-secondary:hover{
-  background:var(--blue);
-  color:#fff;
-  transform:translateY(-3px);
+  background:#4b1bbd;
+  color:white;
+}
+
+/* STATS */
+
+.stats{
+  display:flex;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+.stat{
+  font-size:42px;
+  font-weight:700;
+  color:#6d28ff;
+}
+
+.stat-label{
+  font-size:14px;
+  color:#aaa;
+}
+
+/* SERVICES */
+
+.services{
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.card{
+  flex:1;
+  min-width:260px;
+  padding:40px;
+  border-radius:20px;
+  background:rgba(20,20,35,0.7);
+  backdrop-filter:blur(10px);
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:translateY(-12px) scale(1.02);
+  box-shadow:0 20px 40px rgba(75,27,189,0.2);
+}
+
+/* TIMELINE */
+
+.timeline{
+  border-left:2px solid #4b1bbd;
+  padding-left:30px;
+}
+
+.timeline div{
+  margin-bottom:50px;
+  position:relative;
+}
+
+.timeline div::before{
+  content:"";
+  position:absolute;
+  left:-38px;
+  top:5px;
+  width:12px;
+  height:12px;
+  background:#4b1bbd;
+  border-radius:50%;
+}
+
+/* PORTFOLIO */
+
+.portfolio{
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.project{
+  flex:1;
+  min-width:280px;
+  height:230px;
+  border-radius:25px;
+  background:rgba(20,20,35,0.6);
+  backdrop-filter:blur(8px);
+  perspective:1000px;
+}
+
+.project-inner{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  color:#6d28ff;
+  transition:transform 0.6s;
+}
+
+.project:hover .project-inner{
+  transform:rotateY(12deg) rotateX(12deg);
+}
+
+/* CTA */
+
+.final-cta{
+  text-align:center;
+}
+
+.final-cta h2{
+  font-size:34px;
+}
+
+/* FOOTER */
+
+footer{
+  padding:40px;
+  text-align:center;
+  background:#08080f;
+  color:#666;
+}
+
+/* CURSOR */
+
+.cursor{
+  width:12px;
+  height:12px;
+  border:2px solid #6d28ff;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:0.08s;
+  z-index:2000;
+}
+
+.cursor-grow{
+  transform:translate(-50%,-50%) scale(2);
+  background:rgba(109,40,255,0.2);
 }
 
 </style>
 </head>
+
 <body>
 
-<section class="hero">
 <canvas id="particles"></canvas>
+<div class="grid-overlay"></div>
 
-<div class="hero-content">
-  <div class="mm-logo" id="logo">MM</div>
-
-  <h1>Arquitectura digital para empresas que buscan crecer</h1>
-
-  <p>
-    Diseñamos y desarrollamos plataformas web estratégicas orientadas a conversión,
-    rendimiento y posicionamiento digital sostenible.
-  </p>
-
-  <div class="buttons">
-    <a href="#" class="btn-primary">Solicitar proyecto</a>
-    <a href="#" class="btn-secondary">Ver nuestro trabajo</a>
-  </div>
+<div id="loader">
+  <div class="loader-logo">MM</div>
 </div>
-</section>
-  <section class="section section-light">
+
+<div class="cursor"></div>
+
+<nav>
+  <div><strong>MM</strong></div>
   <div>
-    <h2>Diseño Estratégico</h2>
-    <p>Construyo experiencias digitales que no solo se ven bien, sino que convierten.</p>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#contacto" class="cta-btn">Agendar</a>
+  </div>
+</nav>
+
+<section id="inicio" class="hero">
+  <h1>Diseño Web Estratégico para Negocios que Quieren Escalar</h1>
+  <p>Webs pensadas para posicionar, convertir y elevar tu marca con elegancia digital.</p>
+  <div class="hero-buttons">
+    <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+    <a href="#contacto" class="btn-secondary">Agendar llamada</a>
   </div>
 </section>
 
-<section class="section section-dark">
-  <div>
-    <h2>Interacciones Modernas</h2>
-    <p>Micro detalles, animaciones sutiles y sensación premium en cada scroll.</p>
+<section>
+  <div class="stats">
+    <div><div class="stat" data-target="120">0</div><div class="stat-label">Proyectos</div></div>
+    <div><div class="stat" data-target="5">0</div><div class="stat-label">Años experiencia</div></div>
+    <div><div class="stat" data-target="98">0</div><div class="stat-label">Clientes satisfechos</div></div>
   </div>
 </section>
 
-<section class="section section-light">
-  <div>
-    <h2>Resultados Reales</h2>
-    <p>Webs pensadas para posicionarte como autoridad en tu mercado.</p>
+<section id="servicios">
+  <div class="services">
+    <div class="card">Diseño Estratégico</div>
+    <div class="card">Desarrollo Profesional</div>
+    <div class="card">Optimización y Conversión</div>
   </div>
 </section>
+
+<section id="proceso">
+  <div class="timeline">
+    <div>Estrategia</div>
+    <div>Diseño</div>
+    <div>Desarrollo</div>
+    <div>Optimización</div>
+  </div>
+</section>
+
+<section id="proyectos">
+  <div class="portfolio">
+    <div class="project"><div class="project-inner">Proyecto 1</div></div>
+    <div class="project"><div class="project-inner">Proyecto 2</div></div>
+    <div class="project"><div class="project-inner">Proyecto 3</div></div>
+  </div>
+</section>
+
+<section id="contacto" class="final-cta">
+  <h2>¿Listo para elevar tu presencia digital?</h2>
+  <br>
+  <a href="#" class="btn-primary">Agendar llamada estratégica</a>
+</section>
+
+<footer>
+  © 2026 Maxi Medina | Web Studio
+</footer>
 
 <script>
 
-/* LATIDO ORGÁNICO */
-
-const logo = document.getElementById("logo");
-
-function pulse(){
-  logo.classList.add("pulse");
-
-  setTimeout(()=>{
-    logo.classList.remove("pulse");
-  },800);
-
-  const next = Math.random()*2000 + 6000; 
-  setTimeout(pulse,next);
-}
-
-pulse();
-
-
-/* PARTÍCULAS SUAVES */
-
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-function resizeCanvas(){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-resizeCanvas();
-
-let particlesArray = [];
-
-class Particle{
-  constructor(){
-    this.x = Math.random()*canvas.width;
-    this.y = Math.random()*canvas.height;
-    this.size = Math.random()*1.8;
-    this.speedX = (Math.random()-0.5)*0.15;
-    this.speedY = (Math.random()-0.5)*0.15;
-  }
-
-  update(){
-    this.x += this.speedX;
-    this.y += this.speedY;
-
-    if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-    if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-  }
-
-  draw(){
-    ctx.fillStyle = "rgba(45,107,255,0.18)";
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-    ctx.fill();
-  }
-}
-
-function init(){
-  particlesArray = [];
-  for(let i=0;i<80;i++){
-    particlesArray.push(new Particle());
-  }
-}
-
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particlesArray.forEach(p=>{
-    p.update();
-    p.draw();
-  });
-  requestAnimationFrame(animate);
-}
-
-init();
-animate();
-
-window.addEventListener("resize",()=>{
-  resizeCanvas();
-  init();
+/* Loader */
+window.addEventListener("load",()=>{
+  setTimeout(()=>{document.getElementById("loader").style.display="none"},1200);
 });
-/* ANIMACION AL SCROLL */
 
-const sections = document.querySelectorAll(".section");
+/* Navbar */
+window.addEventListener("scroll",()=>{
+  document.querySelector("nav").classList.toggle("scrolled",window.scrollY>50);
+});
 
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
+/* Section reveal */
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top<window.innerHeight-100){
+      sec.classList.add("show");
     }
   });
-},{
-  threshold:0.2
 });
 
-sections.forEach(section=>{
-  observer.observe(section);
+/* Counter */
+document.querySelectorAll(".stat").forEach(counter=>{
+  const update=()=>{
+    const target=+counter.dataset.target;
+    const count=+counter.innerText;
+    const inc=target/100;
+    if(count<target){
+      counter.innerText=Math.ceil(count+inc);
+      setTimeout(update,20);
+    }else{
+      counter.innerText=target;
+    }
+  };
+  update();
 });
-  
+
+/* Cursor */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{
+  cursor.style.left=e.clientX+"px";
+  cursor.style.top=e.clientY+"px";
+});
+document.querySelectorAll("a, .card, .project").forEach(el=>{
+  el.addEventListener("mouseenter",()=>cursor.classList.add("cursor-grow"));
+  el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-grow"));
+});
+
+/* Particles */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+for(let i=0;i<60;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2,
+    d:Math.random()*1
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="rgba(109,40,255,0.4)";
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
+    ctx.fill();
+  });
+  update();
+}
+
+function update(){
+  particles.forEach(p=>{
+    p.y+=p.d;
+    if(p.y>canvas.height){
+      p.y=0;
+      p.x=Math.random()*canvas.width;
+    }
+  });
+}
+
+setInterval(draw,33);
+
 </script>
 
 </body>
 </html>
-
