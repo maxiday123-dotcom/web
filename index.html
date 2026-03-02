@@ -29,7 +29,34 @@ body{
   font-family:'Inter',sans-serif;
   overflow-x:hidden;
 }
+html{
+  scroll-behavior:smooth;
+}
 
+.section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 20px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+}
+
+.section.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section-dark{
+  background:#0d0f14;
+}
+
+.section-light{
+  background:#12141c;
+}
 /* HERO */
 
 .hero{
@@ -172,6 +199,26 @@ p{
   </div>
 </div>
 </section>
+  <section class="section section-light">
+  <div>
+    <h2>Diseño Estratégico</h2>
+    <p>Construyo experiencias digitales que no solo se ven bien, sino que convierten.</p>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div>
+    <h2>Interacciones Modernas</h2>
+    <p>Micro detalles, animaciones sutiles y sensación premium en cada scroll.</p>
+  </div>
+</section>
+
+<section class="section section-light">
+  <div>
+    <h2>Resultados Reales</h2>
+    <p>Webs pensadas para posicionarte como autoridad en tu mercado.</p>
+  </div>
+</section>
 
 <script>
 
@@ -255,8 +302,26 @@ window.addEventListener("resize",()=>{
   resizeCanvas();
   init();
 });
+/* ANIMACION AL SCROLL */
 
+const sections = document.querySelectorAll(".section");
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+},{
+  threshold:0.2
+});
+
+sections.forEach(section=>{
+  observer.observe(section);
+});
+  
 </script>
 
 </body>
 </html>
+
