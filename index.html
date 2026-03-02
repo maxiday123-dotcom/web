@@ -4,12 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maxi Medina | Web Estratégica</title>
+<title>MM Web & Design</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
+/* RESET */
 *{
   margin:0;
   padding:0;
@@ -17,303 +18,102 @@
   font-family:'Montserrat',sans-serif;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
-  background:#0b0b12;
-  color:#eaeaf0;
-  overflow-x:hidden;
-  cursor:none;
+  background:#0a0a0a;
+  color:white;
+  min-height:200vh;
 }
 
-/* PARTICLES BACKGROUND */
+/* HEADER */
 
-#particles{
+.main-header{
   position:fixed;
   top:0;
-  left:0;
   width:100%;
-  height:100%;
-  z-index:-2;
-}
-
-.grid-overlay{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background-image:linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                   linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size:60px 60px;
-  z-index:-1;
-}
-
-/* LOADER */
-
-#loader{
-  position:fixed;
-  width:100%;
-  height:100vh;
-  background:#0b0b12;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-}
-
-.loader-logo{
-  font-size:40px;
-  font-weight:700;
-  letter-spacing:6px;
-  color:#4b1bbd;
-  animation:pulse 1.5s infinite alternate;
-}
-
-@keyframes pulse{
-  from{opacity:0.4;}
-  to{opacity:1;}
-}
-
-/* NAV */
-
-nav{
-  position:fixed;
-  width:100%;
-  padding:20px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  backdrop-filter:blur(14px);
-  background:rgba(12,12,20,0.4);
-  transition:0.4s;
+  padding:40px 80px; /* Aire premium */
+  transition:all .4s ease;
   z-index:1000;
 }
 
-nav.scrolled{
-  background:rgba(12,12,20,0.95);
+.main-header.scrolled{
+  background:rgba(0,0,0,0.92);
+  backdrop-filter:blur(10px);
+  box-shadow:0 8px 30px rgba(0,0,0,.4);
+  padding:25px 80px;
 }
 
-nav a{
-  color:#eaeaf0;
-  text-decoration:none;
-  margin-left:25px;
-  font-weight:500;
-  transition:0.3s;
+.container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-nav a:hover{
-  color:#6d28ff;
-}
+/* LOGO */
 
-.cta-btn{
-  background:#4b1bbd;
-  padding:10px 22px;
-  border-radius:30px;
-}
-
-/* SECTIONS */
-
-section{
-  padding:140px 8%;
-  min-height:100vh;
-  opacity:0;
-  transform:translateY(60px);
-  transition:1s ease;
-}
-
-section.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* HERO */
-
-.hero{
+.logo{
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  position:relative;
+  cursor:pointer;
+  transition:.3s ease;
 }
 
-.hero h1{
-  font-size:54px;
-  max-width:750px;
-  line-height:1.2;
+.logo:hover{
+  transform:scale(1.03);
 }
 
-.hero p{
-  margin-top:20px;
-  max-width:500px;
-  color:#aaa;
-}
-
-.hero-buttons{
-  margin-top:35px;
-}
-
-.hero-buttons a{
-  display:inline-block;
-  margin-right:20px;
-  padding:14px 30px;
-  border-radius:30px;
-  text-decoration:none;
-  transition:0.3s;
-}
-
-.btn-primary{
-  background:#4b1bbd;
-  color:white;
-}
-
-.btn-primary:hover{
-  transform:translateY(-4px);
-}
-
-.btn-secondary{
-  border:1px solid #4b1bbd;
-  color:#4b1bbd;
-}
-
-.btn-secondary:hover{
-  background:#4b1bbd;
-  color:white;
-}
-
-/* STATS */
-
-.stats{
-  display:flex;
-  gap:60px;
-  flex-wrap:wrap;
-}
-
-.stat{
+.mm{
   font-size:42px;
   font-weight:700;
-  color:#6d28ff;
+  background:linear-gradient(180deg,#c084fc,#7e22ce);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 20px rgba(168,85,247,.35);
+  line-height:1;
 }
 
-.stat-label{
-  font-size:14px;
-  color:#aaa;
+.tagline{
+  font-size:11px;
+  letter-spacing:6px;
+  color:white;
+  margin-top:4px;
 }
 
-/* SERVICES */
+/* MENU */
 
-.services{
-  display:flex;
-  gap:40px;
-  flex-wrap:wrap;
-}
-
-.card{
-  flex:1;
-  min-width:260px;
-  padding:40px;
-  border-radius:20px;
-  background:rgba(20,20,35,0.7);
-  backdrop-filter:blur(10px);
-  transition:0.4s;
-}
-
-.card:hover{
-  transform:translateY(-12px) scale(1.02);
-  box-shadow:0 20px 40px rgba(75,27,189,0.2);
-}
-
-/* TIMELINE */
-
-.timeline{
-  border-left:2px solid #4b1bbd;
-  padding-left:30px;
-}
-
-.timeline div{
-  margin-bottom:50px;
+.menu a{
+  margin-left:50px;
+  text-decoration:none;
+  color:white;
+  font-size:15px;
   position:relative;
+  transition:.3s ease;
 }
 
-.timeline div::before{
+.menu a::after{
   content:"";
   position:absolute;
-  left:-38px;
-  top:5px;
-  width:12px;
-  height:12px;
-  background:#4b1bbd;
-  border-radius:50%;
+  width:0%;
+  height:2px;
+  bottom:-6px;
+  left:0;
+  background:#a855f7;
+  transition:.3s ease;
 }
 
-/* PORTFOLIO */
-
-.portfolio{
-  display:flex;
-  gap:40px;
-  flex-wrap:wrap;
-}
-
-.project{
-  flex:1;
-  min-width:280px;
-  height:230px;
-  border-radius:25px;
-  background:rgba(20,20,35,0.6);
-  backdrop-filter:blur(8px);
-  perspective:1000px;
-}
-
-.project-inner{
+.menu a:hover::after{
   width:100%;
-  height:100%;
+}
+
+/* HERO DEMO */
+
+.hero{
+  height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
+  font-size:40px;
   font-weight:600;
-  color:#6d28ff;
-  transition:transform 0.6s;
-}
-
-.project:hover .project-inner{
-  transform:rotateY(12deg) rotateX(12deg);
-}
-
-/* CTA */
-
-.final-cta{
   text-align:center;
-}
-
-.final-cta h2{
-  font-size:34px;
-}
-
-/* FOOTER */
-
-footer{
-  padding:40px;
-  text-align:center;
-  background:#08080f;
-  color:#666;
-}
-
-/* CURSOR */
-
-.cursor{
-  width:12px;
-  height:12px;
-  border:2px solid #6d28ff;
-  border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  transition:0.08s;
-  z-index:2000;
-}
-
-.cursor-grow{
-  transform:translate(-50%,-50%) scale(2);
-  background:rgba(109,40,255,0.2);
 }
 
 </style>
@@ -321,165 +121,55 @@ footer{
 
 <body>
 
-<canvas id="particles"></canvas>
-<div class="grid-overlay"></div>
+<header class="main-header">
+  <div class="container">
+    
+    <div class="logo">
+      <div class="mm">MM</div>
+      <div class="tagline">W E B  &  D E S I G N</div>
+    </div>
 
-<div id="loader">
-  <div class="loader-logo">MM</div>
-</div>
+    <nav class="menu">
+      <a href="#">Inicio</a>
+      <a href="#">Servicios</a>
+      <a href="#">Proyectos</a>
+      <a href="#">Contacto</a>
+    </nav>
 
-<div class="cursor"></div>
-
-<nav>
-  <div><strong>MM</strong></div>
-  <div>
-    <a href="#inicio">Inicio</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#proceso">Proceso</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#contacto" class="cta-btn">Agendar</a>
   </div>
-</nav>
+</header>
 
-<section id="inicio" class="hero">
-  <h1>Diseño Web Estratégico para Negocios que Quieren Escalar</h1>
-  <p>Webs pensadas para posicionar, convertir y elevar tu marca con elegancia digital.</p>
-  <div class="hero-buttons">
-    <a href="#proyectos" class="btn-primary">Ver proyectos</a>
-    <a href="#contacto" class="btn-secondary">Agendar llamada</a>
-  </div>
+<section class="hero">
+  Digital Studio Premium
 </section>
 
-<section>
-  <div class="stats">
-    <div><div class="stat" data-target="120">0</div><div class="stat-label">Proyectos</div></div>
-    <div><div class="stat" data-target="5">0</div><div class="stat-label">Años experiencia</div></div>
-    <div><div class="stat" data-target="98">0</div><div class="stat-label">Clientes satisfechos</div></div>
-  </div>
-</section>
-
-<section id="servicios">
-  <div class="services">
-    <div class="card">Diseño Estratégico</div>
-    <div class="card">Desarrollo Profesional</div>
-    <div class="card">Optimización y Conversión</div>
-  </div>
-</section>
-
-<section id="proceso">
-  <div class="timeline">
-    <div>Estrategia</div>
-    <div>Diseño</div>
-    <div>Desarrollo</div>
-    <div>Optimización</div>
-  </div>
-</section>
-
-<section id="proyectos">
-  <div class="portfolio">
-    <div class="project"><div class="project-inner">Proyecto 1</div></div>
-    <div class="project"><div class="project-inner">Proyecto 2</div></div>
-    <div class="project"><div class="project-inner">Proyecto 3</div></div>
-  </div>
-</section>
-
-<section id="contacto" class="final-cta">
-  <h2>¿Listo para elevar tu presencia digital?</h2>
-  <br>
-  <a href="#" class="btn-primary">Agendar llamada estratégica</a>
-</section>
-
-<footer>
-  © 2026 Maxi Medina | Web Studio
-</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <script>
 
-/* Loader */
-window.addEventListener("load",()=>{
-  setTimeout(()=>{document.getElementById("loader").style.display="none"},1200);
+/* Animación entrada */
+
+gsap.from(".logo",{
+  y:-50,
+  opacity:0,
+  duration:1,
+  ease:"power3.out"
 });
 
-/* Navbar */
-window.addEventListener("scroll",()=>{
-  document.querySelector("nav").classList.toggle("scrolled",window.scrollY>50);
+gsap.from(".menu a",{
+  y:-40,
+  opacity:0,
+  duration:1,
+  stagger:0.15,
+  ease:"power3.out"
 });
 
-/* Section reveal */
-const sections=document.querySelectorAll("section");
-window.addEventListener("scroll",()=>{
-  sections.forEach(sec=>{
-    if(sec.getBoundingClientRect().top<window.innerHeight-100){
-      sec.classList.add("show");
-    }
-  });
+/* Scroll effect */
+
+window.addEventListener("scroll",function(){
+  const header=document.querySelector(".main-header");
+  header.classList.toggle("scrolled",window.scrollY>50);
 });
-
-/* Counter */
-document.querySelectorAll(".stat").forEach(counter=>{
-  const update=()=>{
-    const target=+counter.dataset.target;
-    const count=+counter.innerText;
-    const inc=target/100;
-    if(count<target){
-      counter.innerText=Math.ceil(count+inc);
-      setTimeout(update,20);
-    }else{
-      counter.innerText=target;
-    }
-  };
-  update();
-});
-
-/* Cursor */
-const cursor=document.querySelector(".cursor");
-document.addEventListener("mousemove",e=>{
-  cursor.style.left=e.clientX+"px";
-  cursor.style.top=e.clientY+"px";
-});
-document.querySelectorAll("a, .card, .project").forEach(el=>{
-  el.addEventListener("mouseenter",()=>cursor.classList.add("cursor-grow"));
-  el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-grow"));
-});
-
-/* Particles */
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-for(let i=0;i<60;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:Math.random()*2,
-    d:Math.random()*1
-  });
-}
-
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="rgba(109,40,255,0.4)";
-  particles.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
-    ctx.fill();
-  });
-  update();
-}
-
-function update(){
-  particles.forEach(p=>{
-    p.y+=p.d;
-    if(p.y>canvas.height){
-      p.y=0;
-      p.x=Math.random()*canvas.width;
-    }
-  });
-}
-
-setInterval(draw,33);
 
 </script>
 
