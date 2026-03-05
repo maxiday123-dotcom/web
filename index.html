@@ -190,6 +190,43 @@ section{
   transform:translateY(-10px);
   border-color:#a855f7;
 }
+
+.video-card{
+  position:relative;
+  overflow:hidden;
+}
+
+.service-video{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:.5s ease;
+}
+
+.service-video video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.05);
+  transition:transform 4s ease;
+}
+
+.video-card:hover .service-video{
+  opacity:1;
+}
+
+.video-card:hover .service-video video{
+  transform:scale(1.15);
+}
+
+.video-card:hover .service-content{
+  opacity:0;
+  transform:scale(.95);
+}
+
+.service-content{
+  transition:.5s ease;
+}
   
 /* PORTAFOLIO */
 
@@ -469,10 +506,18 @@ h2{
 
   <div class="services-grid">
 
-    <div class="service-card">
-      <h3>Landing Pages</h3>
-      <p>Diseño y desarrollo de páginas optimizadas para convertir visitantes en clientes. Velocidad, estrategia y diseño premium.</p>
-    </div>
+  <div class="service-card video-card">
+  
+  <div class="service-content">
+    <h3>Landing Pages</h3>
+    <p>Diseño optimizado para conversión y velocidad.</p>
+  </div>
+
+  <div class="service-video">
+    <video src="videos/nova_teaser.mp4" muted loop playsinline></video>
+  </div>
+
+</div>
 
     <div class="service-card">
       <h3>Web Corporativa</h3>
@@ -685,6 +730,19 @@ gsap.utils.toArray(".service-card").forEach(el=>{
     ease:"power3.out"
   });
 });
+
+document.querySelectorAll(".video-card").forEach(card=>{
+  const video = card.querySelector("video");
+
+  card.addEventListener("mouseenter",()=>{
+    video.play();
+  });
+
+  card.addEventListener("mouseleave",()=>{
+    video.pause();
+    video.currentTime = 0;
+  });
+});
   
 </script>
   
@@ -702,6 +760,7 @@ gsap.utils.toArray(".service-card").forEach(el=>{
 </div>
 </body>
 </html>
+
 
 
 
