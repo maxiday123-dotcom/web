@@ -140,6 +140,22 @@ section{
   margin-top:60px;
 }
 
+ .service-card{
+  min-height:160px;
+} 
+
+.service-video::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+}
+
+.service-card:hover{
+  transform:translateY(-10px) scale(1.02);
+  border-color:#a855f7;
+}  
+  
 .service-card{
   background:rgba(255,255,255,0.03);
   padding:28px;
@@ -489,23 +505,25 @@ h2{
 <section id="servicios">
   <h2>Servicios</h2>
 
-<div class="services-grid">
+  <div class="services-grid">
 
-   <div class="service-card video-card">
+    <div class="service-card video-card">
 
-  <div class="service-content">
-    <h3>Landing Pages</h3>
-    <p>Diseño optimizado para conversión y velocidad.</p>
+      <div class="service-content">
+        <h3>Landing Pages</h3>
+        <p>Diseño optimizado para conversión y velocidad.</p>
+      </div>
+
+      <div class="service-video">
+        <video autoplay muted loop playsinline>
+          <source src="videos/nova_teasercompress.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
+
   </div>
-
-  <div class="service-video">
-    <video autoplay muted loop playsinline>
-      <source src="videos/nova_teasercompress.mp4" type="video/mp4">
-    </video>
-  </div>
-
-</div>
-</div>
+</section>
 
     <div class="service-card">
       <h3>Web Corporativa</h3>
@@ -753,6 +771,7 @@ cards.forEach(card => {
 </div>
 </body>
 </html>
+
 
 
 
