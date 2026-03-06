@@ -512,9 +512,11 @@ h2{
      <p>Diseño optimizado para conversión y velocidad.</p>
    </div>
 
-   <div class="service-video">
-     <video src="videos/nova_teasercompress.mp4" muted loop playsinline></video>
-   </div>
+   <div class="service-preview">
+      <video id="serviceVideo" autoplay muted loop playsinline>
+      <source src="" type="video/mp4">
+   </video>
+</div>
 
 </div>
 
@@ -730,17 +732,22 @@ gsap.utils.toArray(".service-card").forEach(el=>{
   });
 });
 
-document.querySelectorAll(".video-card").forEach(card=>{
-  const video = card.querySelector("video");
+const cards = document.querySelectorAll(".card");
+const video = document.getElementById("serviceVideo");
 
-  card.addEventListener("mouseenter",()=>{
-    video.play();
+cards.forEach(card => {
+
+  card.addEventListener("mouseenter", () => {
+
+    const src = card.getAttribute("data-video");
+
+    if(src){
+      video.src = src;
+      video.play();
+    }
+
   });
 
-  card.addEventListener("mouseleave",()=>{
-    video.pause();
-    video.currentTime = 0;
-  });
 });
   
 </script>
@@ -759,6 +766,7 @@ document.querySelectorAll(".video-card").forEach(card=>{
 </div>
 </body>
 </html>
+
 
 
 
