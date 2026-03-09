@@ -1,90 +1,63 @@
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MaxitoDev | Full Stack Developer</title>
 
-<title>MM Web & Design</title>
-
-<meta name="description" content="Diseño web profesional, ecommerce y landing pages optimizadas para conversión.">
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* RESET */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Montserrat',sans-serif;
-scroll-behavior:smooth;
-}
-
-/* THEMES */
-
-:root{
---bg:#0b0b0f;
---text:white;
---card:rgba(255,255,255,.05);
-}
-
-.light{
---bg:#ffffff;
---text:#111;
---card:#f4f4f4;
 }
 
 body{
-background:var(--bg);
-color:var(--text);
+background:#0a0a0a;
+color:white;
 overflow-x:hidden;
-transition:.4s;
 }
 
-/* CURSOR */
+/* NAVBAR */
 
-.cursor{
-width:18px;
-height:18px;
-border:2px solid #a855f7;
-border-radius:50%;
-position:fixed;
-pointer-events:none;
-transform:translate(-50%,-50%);
-z-index:9999;
-}
-
-/* HEADER */
-
-.main-header{
+nav{
 position:fixed;
 top:0;
 width:100%;
-padding:30px 80px;
-z-index:1000;
 display:flex;
 justify-content:space-between;
 align-items:center;
+padding:20px 60px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:100;
 }
 
-.logo{
-font-size:36px;
-font-weight:800;
-background:linear-gradient(180deg,#d8b4fe,#7e22ce);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+nav h1{
+color:#9f5cff;
+font-size:22px;
 }
 
-.menu a{
-margin-left:30px;
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav a{
+color:white;
 text-decoration:none;
-color:var(--text);
-font-size:15px;
+font-weight:500;
+transition:.3s;
+}
+
+nav a:hover{
+color:#9f5cff;
 }
 
 /* HERO */
@@ -93,366 +66,266 @@ font-size:15px;
 height:100vh;
 display:flex;
 align-items:center;
-justify-content:center;
-text-align:center;
-position:relative;
+justify-content:space-between;
+padding:0 80px;
 }
 
-#particles{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;
+.hero-text{
+max-width:500px;
 }
 
-.hero h1{
-font-size:60px;
-max-width:900px;
+.hero h2{
+font-size:55px;
+margin-bottom:20px;
 }
 
 .hero span{
-background:linear-gradient(90deg,#c084fc,#7e22ce);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+color:#9f5cff;
 }
 
-.cta-btn{
-display:inline-block;
-margin-top:40px;
-padding:16px 40px;
-border-radius:40px;
-background:linear-gradient(90deg,#a855f7,#7e22ce);
-text-decoration:none;
+.hero p{
+color:#ccc;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+.btn{
+padding:14px 28px;
+background:#9f5cff;
+border:none;
+border-radius:30px;
 color:white;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
 }
 
-/* SECCIONES */
-
-section{
-padding:120px 80px;
+.btn:hover{
+transform:scale(1.05);
+background:#7c3cff;
 }
 
-h2{
-font-size:36px;
-margin-bottom:60px;
-text-align:center;
+/* 3D CANVAS */
+
+#canvas3d{
+width:450px;
+height:450px;
 }
 
 /* SERVICES */
 
 .services{
+padding:120px 80px;
+text-align:center;
+}
+
+.services h2{
+font-size:40px;
+margin-bottom:60px;
+}
+
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:35px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
 }
 
 .card{
-background:var(--card);
-border-radius:20px;
+background:#141414;
 padding:35px;
-backdrop-filter:blur(10px);
+border-radius:15px;
 transition:.3s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-border:1px solid #a855f7;
+background:#1d1d1d;
 }
 
-/* PORTFOLIO */
-
-.filter{
-text-align:center;
-margin-bottom:40px;
-}
-
-.filter button{
-margin:5px;
-padding:8px 20px;
-border:none;
-border-radius:20px;
-cursor:pointer;
-}
-
-.portfolio{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-}
-
-.project{
-position:relative;
-height:240px;
-overflow:hidden;
-border-radius:20px;
-}
-
-.project img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.overlay{
-position:absolute;
-bottom:0;
-width:100%;
-padding:20px;
-background:linear-gradient(to top,rgba(0,0,0,.9),transparent);
-}
-
-/* PRICING */
-
-.pricing{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.price-card{
-background:var(--card);
-padding:40px;
-border-radius:20px;
-text-align:center;
-}
-
-.price{
-font-size:32px;
-margin:15px 0;
+.card h3{
+color:#9f5cff;
+margin-bottom:15px;
 }
 
 /* CONTACT */
 
 .contact{
-max-width:600px;
-margin:auto;
+padding:120px 80px;
+text-align:center;
 }
 
-.contact input,
-.contact textarea{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:10px;
-border:none;
+.contact h2{
+margin-bottom:40px;
+font-size:35px;
 }
-
-.contact button{
-padding:12px 30px;
-border:none;
-border-radius:30px;
-background:#a855f7;
-color:white;
-}
-
-/* FOOTER */
 
 footer{
-padding:40px;
 text-align:center;
-opacity:.6;
+padding:30px;
+color:#888;
+border-top:1px solid #222;
+}
+
+@media(max-width:900px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+gap:40px;
+padding-top:120px;
+}
+
+#canvas3d{
+width:300px;
+height:300px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="cursor"></div>
+<nav>
+<h1>MaxitoDev</h1>
 
-<header class="main-header">
-
-<div class="logo">MM</div>
-
-<nav class="menu">
-<a href="#inicio">Inicio</a>
-<a href="#servicios">Servicios</a>
-<a href="#proyectos">Proyectos</a>
-<a href="#precios">Precios</a>
-<a href="#contacto">Contacto</a>
+<ul>
+<li><a href="#">Inicio</a></li>
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
 </nav>
 
-</header>
+<section class="hero">
 
-<section class="hero" id="inicio">
+<div class="hero-text">
 
-<div id="particles"></div>
+<h2>Hola soy <span>MaxitoDev</span></h2>
 
-<div>
+<p>
+Desarrollador Full Stack creando aplicaciones modernas,
+rápidas y con experiencias visuales avanzadas.
+</p>
 
-<h1>Creamos <span>experiencias digitales</span> que convierten visitantes en clientes.</h1>
-
-<a href="#contacto" class="cta-btn">Iniciar proyecto</a>
+<button class="btn">Ver proyectos</button>
 
 </div>
 
+<div id="canvas3d"></div>
+
 </section>
 
-<section id="servicios">
+
+<section class="services" id="servicios">
 
 <h2>Servicios</h2>
 
-<div class="services">
+<div class="grid">
 
 <div class="card">
-<h3>Landing Pages</h3>
-<p>Diseño optimizado para conversión.</p>
+<h3>Web Profesional</h3>
+<p>Landing pages rápidas y optimizadas.</p>
 </div>
 
 <div class="card">
-<h3>Web Corporativa</h3>
-<p>Sitios profesionales para empresas.</p>
+<h3>E-commerce</h3>
+<p>Tiendas online con pagos integrados.</p>
 </div>
 
 <div class="card">
-<h3>Ecommerce</h3>
-<p>Tiendas online completas.</p>
+<h3>Sistemas Web</h3>
+<p>Paneles administrativos y dashboards.</p>
 </div>
 
 <div class="card">
-<h3>SEO</h3>
-<p>Optimización para buscadores.</p>
+<h3>Automatización</h3>
+<p>Integración con APIs e inteligencia artificial.</p>
 </div>
 
 </div>
 
 </section>
 
-<section id="proyectos">
 
-<h2>Proyectos</h2>
+<section class="contact" id="contacto">
 
-<div class="filter">
-<button onclick="filter('all')">Todos</button>
-<button onclick="filter('web')">Web</button>
-<button onclick="filter('ecommerce')">Ecommerce</button>
-</div>
+<h2>Trabajemos juntos</h2>
 
-<div class="portfolio">
-
-<div class="project web">
-<img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200">
-<div class="overlay">Web Corporativa</div>
-</div>
-
-<div class="project ecommerce">
-<img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200">
-<div class="overlay">Ecommerce</div>
-</div>
-
-</div>
-
-</section>
-
-<section id="precios">
-
-<h2>Planes</h2>
-
-<div class="pricing">
-
-<div class="price-card">
-<h3>Landing</h3>
-<p class="price">$300</p>
-</div>
-
-<div class="price-card">
-<h3>Web Pro</h3>
-<p class="price">$800</p>
-</div>
-
-<div class="price-card">
-<h3>Ecommerce</h3>
-<p class="price">$1500</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="contacto">
-
-<h2>Contacto</h2>
-
-<form class="contact" action="mailto:tucorreo@email.com" method="post">
-
-<input type="text" placeholder="Nombre">
-
-<input type="email" placeholder="Email">
-
-<textarea placeholder="Mensaje"></textarea>
-
-<button type="submit">Enviar</button>
-
-</form>
+<p>Email: maxito@email.com</p>
 
 </section>
 
 <footer>
 
-© 2026 MM Web & Design
+© 2026 MaxitoDev
 
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- THREE JS -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
 <script>
 
-/* CURSOR */
+const scene = new THREE.Scene()
 
-const cursor=document.querySelector(".cursor")
+const camera = new THREE.PerspectiveCamera(
+75,
+1,
+0.1,
+1000
+)
 
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+"px"
-cursor.style.top=e.clientY+"px"
+const renderer = new THREE.WebGLRenderer({alpha:true})
+
+renderer.setSize(450,450)
+
+document
+.getElementById("canvas3d")
+.appendChild(renderer.domElement)
+
+const geometry = new THREE.IcosahedronGeometry(2,1)
+
+const material = new THREE.MeshStandardMaterial({
+color:0x9f5cff,
+wireframe:false,
+metalness:0.7,
+roughness:0.2
 })
 
-/* PARTICLES */
+const sphere = new THREE.Mesh(geometry,material)
 
-tsParticles.load("particles",{
-particles:{
-number:{value:60},
-color:{value:"#a855f7"},
-links:{enable:true,color:"#7e22ce"},
-move:{enable:true,speed:1},
-size:{value:2}
+scene.add(sphere)
+
+const light = new THREE.PointLight(0xffffff,2)
+
+light.position.set(5,5,5)
+
+scene.add(light)
+
+camera.position.z = 6
+
+function animate(){
+
+requestAnimationFrame(animate)
+
+sphere.rotation.x += 0.01
+sphere.rotation.y += 0.01
+
+renderer.render(scene,camera)
+
 }
-})
 
-/* PORTFOLIO FILTER */
-
-function filter(type){
-
-document.querySelectorAll(".project").forEach(el=>{
-
-if(type==="all"){
-el.style.display="block"
-}else{
-el.style.display=el.classList.contains(type)?"block":"none"
-}
-
-})
-
-}
-
-/* ANIMATIONS */
-
-gsap.from(".hero h1",{y:80,opacity:0,duration:1.4})
-
-gsap.utils.toArray(".card,.project,.price-card").forEach(el=>{
-gsap.from(el,{
-y:60,
-opacity:0,
-duration:1
-})
-})
+animate()
 
 </script>
 
 </body>
 </html>
+
 
 
 
