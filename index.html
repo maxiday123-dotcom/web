@@ -2,9 +2,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MaxitoDev | Full Stack Developer</title>
+
+<title>MaxitoDev | Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 
@@ -18,42 +20,40 @@ font-family:'Montserrat',sans-serif;
 }
 
 body{
-background:#0a0a0a;
+background:#0f0f0f;
 color:white;
 overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* NAV */
 
 nav{
-position:fixed;
-top:0;
-width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 60px;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
+padding:20px 80px;
+background:#111;
+position:sticky;
+top:0;
 z-index:100;
 }
 
-nav h1{
-color:#9f5cff;
+.logo{
 font-size:22px;
+font-weight:700;
+color:#9f5cff;
 }
 
 nav ul{
 display:flex;
-gap:30px;
 list-style:none;
+gap:30px;
 }
 
 nav a{
-color:white;
 text-decoration:none;
-font-weight:500;
-transition:.3s;
+color:white;
+transition:0.3s;
 }
 
 nav a:hover{
@@ -63,18 +63,16 @@ color:#9f5cff;
 /* HERO */
 
 .hero{
-height:100vh;
+height:90vh;
 display:flex;
+justify-content:center;
 align-items:center;
-justify-content:space-between;
-padding:0 80px;
+flex-direction:column;
+text-align:center;
+padding:0 20px;
 }
 
-.hero-text{
-max-width:500px;
-}
-
-.hero h2{
+.hero h1{
 font-size:55px;
 margin-bottom:20px;
 }
@@ -84,20 +82,21 @@ color:#9f5cff;
 }
 
 .hero p{
+max-width:600px;
 color:#ccc;
-margin-bottom:30px;
 line-height:1.6;
+margin-bottom:30px;
 }
 
 .btn{
-padding:14px 28px;
-background:#9f5cff;
+padding:14px 30px;
 border:none;
+background:#9f5cff;
 border-radius:30px;
 color:white;
-font-weight:600;
 cursor:pointer;
-transition:.3s;
+font-weight:600;
+transition:0.3s;
 }
 
 .btn:hover{
@@ -105,18 +104,31 @@ transform:scale(1.05);
 background:#7c3cff;
 }
 
-/* 3D CANVAS */
+/* ABOUT */
 
-#canvas3d{
-width:450px;
-height:450px;
+.about{
+padding:100px 80px;
+text-align:center;
+}
+
+.about h2{
+font-size:40px;
+margin-bottom:30px;
+}
+
+.about p{
+max-width:700px;
+margin:auto;
+color:#bbb;
+line-height:1.6;
 }
 
 /* SERVICES */
 
 .services{
-padding:120px 80px;
+padding:100px 80px;
 text-align:center;
+background:#111;
 }
 
 .services h2{
@@ -126,20 +138,20 @@ margin-bottom:60px;
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
 }
 
 .card{
-background:#141414;
+background:#1a1a1a;
 padding:35px;
-border-radius:15px;
-transition:.3s;
+border-radius:12px;
+transition:0.3s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-background:#1d1d1d;
+background:#222;
 }
 
 .card h3{
@@ -150,34 +162,41 @@ margin-bottom:15px;
 /* CONTACT */
 
 .contact{
-padding:120px 80px;
+padding:100px 80px;
 text-align:center;
 }
 
 .contact h2{
-margin-bottom:40px;
 font-size:35px;
+margin-bottom:30px;
+}
+
+.contact p{
+color:#ccc;
+margin-bottom:20px;
 }
 
 footer{
 text-align:center;
-padding:30px;
-color:#888;
+padding:25px;
 border-top:1px solid #222;
+color:#777;
 }
 
-@media(max-width:900px){
+/* RESPONSIVE */
 
-.hero{
-flex-direction:column;
-text-align:center;
-gap:40px;
-padding-top:120px;
+@media(max-width:768px){
+
+nav{
+padding:20px;
 }
 
-#canvas3d{
-width:300px;
-height:300px;
+.hero h1{
+font-size:40px;
+}
+
+.about, .services, .contact{
+padding:80px 30px;
 }
 
 }
@@ -188,35 +207,51 @@ height:300px;
 
 <body>
 
+<!-- NAVBAR -->
+
 <nav>
-<h1>MaxitoDev</h1>
+
+<div class="logo">MaxitoDev</div>
 
 <ul>
 <li><a href="#">Inicio</a></li>
+<li><a href="#about">Sobre mí</a></li>
 <li><a href="#servicios">Servicios</a></li>
 <li><a href="#contacto">Contacto</a></li>
 </ul>
+
 </nav>
+
+<!-- HERO -->
 
 <section class="hero">
 
-<div class="hero-text">
-
-<h2>Hola soy <span>MaxitoDev</span></h2>
+<h1>Hola soy <span>MaxitoDev</span></h1>
 
 <p>
-Desarrollador Full Stack creando aplicaciones modernas,
-rápidas y con experiencias visuales avanzadas.
+Desarrollador Full Stack creando aplicaciones web modernas,
+rápidas y funcionales.
 </p>
 
 <button class="btn">Ver proyectos</button>
 
-</div>
+</section>
 
-<div id="canvas3d"></div>
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<h2>Sobre mí</h2>
+
+<p>
+Soy desarrollador web enfocado en crear aplicaciones modernas
+utilizando tecnologías actuales como React, Node.js y bases
+de datos modernas.
+</p>
 
 </section>
 
+<!-- SERVICES -->
 
 <section class="services" id="servicios">
 
@@ -225,18 +260,18 @@ rápidas y con experiencias visuales avanzadas.
 <div class="grid">
 
 <div class="card">
-<h3>Web Profesional</h3>
-<p>Landing pages rápidas y optimizadas.</p>
+<h3>Landing Pages</h3>
+<p>Diseño de páginas web modernas y rápidas.</p>
 </div>
 
 <div class="card">
 <h3>E-commerce</h3>
-<p>Tiendas online con pagos integrados.</p>
+<p>Tiendas online completas con sistema de pagos.</p>
 </div>
 
 <div class="card">
 <h3>Sistemas Web</h3>
-<p>Paneles administrativos y dashboards.</p>
+<p>Paneles administrativos y sistemas personalizados.</p>
 </div>
 
 <div class="card">
@@ -248,12 +283,15 @@ rápidas y con experiencias visuales avanzadas.
 
 </section>
 
+<!-- CONTACT -->
 
 <section class="contact" id="contacto">
 
-<h2>Trabajemos juntos</h2>
+<h2>Contacto</h2>
 
 <p>Email: maxito@email.com</p>
+
+<p>WhatsApp: +54 000 000 000</p>
 
 </section>
 
@@ -262,66 +300,6 @@ rápidas y con experiencias visuales avanzadas.
 © 2026 MaxitoDev
 
 </footer>
-
-
-<!-- THREE JS -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-
-<script>
-
-const scene = new THREE.Scene()
-
-const camera = new THREE.PerspectiveCamera(
-75,
-1,
-0.1,
-1000
-)
-
-const renderer = new THREE.WebGLRenderer({alpha:true})
-
-renderer.setSize(450,450)
-
-document
-.getElementById("canvas3d")
-.appendChild(renderer.domElement)
-
-const geometry = new THREE.IcosahedronGeometry(2,1)
-
-const material = new THREE.MeshStandardMaterial({
-color:0x9f5cff,
-wireframe:false,
-metalness:0.7,
-roughness:0.2
-})
-
-const sphere = new THREE.Mesh(geometry,material)
-
-scene.add(sphere)
-
-const light = new THREE.PointLight(0xffffff,2)
-
-light.position.set(5,5,5)
-
-scene.add(light)
-
-camera.position.z = 6
-
-function animate(){
-
-requestAnimationFrame(animate)
-
-sphere.rotation.x += 0.01
-sphere.rotation.y += 0.01
-
-renderer.render(scene,camera)
-
-}
-
-animate()
-
-</script>
 
 </body>
 </html>
