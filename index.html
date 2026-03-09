@@ -7,14 +7,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MM Web & Design</title>
-
 <meta name="description" content="Diseño web profesional, ecommerce y landing pages optimizadas para conversión.">
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
-/* RESET */
+/* ===== RESET ===== */
 
 *{
 margin:0;
@@ -30,7 +29,7 @@ color:white;
 overflow-x:hidden;
 }
 
-/* CURSOR */
+/* ===== CURSOR ===== */
 
 .cursor{
 width:20px;
@@ -43,7 +42,7 @@ transform:translate(-50%,-50%);
 z-index:9999;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 
 .main-header{
 position:fixed;
@@ -80,40 +79,27 @@ color:white;
 font-size:15px;
 }
 
-/* MICRO ANIMACIONES */
+/* ===== HERO ===== */
 
-.card:hover{
-transform:translateY(-12px) scale(1.02);
-box-shadow:0 20px 50px rgba(168,85,247,.15);
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+padding-top:140px;
 }
 
-.price-card:hover{
-transform:translateY(-10px);
-border-color:#a855f7;
-box-shadow:0 15px 40px rgba(168,85,247,.15);
+.hero h1{
+font-size:64px;
+max-width:900px;
+margin:40px auto 0 auto;
+line-height:1.2;
+letter-spacing:-1px;
 }
 
-.project{
-transition:.4s;
-}
-
-.project:hover{
-transform:translateY(-10px);
-}
-
-/* BOTON CTA */
-
-.cta button{
-cursor:pointer;
-transition:.3s;
-}
-
-.cta button:hover{
-transform:scale(1.08);
-box-shadow:0 15px 40px rgba(168,85,247,.3);
-}
-
-/* SECCIONES */
+/* ===== SECCIONES ===== */
 
 section{
 padding:120px 80px;
@@ -125,7 +111,7 @@ margin-bottom:60px;
 text-align:center;
 }
 
-/* SERVICES */
+/* ===== SERVICES ===== */
 
 .services{
 display:grid;
@@ -140,60 +126,94 @@ padding:35px;
 border-radius:20px;
 backdrop-filter:blur(15px);
 transition:.3s;
-
 position:relative;
-overflow:visible;
+overflow:hidden;
 }
 
-.fan-images{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-pointer-events:none;
-}
-
-.fan-images img{
-position:absolute;
-width:110px;
-height:70px;
-object-fit:cover;
-border-radius:10px;
-
-.card:hover .fan-images img:nth-child(1){
-transform:translate(-180px,-120px) rotate(-18deg) scale(1);
-opacity:1;
-}
-
-.card:hover .fan-images img:nth-child(2){
-transform:translate(-40px,-150px) rotate(-5deg) scale(1);
-opacity:1;
-}
-
-.card:hover .fan-images img:nth-child(3){
-transform:translate(120px,-120px) rotate(15deg) scale(1);
-opacity:1;
-}
-  
-opacity:0;
-transform:scale(.7);
-
-transition:.45s;
-
-box-shadow:0 15px 40px rgba(0,0,0,.5);
-border:2px solid rgba(255,255,255,.1);
-}  
-  
 .card:hover{
 transform:translateY(-10px);
 border-color:#a855f7;
 }
 
-.card:hover{
-transform:translateY(-10px);
+/* ===== FONDOS ===== */
+
+.landing{
+background:url("https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200") center/cover;
 }
-  
-/* PORTFOLIO */
+
+.corporativa{
+background:url("https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200") center/cover;
+}
+
+.ecommerce{
+background:url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200") center/cover;
+}
+
+.seo{
+background:url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200") center/cover;
+}
+
+.card::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(10,10,15,.75);
+}
+
+.card h3,
+.card p{
+position:relative;
+z-index:2;
+}
+
+/* ===== FAN IMAGES ===== */
+
+.fan-images{
+position:absolute;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+width:200px;
+height:80px;
+pointer-events:none;
+}
+
+.fan-images img{
+position:absolute;
+width:90px;
+height:60px;
+object-fit:cover;
+border-radius:10px;
+opacity:0;
+transform:scale(.8);
+transition:.4s;
+box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+/* posiciones iniciales */
+
+.fan-images img:nth-child(1){ left:50%; transform:translateX(-50%); }
+.fan-images img:nth-child(2){ left:50%; transform:translateX(-50%); }
+.fan-images img:nth-child(3){ left:50%; transform:translateX(-50%); }
+
+/* abanico */
+
+.card:hover .fan-images img:nth-child(1){
+transform:translateX(-120px) rotate(-12deg);
+opacity:1;
+}
+
+.card:hover .fan-images img:nth-child(2){
+transform:translateX(-50%) rotate(0deg);
+opacity:1;
+}
+
+.card:hover .fan-images img:nth-child(3){
+transform:translateX(40px) rotate(12deg);
+opacity:1;
+}
+
+/* ===== PORTFOLIO ===== */
 
 .portfolio{
 display:grid;
@@ -207,6 +227,11 @@ border-radius:20px;
 overflow:hidden;
 position:relative;
 cursor:pointer;
+transition:.4s;
+}
+
+.project:hover{
+transform:translateY(-10px);
 }
 
 .project img{
@@ -234,7 +259,7 @@ transition:.4s;
 opacity:1;
 }
 
-/* PRICING */
+/* ===== PRICING ===== */
 
 .pricing{
 display:grid;
@@ -248,6 +273,12 @@ border:1px solid rgba(255,255,255,.08);
 padding:40px;
 border-radius:20px;
 text-align:center;
+transition:.3s;
+}
+
+.price-card:hover{
+transform:translateY(-10px);
+border-color:#a855f7;
 }
 
 .price{
@@ -255,7 +286,7 @@ font-size:34px;
 margin:15px 0;
 }
 
-/* TESTIMONIAL */
+/* ===== TESTIMONIAL ===== */
 
 .testimonial{
 max-width:700px;
@@ -264,7 +295,7 @@ text-align:center;
 opacity:.9;
 }
 
-/* CTA */
+/* ===== CTA ===== */
 
 .cta{
 text-align:center;
@@ -280,9 +311,15 @@ text-decoration:none;
 color:white;
 font-weight:600;
 font-size:15px;
+transition:.3s;
 }
 
-/* FOOTER */
+.cta-btn:hover{
+transform:scale(1.08);
+box-shadow:0 15px 40px rgba(168,85,247,.3);
+}
+
+/* ===== FOOTER ===== */
 
 footer{
 padding:50px;
@@ -291,128 +328,6 @@ text-align:center;
 opacity:.6;
 }
 
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-position:relative;
-padding-top:140px;
-}
-
-.hero h1{
-font-size:64px;
-max-width:900px;
-margin:40px auto 0 auto;
-line-height:1.2;
-letter-spacing:-1px;
-}
-
-/* FONDOS DE SERVICIOS */
-
-.landing{
-background-image:url("https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200");
-background-size:cover;
-background-position:center;
-}
-
-.corporativa{
-background-image:url("https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200");
-background-size:cover;
-background-position:center;
-}
-
-.ecommerce{
-background-image:url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200");
-background-size:cover;
-background-position:center;
-}
-
-.seo{
-background-image:url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200");
-background-size:cover;
-background-position:center;
-}
-
-.card{
-position:relative;
-overflow:hidden;
-}
-
-.card::before{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(10,10,15,.75);
-}
-
-.card h3,
-.card p{
-position:relative;
-z-index:2;
-}  
-
-/* CONTENEDOR IMAGENES */
-
-.fan-images{
-position:absolute;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-width:200px;
-height:80px;
-pointer-events:none;
-}
-
-/* IMAGENES */
-
-.fan-images img{
-position:absolute;
-width:90px;
-height:60px;
-object-fit:cover;
-border-radius:10px;
-opacity:0;
-transform:scale(.8);
-transition:.4s;
-box-shadow:0 10px 25px rgba(0,0,0,.4);
-}
-
-/* POSICION INICIAL */
-
-.fan-images img:nth-child(1){
-left:50%;
-transform:translateX(-50%);
-}
-
-.fan-images img:nth-child(2){
-left:50%;
-transform:translateX(-50%);
-}
-
-.fan-images img:nth-child(3){
-left:50%;
-transform:translateX(-50%);
-}
-
-/* ABANICO AL PASAR EL MOUSE */
-
-.card:hover .fan-images img:nth-child(1){
-transform:translateX(-120px) rotate(-12deg);
-opacity:1;
-}
-
-.card:hover .fan-images img:nth-child(2){
-transform:translateX(-50%) rotate(0deg);
-opacity:1;
-}
-
-.card:hover .fan-images img:nth-child(3){
-transform:translateX(40px) rotate(12deg);
-opacity:1;
-}
-  
 </style>
 </head>
 
@@ -421,10 +336,9 @@ opacity:1;
 <div class="cursor"></div>
 
 <header class="main-header">
-
 <div class="container">
 
-<div class="mm MM Web & Design">MM Web & Design</div>
+<div class="mm">MM Web & Design</div>
 
 <nav class="menu">
 <a href="#inicio">Inicio</a>
@@ -442,12 +356,10 @@ opacity:1;
 <div id="particles"></div>
 
 <div>
-
 <h1>Creamos <span>experiencias digitales</span> que convierten visitantes en clientes.</h1>
-
 <a href="#servicios" class="cta-btn">Iniciar proyecto</a>
-
 </div>
+
 </section>
 
 <section id="servicios">
@@ -476,10 +388,10 @@ opacity:1;
 <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=400">
 <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=400">
 </div>
-  
+
 <h3>Web Corporativa</h3>
 <p>Sitios modernos para empresas y marcas.</p>
-  
+
 </div>
 
 <div class="card ecommerce">
@@ -489,10 +401,10 @@ opacity:1;
 <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=400">
 <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=400">
 </div>
-  
+
 <h3>Ecommerce</h3>
 <p>Tiendas online preparadas para vender 24/7.</p>
-  
+
 </div>
 
 <div class="card seo">
@@ -502,10 +414,10 @@ opacity:1;
 <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=400">
 <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=400">
 </div>
-  
+
 <h3>SEO & Optimización</h3>
 <p>Mejoramos posicionamiento y velocidad.</p>
-  
+
 </div>
 
 </div>
@@ -519,25 +431,19 @@ opacity:1;
 <div class="portfolio">
 
 <div class="project">
-
 <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200">
-
 <div class="overlay">
 <h3>Nova Studio</h3>
 <p>Web corporativa</p>
 </div>
-
 </div>
 
 <div class="project">
-
 <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200">
-
 <div class="overlay">
 <h3>Orion Shop</h3>
 <p>Ecommerce</p>
 </div>
-
 </div>
 
 </div>
@@ -587,22 +493,20 @@ opacity:1;
 <section class="cta" id="contacto">
 
 <h2>¿Listo para crear algo grande?</h2>
-
-<button>Hablemos</button>
+<button class="cta-btn">Hablemos</button>
 
 </section>
 
 <footer>
-
 © 2026 MM Web & Design
-
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <script>
-  
+
 /* CURSOR */
 
 const cursor=document.querySelector(".cursor")
@@ -631,7 +535,9 @@ size:{value:2}
 }
 })
 
-/* ANIMACIONES */
+/* GSAP */
+
+gsap.registerPlugin(ScrollTrigger)
 
 gsap.from(".hero h1",{
 y:100,
@@ -648,7 +554,6 @@ duration:1
 })
 
 gsap.utils.toArray(".card, .project, .price-card").forEach(el=>{
-
 gsap.from(el,{
 scrollTrigger:{
 trigger:el,
@@ -659,13 +564,13 @@ opacity:0,
 duration:1.1,
 ease:"power2.out"
 })
-
 })
+
 </script>
 
-  
 </body>
 </html>
+
 
 
 
