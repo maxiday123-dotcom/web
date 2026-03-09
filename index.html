@@ -147,6 +147,10 @@ transform:translateY(-10px);
 border-color:#a855f7;
 }
 
+.card:hover{
+transform:translateY(-10px);
+}
+  
 /* PORTFOLIO */
 
 .portfolio{
@@ -306,6 +310,66 @@ background:rgba(10,10,15,.75);
 position:relative;
 z-index:2;
 }  
+
+/* CONTENEDOR IMAGENES */
+
+.fan-images{
+position:absolute;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+width:200px;
+height:80px;
+pointer-events:none;
+}
+
+/* IMAGENES */
+
+.fan-images img{
+position:absolute;
+width:90px;
+height:60px;
+object-fit:cover;
+border-radius:10px;
+opacity:0;
+transform:scale(.8);
+transition:.4s;
+box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+/* POSICION INICIAL */
+
+.fan-images img:nth-child(1){
+left:50%;
+transform:translateX(-50%);
+}
+
+.fan-images img:nth-child(2){
+left:50%;
+transform:translateX(-50%);
+}
+
+.fan-images img:nth-child(3){
+left:50%;
+transform:translateX(-50%);
+}
+
+/* ABANICO AL PASAR EL MOUSE */
+
+.card:hover .fan-images img:nth-child(1){
+transform:translateX(-120px) rotate(-12deg);
+opacity:1;
+}
+
+.card:hover .fan-images img:nth-child(2){
+transform:translateX(-50%) rotate(0deg);
+opacity:1;
+}
+
+.card:hover .fan-images img:nth-child(3){
+transform:translateX(40px) rotate(12deg);
+opacity:1;
+}
   
 </style>
 </head>
@@ -351,23 +415,55 @@ z-index:2;
 <div class="services">
 
 <div class="card landing">
+
+<div class="fan-images">
+<img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=400">
+<img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=400">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=400">
+</div>
+
 <h3>Landing Pages</h3>
 <p>Páginas diseñadas para convertir tráfico en ventas.</p>
+
 </div>
 
 <div class="card corporativa">
+
+<div class="fan-images">
+<img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=400">
+<img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=400">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=400">
+</div>
+  
 <h3>Web Corporativa</h3>
 <p>Sitios modernos para empresas y marcas.</p>
+  
 </div>
 
 <div class="card ecommerce">
+
+<div class="fan-images">
+<img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=400">
+<img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=400">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=400">
+</div>
+  
 <h3>Ecommerce</h3>
 <p>Tiendas online preparadas para vender 24/7.</p>
+  
 </div>
 
 <div class="card seo">
+
+<div class="fan-images">
+<img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=400">
+<img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=400">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=400">
+</div>
+  
 <h3>SEO & Optimización</h3>
 <p>Mejoramos posicionamiento y velocidad.</p>
+  
 </div>
 
 </div>
@@ -528,6 +624,7 @@ ease:"power2.out"
   
 </body>
 </html>
+
 
 
 
