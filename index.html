@@ -6,303 +6,459 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MaxitoDev | Portfolio</title>
+<title>MM Web & Design</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+<meta name="description" content="Diseño web profesional, ecommerce y landing pages optimizadas para conversión.">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
+/* RESET */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Montserrat',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-background:#0f0f0f;
+background:#0b0b0f;
 color:white;
 overflow-x:hidden;
 }
 
-/* NAV */
+/* CURSOR */
 
-nav{
+.cursor{
+width:20px;
+height:20px;
+border:2px solid #a855f7;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:9999;
+}
+
+/* HEADER */
+
+.main-header{
+position:fixed;
+top:0;
+width:100%;
+padding:35px 80px;
+z-index:1000;
+transition:.4s;
+}
+
+.main-header.scrolled{
+background:rgba(10,10,15,.9);
+backdrop-filter:blur(10px);
+}
+
+.container{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 80px;
-background:#111;
-position:sticky;
-top:0;
-z-index:100;
 }
 
-.logo{
-font-size:22px;
-font-weight:700;
-color:#9f5cff;
+.mm{
+font-size:42px;
+font-weight:800;
+background:linear-gradient(180deg,#d8b4fe,#7e22ce);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-nav ul{
-display:flex;
-list-style:none;
-gap:30px;
-}
-
-nav a{
+.menu a{
+margin-left:35px;
 text-decoration:none;
 color:white;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#9f5cff;
+font-size:15px;
 }
 
 /* HERO */
 
 .hero{
-height:90vh;
+height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
-flex-direction:column;
+justify-content:center;
 text-align:center;
-padding:0 20px;
+position:relative;
+}
+
+#particles{
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-1;
 }
 
 .hero h1{
-font-size:55px;
-margin-bottom:20px;
+font-size:60px;
+max-width:900px;
 }
 
 .hero span{
-color:#9f5cff;
+background:linear-gradient(90deg,#c084fc,#7e22ce);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.hero p{
-max-width:600px;
-color:#ccc;
-line-height:1.6;
-margin-bottom:30px;
-}
-
-.btn{
-padding:14px 30px;
-border:none;
-background:#9f5cff;
-border-radius:30px;
+.cta-btn{
+display:inline-block;
+margin-top:40px;
+padding:16px 40px;
+border-radius:40px;
+background:linear-gradient(90deg,#a855f7,#7e22ce);
+text-decoration:none;
 color:white;
-cursor:pointer;
 font-weight:600;
-transition:0.3s;
 }
 
-.btn:hover{
-transform:scale(1.05);
-background:#7c3cff;
+/* SECCIONES */
+
+section{
+padding:120px 80px;
 }
 
-/* ABOUT */
-
-.about{
-padding:100px 80px;
+h2{
+font-size:36px;
+margin-bottom:60px;
 text-align:center;
-}
-
-.about h2{
-font-size:40px;
-margin-bottom:30px;
-}
-
-.about p{
-max-width:700px;
-margin:auto;
-color:#bbb;
-line-height:1.6;
 }
 
 /* SERVICES */
 
 .services{
-padding:100px 80px;
-text-align:center;
-background:#111;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:35px;
 }
 
-.services h2{
-font-size:40px;
-margin-bottom:60px;
+.card{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+padding:35px;
+border-radius:20px;
+backdrop-filter:blur(15px);
+transition:.3s;
 }
 
-.grid{
+.card:hover{
+transform:translateY(-10px);
+border-color:#a855f7;
+}
+
+/* PORTFOLIO */
+
+.portfolio{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:35px;
+}
+
+.project{
+height:260px;
+border-radius:20px;
+overflow:hidden;
+position:relative;
+cursor:pointer;
+}
+
+.project img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.4s;
+}
+
+.project:hover img{
+transform:scale(1.1);
+}
+
+.overlay{
+position:absolute;
+bottom:0;
+width:100%;
+padding:25px;
+background:linear-gradient(to top,rgba(0,0,0,.9),transparent);
+opacity:0;
+transition:.4s;
+}
+
+.project:hover .overlay{
+opacity:1;
+}
+
+/* PRICING */
+
+.pricing{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
 }
 
-.card{
-background:#1a1a1a;
-padding:35px;
-border-radius:12px;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-background:#222;
-}
-
-.card h3{
-color:#9f5cff;
-margin-bottom:15px;
-}
-
-/* CONTACT */
-
-.contact{
-padding:100px 80px;
+.price-card{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+padding:40px;
+border-radius:20px;
 text-align:center;
 }
 
-.contact h2{
-font-size:35px;
-margin-bottom:30px;
+.price{
+font-size:34px;
+margin:15px 0;
 }
 
-.contact p{
-color:#ccc;
-margin-bottom:20px;
+/* TESTIMONIAL */
+
+.testimonial{
+max-width:700px;
+margin:auto;
+text-align:center;
+opacity:.9;
 }
+
+/* CTA */
+
+.cta{
+text-align:center;
+}
+
+.cta button{
+margin-top:25px;
+padding:15px 35px;
+border:none;
+border-radius:40px;
+background:linear-gradient(90deg,#a855f7,#7e22ce);
+color:white;
+}
+
+/* FOOTER */
 
 footer{
+padding:50px;
+background:#09090c;
 text-align:center;
-padding:25px;
-border-top:1px solid #222;
-color:#777;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-nav{
-padding:20px;
-}
-
-.hero h1{
-font-size:40px;
-}
-
-.about, .services, .contact{
-padding:80px 30px;
-}
-
+opacity:.6;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<div class="cursor"></div>
 
-<nav>
+<header class="main-header">
 
-<div class="logo">MaxitoDev</div>
+<div class="container">
 
-<ul>
-<li><a href="#">Inicio</a></li>
-<li><a href="#about">Sobre mí</a></li>
-<li><a href="#servicios">Servicios</a></li>
-<li><a href="#contacto">Contacto</a></li>
-</ul>
+<div class="mm">MM</div>
 
+<nav class="menu">
+<a href="#inicio">Inicio</a>
+<a href="#servicios">Servicios</a>
+<a href="#proyectos">Proyectos</a>
+<a href="#precios">Precios</a>
+<a href="#contacto">Contacto</a>
 </nav>
 
-<!-- HERO -->
+</div>
+</header>
 
-<section class="hero">
+<section class="hero" id="inicio">
 
-<h1>Hola soy <span>MaxitoDev</span></h1>
+<div id="particles"></div>
 
-<p>
-Desarrollador Full Stack creando aplicaciones web modernas,
-rápidas y funcionales.
-</p>
+<div>
 
-<button class="btn">Ver proyectos</button>
+<h1>Diseñamos <span>experiencias digitales</span> que convierten visitantes en clientes.</h1>
 
-</section>
+<a href="#contacto" class="cta-btn">Solicitar proyecto</a>
 
-<!-- ABOUT -->
-
-<section class="about" id="about">
-
-<h2>Sobre mí</h2>
-
-<p>
-Soy desarrollador web enfocado en crear aplicaciones modernas
-utilizando tecnologías actuales como React, Node.js y bases
-de datos modernas.
-</p>
+</div>
 
 </section>
 
-<!-- SERVICES -->
-
-<section class="services" id="servicios">
+<section id="servicios">
 
 <h2>Servicios</h2>
 
-<div class="grid">
+<div class="services">
 
 <div class="card">
 <h3>Landing Pages</h3>
-<p>Diseño de páginas web modernas y rápidas.</p>
+<p>Páginas diseñadas para convertir tráfico en ventas.</p>
 </div>
 
 <div class="card">
-<h3>E-commerce</h3>
-<p>Tiendas online completas con sistema de pagos.</p>
+<h3>Web Corporativa</h3>
+<p>Sitios modernos para empresas y marcas.</p>
 </div>
 
 <div class="card">
-<h3>Sistemas Web</h3>
-<p>Paneles administrativos y sistemas personalizados.</p>
+<h3>Ecommerce</h3>
+<p>Tiendas online preparadas para vender 24/7.</p>
 </div>
 
 <div class="card">
-<h3>Automatización</h3>
-<p>Integración con APIs e inteligencia artificial.</p>
+<h3>SEO & Optimización</h3>
+<p>Mejoramos posicionamiento y velocidad.</p>
 </div>
 
 </div>
 
 </section>
 
-<!-- CONTACT -->
+<section id="proyectos">
 
-<section class="contact" id="contacto">
+<h2>Proyectos</h2>
 
-<h2>Contacto</h2>
+<div class="portfolio">
 
-<p>Email: maxito@email.com</p>
+<div class="project">
 
-<p>WhatsApp: +54 000 000 000</p>
+<img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200">
+
+<div class="overlay">
+<h3>Nova Studio</h3>
+<p>Web corporativa</p>
+</div>
+
+</div>
+
+<div class="project">
+
+<img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200">
+
+<div class="overlay">
+<h3>Orion Shop</h3>
+<p>Ecommerce</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="precios">
+
+<h2>Planes</h2>
+
+<div class="pricing">
+
+<div class="price-card">
+<h3>Landing</h3>
+<p class="price">$300</p>
+<p>Landing optimizada para ventas.</p>
+</div>
+
+<div class="price-card">
+<h3>Web Profesional</h3>
+<p class="price">$800</p>
+<p>Sitio completo + SEO.</p>
+</div>
+
+<div class="price-card">
+<h3>Ecommerce</h3>
+<p class="price">$1500</p>
+<p>Tienda online completa.</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Testimonios</h2>
+
+<div class="testimonial">
+“Duplicamos nuestras conversiones en 3 meses gracias al rediseño web.”
+<br><br>
+— Carlos R., CEO Nova Studio
+</div>
+
+</section>
+
+<section class="cta" id="contacto">
+
+<h2>¿Listo para crear algo grande?</h2>
+
+<button>Hablemos</button>
 
 </section>
 
 <footer>
 
-© 2026 MaxitoDev
+© 2026 MM Web & Design
 
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script>
+
+/* CURSOR */
+
+const cursor=document.querySelector(".cursor")
+
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px"
+cursor.style.top=e.clientY+"px"
+})
+
+/* HEADER */
+
+window.addEventListener("scroll",()=>{
+document.querySelector(".main-header")
+.classList.toggle("scrolled",window.scrollY>60)
+})
+
+/* PARTICLES */
+
+tsParticles.load("particles",{
+particles:{
+number:{value:60},
+color:{value:"#a855f7"},
+links:{enable:true,color:"#7e22ce"},
+move:{enable:true,speed:1},
+size:{value:2}
+}
+})
+
+/* ANIMACIONES */
+
+gsap.from(".hero h1",{y:80,opacity:0,duration:1.4})
+
+gsap.utils.toArray(".card, .project, .price-card").forEach(el=>{
+gsap.from(el,{
+scrollTrigger:{
+trigger:el,
+start:"top 85%"
+},
+y:60,
+opacity:0,
+duration:1
+})
+})
+
+</script>
+
 </body>
 </html>
+
 
 
 
