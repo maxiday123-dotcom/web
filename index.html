@@ -262,6 +262,50 @@ margin:40px auto 0 auto;
 line-height:1.2;
 letter-spacing:-1px;
 }
+
+/* FONDOS DE SERVICIOS */
+
+.landing{
+background-image:url("https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200");
+background-size:cover;
+background-position:center;
+}
+
+.corporativa{
+background-image:url("https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200");
+background-size:cover;
+background-position:center;
+}
+
+.ecommerce{
+background-image:url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200");
+background-size:cover;
+background-position:center;
+}
+
+.seo{
+background-image:url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200");
+background-size:cover;
+background-position:center;
+}
+
+.card{
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(10,10,15,.75);
+}
+
+.card h3,
+.card p{
+position:relative;
+z-index:2;
+}  
   
 </style>
 </head>
@@ -306,22 +350,22 @@ letter-spacing:-1px;
 
 <div class="services">
 
-<div class="card">
+<div class="card landing">
 <h3>Landing Pages</h3>
 <p>Páginas diseñadas para convertir tráfico en ventas.</p>
 </div>
 
-<div class="card">
+<div class="card corporativa">
 <h3>Web Corporativa</h3>
 <p>Sitios modernos para empresas y marcas.</p>
 </div>
 
-<div class="card">
+<div class="card ecommerce">
 <h3>Ecommerce</h3>
 <p>Tiendas online preparadas para vender 24/7.</p>
 </div>
 
-<div class="card">
+<div class="card seo">
 <h3>SEO & Optimización</h3>
 <p>Mejoramos posicionamiento y velocidad.</p>
 </div>
@@ -484,6 +528,7 @@ ease:"power2.out"
   
 </body>
 </html>
+
 
 
 
