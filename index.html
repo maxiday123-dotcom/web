@@ -80,46 +80,45 @@ color:white;
 font-size:15px;
 }
 
-/* HERO */
+/* HERO 3D */
 
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-position:relative;
+#hero3d{
+width:320px;
+height:320px;
+margin:60px auto 0 auto;
 }
 
-#particles{
-position:absolute;
-width:100%;
-height:100%;
-top:0;
-left:0;
-z-index:-1;
+/* MICRO ANIMACIONES */
+
+.card:hover{
+transform:translateY(-12px) scale(1.02);
+box-shadow:0 20px 50px rgba(168,85,247,.15);
 }
 
-.hero h1{
-font-size:60px;
-max-width:900px;
+.price-card:hover{
+transform:translateY(-10px);
+border-color:#a855f7;
+box-shadow:0 15px 40px rgba(168,85,247,.15);
 }
 
-.hero span{
-background:linear-gradient(90deg,#c084fc,#7e22ce);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+.project{
+transition:.4s;
 }
 
-.cta-btn{
-display:inline-block;
-margin-top:40px;
-padding:16px 40px;
-border-radius:40px;
-background:linear-gradient(90deg,#a855f7,#7e22ce);
-text-decoration:none;
-color:white;
-font-weight:600;
+.project:hover{
+transform:translateY(-10px);
+}
+
+/* BOTON CTA */
+
+.cta button{
+cursor:pointer;
+transition:.3s;
+}
+
+.cta button:hover{
+transform:scale(1.08);
+box-shadow:0 15px 40px rgba(168,85,247,.3);
 }
 
 /* SECCIONES */
@@ -262,8 +261,7 @@ opacity:.6;
 
 <div class="container">
 
-<div class="mm MM Web & Design">MM</div>
-<div class="Web & Desing">MM Web & Design</div>
+<div class="mm MM Web & Design">MM Web & Design</div>
 
 <nav class="menu">
 <a href="#inicio">Inicio</a>
@@ -286,8 +284,9 @@ opacity:.6;
 
 <a href="#contacto" class="cta-btn">Solicitar proyecto</a>
 
-</div>
+<div id="hero3d"></div>
 
+</div>
 </section>
 
 <section id="servicios">
@@ -408,9 +407,61 @@ opacity:.6;
 
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script>
+  
+/* HERO 3D */
 
+const scene = new THREE.Scene()
+
+const camera = new THREE.PerspectiveCamera(
+75,
+1,
+0.1,
+1000
+)
+
+const renderer = new THREE.WebGLRenderer({alpha:true})
+
+renderer.setSize(320,320)
+
+document
+.getElementById("hero3d")
+.appendChild(renderer.domElement)
+
+const geometry = new THREE.IcosahedronGeometry(2,1)
+
+const material = new THREE.MeshStandardMaterial({
+color:0xa855f7,
+metalness:0.7,
+roughness:0.2
+})
+
+const mesh = new THREE.Mesh(geometry,material)
+
+scene.add(mesh)
+
+const light = new THREE.PointLight(0xffffff,2)
+
+light.position.set(5,5,5)
+
+scene.add(light)
+
+camera.position.z = 6
+
+function animate(){
+
+requestAnimationFrame(animate)
+
+mesh.rotation.x += 0.005
+mesh.rotation.y += 0.01
+
+renderer.render(scene,camera)
+
+}
+
+animate()
+  
 /* CURSOR */
 
 const cursor=document.querySelector(".cursor")
@@ -441,24 +492,40 @@ size:{value:2}
 
 /* ANIMACIONES */
 
-gsap.from(".hero h1",{y:80,opacity:0,duration:1.4})
+gsap.from(".hero h1",{
+y:100,
+opacity:0,
+duration:1.5,
+ease:"power3.out"
+})
+
+gsap.from(".cta-btn",{
+y:40,
+opacity:0,
+delay:.6,
+duration:1
+})
 
 gsap.utils.toArray(".card, .project, .price-card").forEach(el=>{
+
 gsap.from(el,{
 scrollTrigger:{
 trigger:el,
 start:"top 85%"
 },
-y:60,
+y:70,
 opacity:0,
-duration:1
-})
+duration:1.1,
+ease:"power2.out"
 })
 
+})
 </script>
 
+  
 </body>
 </html>
+
 
 
 
