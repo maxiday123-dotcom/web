@@ -80,14 +80,6 @@ color:white;
 font-size:15px;
 }
 
-/* HERO 3D */
-
-#hero3d{
-width:320px;
-height:320px;
-margin:60px auto 0 auto;
-}
-
 /* MICRO ANIMACIONES */
 
 .card:hover{
@@ -284,8 +276,6 @@ opacity:.6;
 
 <a href="#contacto" class="cta-btn">Solicitar proyecto</a>
 
-<div id="hero3d"></div>
-
 </div>
 </section>
 
@@ -407,60 +397,8 @@ opacity:.6;
 
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
 <script>
-  
-/* HERO 3D */
-
-const scene = new THREE.Scene()
-
-const camera = new THREE.PerspectiveCamera(
-75,
-1,
-0.1,
-1000
-)
-
-const renderer = new THREE.WebGLRenderer({alpha:true})
-
-renderer.setSize(320,320)
-
-document
-.getElementById("hero3d")
-.appendChild(renderer.domElement)
-
-const geometry = new THREE.IcosahedronGeometry(2,1)
-
-const material = new THREE.MeshStandardMaterial({
-color:0xa855f7,
-metalness:0.7,
-roughness:0.2
-})
-
-const mesh = new THREE.Mesh(geometry,material)
-
-scene.add(mesh)
-
-const light = new THREE.PointLight(0xffffff,2)
-
-light.position.set(5,5,5)
-
-scene.add(light)
-
-camera.position.z = 6
-
-function animate(){
-
-requestAnimationFrame(animate)
-
-mesh.rotation.x += 0.005
-mesh.rotation.y += 0.01
-
-renderer.render(scene,camera)
-
-}
-
-animate()
   
 /* CURSOR */
 
@@ -525,6 +463,7 @@ ease:"power2.out"
   
 </body>
 </html>
+
 
 
 
