@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
@@ -24,17 +25,32 @@ font-family:'Montserrat',sans-serif;
 scroll-behavior:smooth;
 }
 
+/* THEMES */
+
+:root{
+--bg:#0b0b0f;
+--text:white;
+--card:rgba(255,255,255,.05);
+}
+
+.light{
+--bg:#ffffff;
+--text:#111;
+--card:#f4f4f4;
+}
+
 body{
-background:#0b0b0f;
-color:white;
+background:var(--bg);
+color:var(--text);
 overflow-x:hidden;
+transition:.4s;
 }
 
 /* CURSOR */
 
 .cursor{
-width:20px;
-height:20px;
+width:18px;
+height:18px;
 border:2px solid #a855f7;
 border-radius:50%;
 position:fixed;
@@ -49,24 +65,15 @@ z-index:9999;
 position:fixed;
 top:0;
 width:100%;
-padding:35px 80px;
+padding:30px 80px;
 z-index:1000;
-transition:.4s;
-}
-
-.main-header.scrolled{
-background:rgba(10,10,15,.9);
-backdrop-filter:blur(10px);
-}
-
-.container{
 display:flex;
 justify-content:space-between;
 align-items:center;
 }
 
-.mm{
-font-size:42px;
+.logo{
+font-size:36px;
 font-weight:800;
 background:linear-gradient(180deg,#d8b4fe,#7e22ce);
 -webkit-background-clip:text;
@@ -74,9 +81,9 @@ background:linear-gradient(180deg,#d8b4fe,#7e22ce);
 }
 
 .menu a{
-margin-left:35px;
+margin-left:30px;
 text-decoration:none;
-color:white;
+color:var(--text);
 font-size:15px;
 }
 
@@ -93,10 +100,10 @@ position:relative;
 
 #particles{
 position:absolute;
-width:100%;
-height:100%;
 top:0;
 left:0;
+width:100%;
+height:100%;
 z-index:-1;
 }
 
@@ -119,7 +126,6 @@ border-radius:40px;
 background:linear-gradient(90deg,#a855f7,#7e22ce);
 text-decoration:none;
 color:white;
-font-weight:600;
 }
 
 /* SECCIONES */
@@ -143,58 +149,58 @@ gap:35px;
 }
 
 .card{
-background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.08);
-padding:35px;
+background:var(--card);
 border-radius:20px;
-backdrop-filter:blur(15px);
+padding:35px;
+backdrop-filter:blur(10px);
 transition:.3s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-border-color:#a855f7;
+border:1px solid #a855f7;
 }
 
 /* PORTFOLIO */
 
+.filter{
+text-align:center;
+margin-bottom:40px;
+}
+
+.filter button{
+margin:5px;
+padding:8px 20px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
 .portfolio{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:35px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
 
 .project{
-height:260px;
-border-radius:20px;
-overflow:hidden;
 position:relative;
-cursor:pointer;
+height:240px;
+overflow:hidden;
+border-radius:20px;
 }
 
 .project img{
 width:100%;
 height:100%;
 object-fit:cover;
-transition:.4s;
-}
-
-.project:hover img{
-transform:scale(1.1);
 }
 
 .overlay{
 position:absolute;
 bottom:0;
 width:100%;
-padding:25px;
+padding:20px;
 background:linear-gradient(to top,rgba(0,0,0,.9),transparent);
-opacity:0;
-transition:.4s;
-}
-
-.project:hover .overlay{
-opacity:1;
 }
 
 /* PRICING */
@@ -206,47 +212,45 @@ gap:30px;
 }
 
 .price-card{
-background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.08);
+background:var(--card);
 padding:40px;
 border-radius:20px;
 text-align:center;
 }
 
 .price{
-font-size:34px;
+font-size:32px;
 margin:15px 0;
 }
 
-/* TESTIMONIAL */
+/* CONTACT */
 
-.testimonial{
-max-width:700px;
+.contact{
+max-width:600px;
 margin:auto;
-text-align:center;
-opacity:.9;
 }
 
-/* CTA */
-
-.cta{
-text-align:center;
-}
-
-.cta button{
-margin-top:25px;
-padding:15px 35px;
+.contact input,
+.contact textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
 border:none;
-border-radius:40px;
-background:linear-gradient(90deg,#a855f7,#7e22ce);
+}
+
+.contact button{
+padding:12px 30px;
+border:none;
+border-radius:30px;
+background:#a855f7;
 color:white;
 }
 
 /* FOOTER */
 
 footer{
-padding:50px;
-background:#09090c;
+padding:40px;
 text-align:center;
 opacity:.6;
 }
@@ -260,9 +264,7 @@ opacity:.6;
 
 <header class="main-header">
 
-<div class="container">
-
-<div class="mm">MM</div>
+<div class="logo">MM</div>
 
 <nav class="menu">
 <a href="#inicio">Inicio</a>
@@ -272,7 +274,6 @@ opacity:.6;
 <a href="#contacto">Contacto</a>
 </nav>
 
-</div>
 </header>
 
 <section class="hero" id="inicio">
@@ -281,9 +282,9 @@ opacity:.6;
 
 <div>
 
-<h1>Diseñamos <span>experiencias digitales</span> que convierten visitantes en clientes.</h1>
+<h1>Creamos <span>experiencias digitales</span> que convierten visitantes en clientes.</h1>
 
-<a href="#contacto" class="cta-btn">Solicitar proyecto</a>
+<a href="#contacto" class="cta-btn">Iniciar proyecto</a>
 
 </div>
 
@@ -297,22 +298,22 @@ opacity:.6;
 
 <div class="card">
 <h3>Landing Pages</h3>
-<p>Páginas diseñadas para convertir tráfico en ventas.</p>
+<p>Diseño optimizado para conversión.</p>
 </div>
 
 <div class="card">
 <h3>Web Corporativa</h3>
-<p>Sitios modernos para empresas y marcas.</p>
+<p>Sitios profesionales para empresas.</p>
 </div>
 
 <div class="card">
 <h3>Ecommerce</h3>
-<p>Tiendas online preparadas para vender 24/7.</p>
+<p>Tiendas online completas.</p>
 </div>
 
 <div class="card">
-<h3>SEO & Optimización</h3>
-<p>Mejoramos posicionamiento y velocidad.</p>
+<h3>SEO</h3>
+<p>Optimización para buscadores.</p>
 </div>
 
 </div>
@@ -323,28 +324,22 @@ opacity:.6;
 
 <h2>Proyectos</h2>
 
+<div class="filter">
+<button onclick="filter('all')">Todos</button>
+<button onclick="filter('web')">Web</button>
+<button onclick="filter('ecommerce')">Ecommerce</button>
+</div>
+
 <div class="portfolio">
 
-<div class="project">
-
+<div class="project web">
 <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200">
-
-<div class="overlay">
-<h3>Nova Studio</h3>
-<p>Web corporativa</p>
+<div class="overlay">Web Corporativa</div>
 </div>
 
-</div>
-
-<div class="project">
-
+<div class="project ecommerce">
 <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200">
-
-<div class="overlay">
-<h3>Orion Shop</h3>
-<p>Ecommerce</p>
-</div>
-
+<div class="overlay">Ecommerce</div>
 </div>
 
 </div>
@@ -360,42 +355,37 @@ opacity:.6;
 <div class="price-card">
 <h3>Landing</h3>
 <p class="price">$300</p>
-<p>Landing optimizada para ventas.</p>
 </div>
 
 <div class="price-card">
-<h3>Web Profesional</h3>
+<h3>Web Pro</h3>
 <p class="price">$800</p>
-<p>Sitio completo + SEO.</p>
 </div>
 
 <div class="price-card">
 <h3>Ecommerce</h3>
 <p class="price">$1500</p>
-<p>Tienda online completa.</p>
 </div>
 
 </div>
 
 </section>
 
-<section>
+<section id="contacto">
 
-<h2>Testimonios</h2>
+<h2>Contacto</h2>
 
-<div class="testimonial">
-“Duplicamos nuestras conversiones en 3 meses gracias al rediseño web.”
-<br><br>
-— Carlos R., CEO Nova Studio
-</div>
+<form class="contact" action="mailto:tucorreo@email.com" method="post">
 
-</section>
+<input type="text" placeholder="Nombre">
 
-<section class="cta" id="contacto">
+<input type="email" placeholder="Email">
 
-<h2>¿Listo para crear algo grande?</h2>
+<textarea placeholder="Mensaje"></textarea>
 
-<button>Hablemos</button>
+<button type="submit">Enviar</button>
+
+</form>
 
 </section>
 
@@ -419,13 +409,6 @@ cursor.style.left=e.clientX+"px"
 cursor.style.top=e.clientY+"px"
 })
 
-/* HEADER */
-
-window.addEventListener("scroll",()=>{
-document.querySelector(".main-header")
-.classList.toggle("scrolled",window.scrollY>60)
-})
-
 /* PARTICLES */
 
 tsParticles.load("particles",{
@@ -438,16 +421,28 @@ size:{value:2}
 }
 })
 
-/* ANIMACIONES */
+/* PORTFOLIO FILTER */
+
+function filter(type){
+
+document.querySelectorAll(".project").forEach(el=>{
+
+if(type==="all"){
+el.style.display="block"
+}else{
+el.style.display=el.classList.contains(type)?"block":"none"
+}
+
+})
+
+}
+
+/* ANIMATIONS */
 
 gsap.from(".hero h1",{y:80,opacity:0,duration:1.4})
 
-gsap.utils.toArray(".card, .project, .price-card").forEach(el=>{
+gsap.utils.toArray(".card,.project,.price-card").forEach(el=>{
 gsap.from(el,{
-scrollTrigger:{
-trigger:el,
-start:"top 85%"
-},
 y:60,
 opacity:0,
 duration:1
@@ -458,6 +453,7 @@ duration:1
 
 </body>
 </html>
+
 
 
 
