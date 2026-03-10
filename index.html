@@ -126,8 +126,9 @@ padding:35px;
 border-radius:20px;
 backdrop-filter:blur(15px);
 transition:.3s;
+
 position:relative;
-overflow:hidden;
+overflow:visible; /* IMPORTANTE */
 }
 
 .card:hover{
@@ -168,26 +169,35 @@ z-index:2;
 
 /* ===== FAN IMAGES ===== */
 
-.fan-images{
-position:absolute;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-width:200px;
-height:80px;
-pointer-events:none;
-}
-
 .fan-images img{
 position:absolute;
-width:90px;
-height:60px;
+width:110px;
+height:70px;
 object-fit:cover;
 border-radius:10px;
+
 opacity:0;
-transform:scale(.8);
-transition:.4s;
-box-shadow:0 10px 25px rgba(0,0,0,.4);
+transform:scale(.7);
+
+transition:.45s;
+
+box-shadow:0 15px 40px rgba(0,0,0,.5);
+border:2px solid rgba(255,255,255,.1);
+}
+
+.card:hover .fan-images img:nth-child(1){
+transform:translate(-140px,-60px) rotate(-18deg);
+opacity:1;
+}
+
+.card:hover .fan-images img:nth-child(2){
+transform:translate(-50%,-80px) rotate(-5deg);
+opacity:1;
+}
+
+.card:hover .fan-images img:nth-child(3){
+transform:translate(40px,-60px) rotate(15deg);
+opacity:1;
 }
 
 /* posiciones iniciales */
@@ -362,6 +372,12 @@ opacity:.6;
 
 </section>
 
+<a href="#contacto" class="cta-btn">Quiero mi proyecto</a>
+
+<br><br>
+
+<a href="#contacto" class="cta-btn">Contáctame</a>  
+  
 <section id="servicios">
 
 <h2>Servicios</h2>
@@ -493,7 +509,11 @@ opacity:.6;
 <section class="cta" id="contacto">
 
 <h2>¿Listo para crear algo grande?</h2>
-<button class="cta-btn">Hablemos</button>
+<a href="#contacto" class="cta-btn">Quiero mi proyecto</a>
+
+<br><br>
+
+<a href="#contacto" class="cta-btn">Contáctame</a>
 
 </section>
 
@@ -570,6 +590,7 @@ ease:"power2.out"
 
 </body>
 </html>
+
 
 
 
