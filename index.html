@@ -169,15 +169,32 @@ z-index:2;
 
 /* ===== FAN IMAGES ===== */
 
+.fan-images{
+position:absolute;
+top:-20px;
+left:50%;
+transform:translateX(-50%);
+width:220px;
+height:80px;
+pointer-events:none;
+z-index:10;
+}
+
+/* estado inicial */
+
 .fan-images img{
 position:absolute;
+left:50%;
+top:0;
+
 width:110px;
 height:70px;
+
 object-fit:cover;
 border-radius:10px;
 
+transform:translateX(-50%) scale(.6);
 opacity:0;
-transform:scale(.7);
 
 transition:.45s;
 
@@ -185,44 +202,23 @@ box-shadow:0 15px 40px rgba(0,0,0,.5);
 border:2px solid rgba(255,255,255,.1);
 }
 
-.card:hover .fan-images img:nth-child(1){
-transform:translate(-140px,-60px) rotate(-18deg);
-opacity:1;
-}
-
-.card:hover .fan-images img:nth-child(2){
-transform:translate(-50%,-80px) rotate(-5deg);
-opacity:1;
-}
-
-.card:hover .fan-images img:nth-child(3){
-transform:translate(40px,-60px) rotate(15deg);
-opacity:1;
-}
-
-/* posiciones iniciales */
-
-.fan-images img:nth-child(1){ left:50%; transform:translateX(-50%); }
-.fan-images img:nth-child(2){ left:50%; transform:translateX(-50%); }
-.fan-images img:nth-child(3){ left:50%; transform:translateX(-50%); }
-
 /* abanico */
 
 .card:hover .fan-images img:nth-child(1){
-transform:translateX(-120px) rotate(-12deg);
+transform:translate(-160px,-80px) rotate(-18deg) scale(1);
 opacity:1;
 }
 
 .card:hover .fan-images img:nth-child(2){
-transform:translateX(-50%) rotate(0deg);
+transform:translate(-50%,-100px) rotate(0deg) scale(1);
 opacity:1;
 }
 
 .card:hover .fan-images img:nth-child(3){
-transform:translateX(40px) rotate(12deg);
+transform:translate(60px,-80px) rotate(18deg) scale(1);
 opacity:1;
 }
-
+  
 /* ===== PORTFOLIO ===== */
 
 .portfolio{
@@ -370,13 +366,7 @@ opacity:.6;
 <a href="#servicios" class="cta-btn">Iniciar proyecto</a>
 </div>
 
-</section>
-
-<a href="#contacto" class="cta-btn">Quiero mi proyecto</a>
-
-<br><br>
-
-<a href="#contacto" class="cta-btn">Contáctame</a>  
+</section> 
   
 <section id="servicios">
 
@@ -590,6 +580,7 @@ ease:"power2.out"
 
 </body>
 </html>
+
 
 
 
