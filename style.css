@@ -143,30 +143,26 @@ padding:120px 80px;
 text-align:center;
 }
 
-.section-title{
-font-size:42px;
-margin-bottom:70px;
-}
-
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:60px;
+gap:50px;
+max-width:1200px;
+margin:auto;
 }
 
 /* CARD */
 
 .card{
-
 background:rgba(255,255,255,.05);
-padding:90px 35px 40px 35px;
+padding:100px 35px 40px 35px;
 border-radius:20px;
 
 position:relative;
 overflow:visible;
 
 transition:.35s;
-
+text-align:center;
 }
 
 .card:hover{
@@ -175,6 +171,17 @@ box-shadow:0 20px 50px rgba(168,85,247,.18);
 }
 
 /* ABANICO */
+
+.fan-images{
+position:absolute;
+top:-50px;
+left:50%;
+transform:translateX(-50%);
+width:200px;
+height:80px;
+}
+
+/* IMAGENES */
 
 .fan-images img{
 
@@ -188,70 +195,34 @@ border-radius:10px;
 
 box-shadow:0 10px 25px rgba(0,0,0,.4);
 
-/* ahora visibles */
-
-opacity:.9;
-
-/* abanico base */
-
 transition:.4s;
 
 }
 
-/* POSICION INICIAL */
+/* POSICION BASE */
 
 .fan-images img:nth-child(1){
-transform:translate(-70px,-20px) rotate(-12deg) scale(.9);
+transform:translate(-60px,-20px) rotate(-10deg);
 }
 
 .fan-images img:nth-child(2){
-transform:translate(-50%,-35px) scale(.95);
+transform:translate(-50%,-35px);
 }
 
 .fan-images img:nth-child(3){
-transform:translate(10px,-20px) rotate(12deg) scale(.9);
+transform:translate(20px,-20px) rotate(10deg);
 }
 
 /* HOVER */
 
 .card:hover .fan-images img:nth-child(1){
-transform:translate(-120px,-50px) rotate(-20deg) scale(1.05);
+transform:translate(-110px,-50px) rotate(-18deg);
 }
 
 .card:hover .fan-images img:nth-child(2){
-transform:translate(-50%,-70px) scale(1.08);
+transform:translate(-50%,-70px);
 }
 
 .card:hover .fan-images img:nth-child(3){
-transform:translate(60px,-50px) rotate(20deg) scale(1.05);
-}
-
-.card{
-transform-style:preserve-3d;
-transition:transform .2s ease;
-}
-
-.card::after{
-
-content:"";
-position:absolute;
-
-inset:-2px;
-
-border-radius:20px;
-
-background:radial-gradient(
-circle at center,
-rgba(168,85,247,.25),
-transparent 70%
-);
-
-opacity:0;
-transition:.3s;
-pointer-events:none;
-
-}
-
-.card:hover::after{
-opacity:1;
+transform:translate(60px,-50px) rotate(18deg);
 }
