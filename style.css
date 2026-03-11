@@ -1,3 +1,4 @@
+
 /* RESET */
 
 *{
@@ -14,6 +15,7 @@ color:white;
 overflow-x:hidden;
 }
 
+
 /* CURSOR */
 
 .cursor{
@@ -21,32 +23,26 @@ width:18px;
 height:18px;
 border:2px solid #a855f7;
 border-radius:50%;
-
 position:fixed;
-
 pointer-events:none;
-
 transform:translate(-50%,-50%);
-
 transition:
 width .2s,
 height .2s,
 background .2s,
 border .2s;
-
 z-index:9999;
 }
 
-/* cuando pasa sobre botones */
+/* hover cursor */
 
 .cursor.active{
 width:40px;
 height:40px;
-
 background:rgba(168,85,247,.2);
-
 border:2px solid #a855f7;
 }
+
 
 /* HEADER */
 
@@ -70,275 +66,17 @@ justify-content:space-between;
 align-items:center;
 }
 
+
+/* LOGO */
+
 .mm{
 font-size:42px;
 font-weight:800;
-background:linear-gradient(180deg,#d8b4fe,#7e22ce);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.menu a{
 color:white;
-text-decoration:none;
-margin-left:25px;
-}
-
-/* HERO */
-
-.hero{
-    height:500px;
-    background-image:url("imgenes/leading-pages.png");
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    text-align:center;
-}
-
-.hero h1{
-font-size:64px;
-max-width:900px;
-margin:auto;
-line-height:1.2;
-}
-
-.cta-btn{
-display:inline-block;
-
-padding:16px 38px;
-
-border-radius:40px;
-
-background:linear-gradient(90deg,#a855f7,#7e22ce);
-
-color:white;
-text-decoration:none;
-font-weight:600;
-
-transition:.3s;
-
-box-shadow:0 10px 30px rgba(168,85,247,.35);
-}
-
-.cta-btn:hover{
-transform:translateY(-3px);
-box-shadow:0 20px 40px rgba(168,85,247,.45);
-}
-
-/* PRICING */
-
-.pricing{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
-padding:120px 80px;
-}
-
-.price-card{
-background:rgba(255,255,255,.05);
-padding:40px;
-border-radius:20px;
-text-align:center;
-}
-
-.price{
-font-size:34px;
-margin:15px 0;
-color:#a855f7;
-}
-
-/* TESTIMONIAL */
-
-.testimonial{
-max-width:700px;
-margin:auto;
-padding:80px;
-text-align:center;
-opacity:.8;
-}
-
-/* CTA */
-
-.cta{
-padding:120px;
-text-align:center;
-}
-
-footer{
-padding:70px;
-text-align:center;
-opacity:.7;
-border-top:1px solid rgba(255,255,255,.05);
-margin-top:120px;
-}
-
-/* SERVICIOS */
-
-#servicios{
-padding:120px 80px;
-text-align:center;
-}
-
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:40px;
-max-width:1100px;
-margin:auto;
-}
-
-/* CARD */
-
-.fan-images{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:10;
-pointer-events:none;
-}
-
-.card img{
-width:100%;
-height:140px;
-object-fit:cover;
-display:block;
-}
-
-.card{
-    width:300px;
-    background:#fff;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 10px 20px rgba(0,0,0,0.1);
-}
-
-.card{
-position:relative;
-overflow:visible;
-}
-
-.card{
-width:280px;
-height:320px;
-}
-
-/* IMAGEN */
-
-.card-img img{
-    width:100%;
-    height:150px;
-    object-fit:cover;
-    border-radius:10px 10px 0 0;
-}
-
-/* TEXTO */
-
-.card-info{
-    padding:18px;
-    background:#ffffff;
-}
-
-.card-info h3{
-    font-size:20px;
-    margin:0;
-    color:#222;
-}
-
-.card-info p{
-    font-size:14px;
-    color:#666;
-    margin-top:8px;
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 50px rgba(168,85,247,.18);
 }
 
 
-/* CONTENEDOR DEL ABANICO */
-
-.fan-images{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:5;
-}
-
-/* IMAGENES */
-
-.fan-images img{
-
-position:absolute;
-
-width:110px;
-height:70px;
-
-object-fit:cover;
-border-radius:10px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.4);
-
-opacity:0;
-
-left:50%;
-
-transform:translate(-50%,20px) scale(.6);
-
-transition:
-transform .4s ease,
-opacity .4s ease;
-
-}
-
-.fan-images img{
-box-shadow:
-0 10px 25px rgba(0,0,0,.4),
-0 0 20px rgba(168,85,247,.25);
-}
-
-/* RETRASO PARA CASCADA */
-
-.fan-images img:nth-child(1){ transition-delay:0s; }
-.fan-images img:nth-child(2){ transition-delay:.08s; }
-.fan-images img:nth-child(3){ transition-delay:.16s; }
-
-/* HOVER */
-
-.card:hover .fan-images img:nth-child(1){
-opacity:1;
-transform:translate(-140px,-60px) rotate(-20deg) scale(1);
-}
-
-.card:hover .fan-images img:nth-child(2){
-opacity:1;
-transform:translate(-50%,-80px) scale(1);
-}
-
-.card:hover .fan-images img:nth-child(3){
-opacity:1;
-transform:translate(40px,-60px) rotate(20deg) scale(1);
-}
-
-
-
-
-
-
-/* AGREGADOS */
-
-.card p{
-opacity:.8;
-margin-top:10px;
-}
+/* MENU */
 
 .menu a{
 color:white;
@@ -354,3 +92,114 @@ opacity:1;
 color:#d8b4fe;
 }
 
+
+/* CARDS */
+
+.card{
+position:relative;
+padding:40px;
+border-radius:20px;
+
+background:rgba(255,255,255,0.03);
+backdrop-filter:blur(10px);
+
+transition:all .3s ease;
+
+overflow:visible;
+}
+
+
+/* GLOW EFECTO */
+
+.card:hover{
+transform:translateY(-10px);
+
+box-shadow:
+0 0 20px rgba(168,85,247,.35),
+0 0 40px rgba(168,85,247,.25),
+0 20px 50px rgba(168,85,247,.18);
+}
+
+
+/* TEXTO CARD */
+
+.card h3{
+font-size:22px;
+margin-top:10px;
+}
+
+.card p{
+opacity:.8;
+margin-top:10px;
+font-size:14px;
+}
+
+
+/* CONTENEDOR DEL ABANICO */
+
+.fan-images{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:5;
+pointer-events:none;
+}
+
+
+/* IMAGENES DEL ABANICO */
+
+.fan-images img{
+
+position:absolute;
+
+width:110px;
+height:70px;
+
+object-fit:cover;
+
+border-radius:10px;
+
+left:50%;
+
+opacity:0;
+
+transform:translate(-50%,20px) scale(.6);
+
+box-shadow:
+0 10px 25px rgba(0,0,0,.4),
+0 0 20px rgba(168,85,247,.25);
+
+transition:
+transform .4s ease,
+opacity .4s ease;
+
+}
+
+
+/* RETRASO PARA EFECTO CASCADA */
+
+.fan-images img:nth-child(1){ transition-delay:0s; }
+
+.fan-images img:nth-child(2){ transition-delay:.08s; }
+
+.fan-images img:nth-child(3){ transition-delay:.16s; }
+
+
+/* ANIMACION HOVER */
+
+.card:hover .fan-images img:nth-child(1){
+opacity:1;
+transform:translate(-140px,-60px) rotate(-20deg) scale(1);
+}
+
+.card:hover .fan-images img:nth-child(2){
+opacity:1;
+transform:translate(-50%,-80px) scale(1);
+}
+
+.card:hover .fan-images img:nth-child(3){
+opacity:1;
+transform:translate(40px,-60px) rotate(20deg) scale(1);
+}
