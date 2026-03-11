@@ -7,6 +7,20 @@ cursor.style.left=e.clientX+"px"
 cursor.style.top=e.clientY+"px"
 })
 
+const hoverElements = document.querySelectorAll("a, button, .card")
+
+hoverElements.forEach(el=>{
+
+el.addEventListener("mouseenter",()=>{
+cursor.classList.add("active")
+})
+
+el.addEventListener("mouseleave",()=>{
+cursor.classList.remove("active")
+})
+
+})
+
 /* HEADER */
 
 window.addEventListener("scroll",()=>{
