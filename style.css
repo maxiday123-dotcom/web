@@ -226,3 +226,15 @@ transform:translate(-50%,-70px);
 .card:hover .fan-images img:nth-child(3){
 transform:translate(60px,-50px) rotate(18deg);
 }
+
+.card h3{
+margin-top:10px;
+font-size:22px;
+}
+
+/* AGREGADOS */
+
+.card p{
+opacity:.8;
+margin-top:10px;
+}
