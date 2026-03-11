@@ -16,8 +16,6 @@ overflow-x:hidden;
 
 /* CURSOR */
 
-/* CURSOR */
-
 .cursor{
 width:18px;
 height:18px;
@@ -213,14 +211,15 @@ box-shadow:0 20px 50px rgba(168,85,247,.18);
 
 .fan-images{
 position:absolute;
-top:-50px;
+top:-40px;
 left:50%;
 transform:translateX(-50%);
 width:200px;
 height:80px;
+pointer-events:none;
 }
 
-/* IMAGENES */
+/* IMAGENES OCULTAS */
 
 .fan-images img{
 
@@ -234,7 +233,46 @@ border-radius:10px;
 
 box-shadow:0 10px 25px rgba(0,0,0,.4);
 
-transition:.4s;
+/* ocultas */
+
+opacity:0;
+
+transform:translateY(20px) scale(.7);
+
+transition:
+transform .4s ease,
+opacity .4s ease;
+
+}
+
+/* APARECEN EN HOVER */
+
+.card:hover .fan-images img:nth-child(1){
+
+opacity:1;
+
+transform:translate(-120px,-50px)
+rotate(-18deg)
+scale(1);
+
+}
+
+.card:hover .fan-images img:nth-child(2){
+
+opacity:1;
+
+transform:translate(-50%,-70px)
+scale(1);
+
+}
+
+.card:hover .fan-images img:nth-child(3){
+
+opacity:1;
+
+transform:translate(60px,-50px)
+rotate(18deg)
+scale(1);
 
 }
 
@@ -252,24 +290,7 @@ transform:translate(-50%,-35px);
 transform:translate(20px,-20px) rotate(10deg);
 }
 
-/* HOVER */
 
-.card:hover .fan-images img:nth-child(1){
-transform:translate(-110px,-50px) rotate(-18deg);
-}
-
-.card:hover .fan-images img:nth-child(2){
-transform:translate(-50%,-70px);
-}
-
-.card:hover .fan-images img:nth-child(3){
-transform:translate(60px,-50px) rotate(18deg);
-}
-
-.card h3{
-margin-top:10px;
-font-size:22px;
-}
 
 /* AGREGADOS */
 
