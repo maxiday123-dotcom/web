@@ -206,9 +206,9 @@ margin:auto;
 
 .card-img img{
     width:100%;
-    height:180px;
+    height:150px;
     object-fit:cover;
-    display:block;
+    border-radius:10px 10px 0 0;
 }
 
 /* TEXTO */
@@ -231,9 +231,13 @@ margin:auto;
 }
 
 .card{
-padding:90px 35px 40px 35px;
-position:relative;
-overflow:visible;
+    position:relative;
+    overflow:hidden;
+}
+
+.card{
+    width:280px;
+    height:320px;
 }
 
 .card:hover{
@@ -245,13 +249,12 @@ box-shadow:0 20px 50px rgba(168,85,247,.18);
 /* CONTENEDOR DEL ABANICO */
 
 .fan-images{
-position:absolute;
-top:0;
-left:50%;
-transform:translateX(-50%);
-width:200px;
-height:80px;
-pointer-events:none;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:5;
 }
 
 /* IMAGENES */
@@ -335,8 +338,3 @@ opacity:1;
 color:#d8b4fe;
 }
 
-.card{
-padding:90px 35px 40px 35px;
-position:relative;
-overflow:visible;
-}
