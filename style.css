@@ -87,12 +87,16 @@ margin-left:25px;
 /* HERO */
 
 .hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:0 20px;
+    height:500px;
+    background-image:url("img/landing.jpg");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
 }
 
 .hero h1{
