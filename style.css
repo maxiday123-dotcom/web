@@ -230,3 +230,28 @@ transform:translate(60px,-50px) rotate(20deg) scale(1.05);
 transform-style:preserve-3d;
 transition:transform .2s ease;
 }
+
+.card::after{
+
+content:"";
+position:absolute;
+
+inset:-2px;
+
+border-radius:20px;
+
+background:radial-gradient(
+circle at center,
+rgba(168,85,247,.25),
+transparent 70%
+);
+
+opacity:0;
+transition:.3s;
+pointer-events:none;
+
+}
+
+.card:hover::after{
+opacity:1;
+}
