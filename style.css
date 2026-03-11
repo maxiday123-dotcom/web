@@ -191,7 +191,7 @@ margin:auto;
 /* CARD */
 
 .card{
-padding:80px 35px 40px 35px;
+padding:90px 35px 40px 35px;
 position:relative;
 overflow:visible;
 }
@@ -228,46 +228,45 @@ border-radius:10px;
 
 box-shadow:0 10px 25px rgba(0,0,0,.4);
 
-/* OCULTAS */
-
 opacity:0;
+
+left:50%;
 
 transform:translate(-50%,20px) scale(.6);
 
-transition:all .4s ease;
+transition:
+transform .4s ease,
+opacity .4s ease;
 
-left:50%;
 }
+
+.fan-images img{
+box-shadow:
+0 10px 25px rgba(0,0,0,.4),
+0 0 20px rgba(168,85,247,.25);
+}
+
+/* RETRASO PARA CASCADA */
+
+.fan-images img:nth-child(1){ transition-delay:0s; }
+.fan-images img:nth-child(2){ transition-delay:.08s; }
+.fan-images img:nth-child(3){ transition-delay:.16s; }
 
 /* HOVER */
 
 .card:hover .fan-images img:nth-child(1){
-
 opacity:1;
-
-transform:translate(-140px,-60px)
-rotate(-20deg)
-scale(1);
-
+transform:translate(-140px,-60px) rotate(-20deg) scale(1);
 }
 
 .card:hover .fan-images img:nth-child(2){
-
 opacity:1;
-
-transform:translate(-50%,-80px)
-scale(1);
-
+transform:translate(-50%,-80px) scale(1);
 }
 
 .card:hover .fan-images img:nth-child(3){
-
 opacity:1;
-
-transform:translate(40px,-60px)
-rotate(20deg)
-scale(1);
-
+transform:translate(40px,-60px) rotate(20deg) scale(1);
 }
 
 
