@@ -1,122 +1,197 @@
-/* CURSOR */
 
-const cursor=document.querySelector(".cursor")
+/* =========================
+   CURSOR PERSONALIZADO
+========================= */
 
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+"px"
-cursor.style.top=e.clientY+"px"
-})
+const cursor = document.querySelector(".cursor");
 
-const hoverElements = document.querySelectorAll("a, button, .card")
+if(cursor){
 
-hoverElements.forEach(el=>{
+document.addEventListener("mousemove", e => {
 
-el.addEventListener("mouseenter",()=>{
-cursor.classList.add("active")
-})
+cursor.style.left = e.clientX + "px";
+cursor.style.top = e.clientY + "px";
 
-el.addEventListener("mouseleave",()=>{
-cursor.classList.remove("active")
-})
+});
 
-})
+const hoverElements = document.querySelectorAll("a, button, .card");
 
-/* HEADER */
+hoverElements.forEach(el => {
 
-window.addEventListener("scroll",()=>{
-document.querySelector(".main-header")
-.classList.toggle("scrolled",window.scrollY>60)
-})
+el.addEventListener("mouseenter", () => {
+cursor.classList.add("active");
+});
 
-/* PARTICLES */
+el.addEventListener("mouseleave", () => {
+cursor.classList.remove("active");
+});
+
+});
+
+}
+
+
+/* =========================
+   HEADER SCROLL
+========================= */
+
+const header = document.querySelector(".main-header");
+
+window.addEventListener("scroll", () => {
+
+if(header){
+
+header.classList.toggle("scrolled", window.scrollY > 60);
+
+}
+
+});
+
+
+/* =========================
+   PARTICLES BACKGROUND
+========================= */
+
+if(typeof tsParticles !== "undefined"){
 
 tsParticles.load("particles",{
+
 particles:{
-number:{value:60},
-color:{value:"#a855f7"},
-links:{enable:true,color:"#7e22ce"},
-move:{enable:true,speed:1},
-size:{value:2}
+
+number:{ value:60 },
+
+color:{ value:"#a855f7" },
+
+links:{
+enable:true,
+color:"#7e22ce"
+},
+
+move:{
+enable:true,
+speed:1
+},
+
+size:{ value:2 }
+
 }
-})
 
-/* GSAP */
+});
 
-gsap.registerPlugin(ScrollTrigger)
+}
+
+
+/* =========================
+   GSAP ANIMATIONS
+========================= */
+
+if(typeof gsap !== "undefined"){
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+/* HERO */
 
 gsap.from(".hero h1",{
+
 y:100,
 opacity:0,
 duration:1.5,
 ease:"power3.out"
-})
+
+});
 
 gsap.from(".cta-btn",{
+
 y:40,
 opacity:0,
 delay:.6,
 duration:1
-})
 
-gsap.utils.toArray(".card, .project, .price-card").forEach(el=>{
+});
+
+
+/* CARDS ANIMATION */
+
+gsap.utils.toArray(".card, .project, .price-card").forEach(el => {
+
 gsap.from(el,{
+
 scrollTrigger:{
 trigger:el,
 start:"top 85%"
 },
+
 y:70,
 opacity:0,
 duration:1.1,
 ease:"power2.out"
-})
-})
 
-const cards = document.querySelectorAll(".card")
+});
+
+});
+
+}
+
+
+/* =========================
+   CARD 3D EFFECT
+========================= */
+
+const cards = document.querySelectorAll(".card");
 
 cards.forEach(card => {
 
 card.addEventListener("mousemove", e => {
 
-const rect = card.getBoundingClientRect()
+const rect = card.getBoundingClientRect();
 
-const x = e.clientX - rect.left
-const y = e.clientY - rect.top
+const x = e.clientX - rect.left;
+const y = e.clientY - rect.top;
 
-const centerX = rect.width / 2
-const centerY = rect.height / 2
+const centerX = rect.width / 2;
+const centerY = rect.height / 2;
 
-const rotateX = -(y - centerY) / 15
-const rotateY = (x - centerX) / 15
+const rotateX = -(y - centerY) / 18;
+const rotateY = (x - centerX) / 18;
 
 card.style.transform =
-`perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`
+`perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
 
-})
+});
+
 
 card.addEventListener("mouseleave", () => {
 
 card.style.transform =
-"perspective(900px) rotateX(0) rotateY(0) scale(1)"
+"perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
 
-})
+});
 
-})
+});
 
-/* SCROLL SUAVE */
+
+/* =========================
+   SCROLL SUAVE (LENIS)
+========================= */
+
+if(typeof Lenis !== "undefined"){
 
 const lenis = new Lenis({
 
 duration:1.2,
-smooth:true,
+smooth:true
 
-})
+});
 
-function raf(time) {
+function raf(time){
 
-lenis.raf(time)
+lenis.raf(time);
 
-requestAnimationFrame(raf)
+requestAnimationFrame(raf);
 
 }
 
-requestAnimationFrame(raf)
+requestAnimationFrame(raf);
+
+}
