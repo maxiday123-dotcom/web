@@ -195,3 +195,19 @@ requestAnimationFrame(raf);
 requestAnimationFrame(raf);
 
 }
+
+const stickyCTA = document.querySelector(".sticky-cta")
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY > 600){
+
+stickyCTA.classList.add("show")
+
+}else{
+
+stickyCTA.classList.remove("show")
+
+}
+
+})
