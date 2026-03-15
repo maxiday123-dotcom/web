@@ -2,211 +2,137 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MM Web & Design</title>
-
-<meta name="description" content="Diseño web profesional, ecommerce y landing pages optimizadas para conversión.">
-
-<link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MM Web & Design</title>
+  <meta name="description" content="Diseño web profesional, ecommerce y landing pages optimizadas para conversión.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="glow"></div>  
-<div class="cursor"></div>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
 
-<header class="main-header">
+  <header class="main-header" role="banner">
+    <div class="container">
+      <div class="mm">MM Web &amp; Design</div>
+      <nav class="menu" role="navigation" aria-label="Menú principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#precios">Precios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="container">
+  <main>
+    <section class="hero" id="inicio" role="region" aria-label="Hero">
+      <div id="particles" class="particles"></div>
 
-<div class="mm">MM Web & Design</div>
+      <div class="hero-content">
+        <h1>
+          Creamos experiencias digitales que convierten visitantes en clientes
+        </h1>
 
-<nav class="menu">
-<a href="#inicio">Inicio</a>
-<a href="#servicios">Servicios</a>
-<a href="#proyectos">Proyectos</a>
-<a href="#precios">Precios</a>
-<a href="#contacto">Contacto</a>
-</nav>
+        <a href="#servicios" class="cta-btn">Iniciar proyecto</a>
+      </div>
+    </section>
 
-</div>
+    <section id="servicios" class="section" role="region" aria-label="Servicios">
+      <h2>Servicios</h2>
 
-</header>
+      <div class="services container-grid">
+        <!-- CARD: Landing -->
+        <article class="card" aria-labelledby="landing-title">
+          <div class="fan-images" aria-hidden="true">
+            <img src="imagenes/leadingpages1.png" alt="Ejemplo landing page">
+            <img src="imagenes/leadingpages2.png" alt="Diseño landing page">
+            <img src="imagenes/leadingpages3.png" alt="Landing page moderna">
+          </div>
+          <h3 id="landing-title">Landing Pages</h3>
+          <p>Landing optimizadas para conversión y velocidad.</p>
+        </article>
 
-<section class="hero" id="inicio">
+        <!-- CARD: Web Corporativa -->
+        <article class="card" aria-labelledby="corp-title">
+          <div class="fan-images" aria-hidden="true">
+            <img src="imagenes/webcorp1.png" alt="Web corporativa moderna">
+            <img src="imagenes/webcorp2.png" alt="Web corporativa moderna">
+            <img src="imagenes/webcorp3.png" alt="Diseño web corporativo">
+          </div>
+          <h3 id="corp-title">Web Corporativa</h3>
+          <p>Sitios profesionales que representan tu marca.</p>
+        </article>
 
-<div id="particles"></div>
+        <!-- CARD: Ecommerce -->
+        <article class="card" aria-labelledby="ecom-title">
+          <div class="fan-images" aria-hidden="true">
+            <img src="imagenes/ecommerce1.png" alt="Tienda online">
+            <img src="imagenes/ecommerce2.png" alt="Ecommerce moderno">
+            <img src="imagenes/ecommerce3.png" alt="Diseño tienda online">
+          </div>
+          <h3 id="ecom-title">Ecommerce</h3>
+          <p>Tiendas online listas para vender 24/7.</p>
+        </article>
 
-<div class="hero-content">
+        <!-- CARD: Mantenimiento -->
+        <article class="card" aria-labelledby="mant-title">
+          <div class="fan-images" aria-hidden="true">
+            <img src="imagenes/mant1.png" alt="Mantenimiento web">
+            <img src="imagenes/mant2.png" alt="Actualización web">
+            <img src="imagenes/mant3.png" alt="Soporte web">
+          </div>
+          <h3 id="mant-title">Mantenimiento Web</h3>
+          <p>Actualización, seguridad y soporte continuo.</p>
+        </article>
+      </div>
+    </section>
 
-<h1>
-Creamos experiencias digitales que convierten visitantes en clientes
-</h1>
+    <section class="portfolio section" id="proyectos" role="region" aria-label="Proyectos">
+      <h2>Nuestros Proyectos</h2>
 
-<a href="#servicios" class="cta-btn">
-Iniciar proyecto
-</a>
+      <div class="projects-grid container-grid">
+        <figure class="project" tabindex="0">
+          <img src="imagenes/proyecto-leading1.png" alt="Proyecto Leading pages">
+          <figcaption class="project-overlay"><h3>Leading pages</h3></figcaption>
+        </figure>
 
-</div>
+        <figure class="project" tabindex="0">
+          <img src="imagenes/proyecto-webcorp1.png" alt="Proyecto Startup SaaS">
+          <figcaption class="project-overlay"><h3>Startup SaaS</h3></figcaption>
+        </figure>
 
-</section>
+        <figure class="project" tabindex="0">
+          <img src="imagenes/proyecto-ecommerce1.png" alt="Proyecto Marca Personal">
+          <figcaption class="project-overlay"><h3>Marca Personal</h3></figcaption>
+        </figure>
+      </div>
+    </section>
 
-<!-- SERVICIOS -->
+    <section class="cta section" id="contacto" role="region" aria-label="Contacto">
+      <h2>¿Listo para crear algo grande?</h2>
 
-<section id="servicios">
+      <div class="cta-actions">
+        <a href="#contacto" class="cta-btn">Quiero mi proyecto</a>
+        <a href="#contacto" class="cta-btn outline">Contáctame</a>
+      </div>
+    </section>
+  </main>
 
-<h2 class="section-title">Servicios</h2>
+  <footer role="contentinfo">
+    © 2026 MM Web &amp; Design
+  </footer>
 
-<div class="services">
-
-<!-- LANDING -->
-
-<div class="card landing">
-
-<div class="fan-images">
-<img src="imagenes/leadingpages1.png" alt="Ejemplo landing page">
-<img src="imagenes/leadingpages2.png" alt="Diseño landing page">
-<img src="imagenes/leadingpages3.png" alt="Landing page moderna">
-</div>
-
-<h3>Landing Pages</h3>
-<p>Páginas optimizadas para convertir visitantes en clientes.</p>
-
-</div>
-
-<!-- CORPORATIVA -->
-  
-<div class="card corporativa">
-
-<div class="fan-images">
-<img src="imagenes/webcorp1.png" alt="Web corporativa moderna">
-<img src="imagenes/webcorp2.png" alt="Web corporativa moderna">
-<img src="imagenes/webcorp3.png" alt="Diseño web corporativo">
-</div>
-
-<h3>Web Corporativa</h3>
-<p>Sitios profesionales que representan tu marca.</p>
-</div>
-
-</div>
-
-<!-- ECOMMERCE -->
-  
-<div class="card ecommerce">
-
-<div class="fan-images">
-<img src="imagenes/ecommerce1.png" alt="Tienda online"> 
-<img src="imagenes/ecommerce2.png" alt="Ecommerce moderno">
-<img src="imagenes/ecommerce3.png" alt="Diseño tienda online">
-</div>
-
-<h3>Ecommerce</h3>
-<p>Tiendas online listas para vender 24/7.</p>
-
-</div>
-
-<!-- MANTENIMIENTO -->
-
-<div class="card">
-
-<div class="fan-images">
-<img src="imagenes/mant1.png" alt="Mantenimiento web">
-<img src="imagenes/mant2.png" alt="Actualización web">
-<img src="imagenes/mant3.png" alt="Soporte web">
-</div>
-
-<h3>Mantenimiento Web</h3>
-<p>Actualización, seguridad y soporte continuo.</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="portfolio" id="proyectos">
-
-<h2>Nuestros Proyectos</h2>
-
-<div class="projects-grid">
-
-<div class="project">
-<img src="imagenes/proyecto-leading1.png">
-<div class="project-overlay">
-<h3>Leading pages</h3>
-</div>
-</div>
-
-<div class="project">
-<img src="imagenes/proyecto-webcorp1.png">
-<div class="project-overlay">
-<h3>Startup SaaS</h3>
-</div>
-</div>
-
-<div class="project">
-<img src="imagenes/proyecto-ecommerce1.png">
-<div class="project-overlay">
-<h3>Marca Personal</h3>
-</div>
-</div>
-
-</div>
-
-</section>
-  
-<section class="cta" id="contacto">
-
-<h2>¿Listo para crear algo grande?</h2>
-
-<a href="#" class="cta-btn">
-Quiero mi proyecto
-</a>
-
-<br><br>
-
-<a href="#" class="cta-btn">
-Contáctame
-</a>
-
-</section>
-
-<footer>
-
-© 2026 MM Web & Design
-
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.35/bundled/lenis.min.js"></script>  
-
-<script src="script.js"></script>
-
-<a href="https://wa.me/+54 01140304782" class="whatsapp-btn" target="_blank">
-💬
-</a>
-  
+  <!-- Dependencias -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.35/bundled/lenis.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-  
-
-
-
-
-
 
 
 
