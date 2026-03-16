@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Lista de nombres base (sin extensión)
+IMAGENES=(
+  "leadingpages1"
+  "leadingpages2"
+  "leadingpages3"
+  "webcorp1"
+  "webcorp2"
+  "webcorp3"
+  "ecommerce1"
+  "ecommerce2"
+  "ecommerce3"
+  "mant1"
+)
+
+# Tamaños a generar (ancho en px)
+SIZES=(320 480 768 1024 1600)
+
+# Rutas
+SRC_DIR="imagenes/originales"
+OUT_DIR="imagenes"
+
+mkdir -p "$OUT_DIR"
+
+echo "Procesando imágenes desde $SRC_DIR → $OUT_DIR"
+echo "Asegúrate de tener: ImageMagick (magick), cwebp, avifenc instalados."
+
+for name in "${IMAGENES[@]}"; do
+  src_jpg="$SRC_DIR/${name}.jpg"
+  src_png="$SRC_DIR/${name}.png"
+
+  # Detectar archivo fuente (jpg o png)
+  if [ -f "$src_jpg" ]; then
+    src="$src_jpg"
+  elif [ -f "$src_png" ]; then
+    src="$src_png"
+  else
+    echo "AVISO: no se encontró $name.jpg ni $name.png en $SRC_DIR — se salta."
+    continue
+  fi
+
+  echo "→ Procesando $name (fuente: $src)"
+
+  # Generar JPEG optimizado en varios anchos
+  for w in "${SIZES[@]}"; do
+    out_jpg="$OUT_DIR/${name}.v1.${w}.jpg"
+    magick "$src" -strip -interlace Plane -quality 78 -resize ${w}x "$out_jpg"
+    echo "   creado $out_jpg"
+  done
+
+  # Generar WebP a partir de cada JPEG generado
+  for w in "${SIZES[@]}"; do
+    in_jpg="$OUT_DIR/${name}.v1.${w}.jpg"
+    out_webp="$OUT_DIR/${name}.v1.${w}.webp"
+    cwebp -q 70 "$in_jpg" -o "$out_webp" >/dev/null 2>&1 && echo "   creado $out_webp"
+  done
+
+  # Generar AVIF a partir de cada JPEG generado
+  for w in "${SIZES[@]}"; do
+    in_jpg="$OUT_DIR/${name}.v1.${w}.jpg"
+    out_avif="$OUT_DIR/${name}.v1.${w}.avif"
+    # avifenc: ajuste de calidad con --min/--max para balance; speed 6 es razonable
+    avifenc --min 30 --max 50 --speed 6 "$in_jpg" "$out_avif" >/dev/null 2>&1 && echo "   creado $out_avif"
+  done
+
+done
+
+echo "Procesamiento completado."
