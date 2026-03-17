@@ -1,92 +1,112 @@
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Servicios</title>
+<title>MM Web & Design</title>
+
+<meta name="description" content="Diseño web profesional, ecommerce y landing pages optimizadas para conversión.">
 
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-</head>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
+</head>
 
 <body>
 
+<div class="cursor"></div>
 
-<!-- SERVICIOS -->
-
-<section class="services">
+<header class="main-header">
 
 <div class="container">
 
-<h2 class="section-title">Servicios</h2>
+<div class="mm">MM</div>
+
+<nav class="menu">
+<a href="#inicio">Inicio</a>
+<a href="#servicios">Servicios</a>
+<a href="#proyectos">Proyectos</a>
+<a href="#precios">Precios</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+</div>
+</header>
+
+<section class="hero" id="inicio">
+
+<div id="particles"></div>
+
+<div>
+
+<h1>Diseñamos <span>experiencias digitales</span> que convierten visitantes en clientes.</h1>
+
+<a href="#contacto" class="cta-btn">Solicitar proyecto</a>
+
+</div>
+
+</section>
 
 
-<div class="services-grid">
+<section id="servicios">
 
-<!-- CARD 1 -->
+<h2>Servicios</h2>
+
+<div class="services">
 
 <div class="card">
-
-<img src="imagenes/landingpages1.png" alt="Landing Pages">
-
 <h3>Landing Pages</h3>
-
-<p>Landing optimizadas para conversión y velocidad.</p>
-
-<a href="#contacto" class="btn">Quiero este proyecto</a>
-
+<p>Páginas diseñadas para convertir tráfico en ventas.</p>
 </div>
 
-
-<!-- CARD 2 -->
-
 <div class="card">
-
-<img src="imagenes/corporativo.jpg" alt="Web Corporativa">
-
 <h3>Web Corporativa</h3>
-
-<p>Sitios profesionales que representan tu marca.</p>
-
-<a href="#contacto" class="btn">Quiero este proyecto</a>
-
+<p>Sitios modernos para empresas y marcas.</p>
 </div>
 
-
-<!-- CARD 3 -->
-
 <div class="card">
-
-<img src="imagenes/ecommerce.jpg" alt="Ecommerce">
-
 <h3>Ecommerce</h3>
-
-<p>Tiendas online listas para vender 24/7.</p>
-
-<a href="#contacto" class="btn">Quiero este proyecto</a>
-
+<p>Tiendas online preparadas para vender 24/7.</p>
 </div>
-
-
-<!-- CARD 4 -->
 
 <div class="card">
-
-<img src="imagenes/mant1.jpg" alt="Mantenimiento Web">
-
-<h3>Mantenimiento Web</h3>
-
-<p>Actualización, seguridad y soporte continuo.</p>
-
-<a href="#contacto" class="btn">Quiero este proyecto</a>
+<h3>SEO & Optimización</h3>
+<p>Mejoramos posicionamiento y velocidad.</p>
+</div>
 
 </div>
 
+</section>
+
+
+<section id="proyectos">
+
+<h2>Proyectos</h2>
+
+<div class="portfolio">
+
+<div class="project">
+
+<img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200">
+
+<div class="overlay">
+<h3>Nova Studio</h3>
+<p>Web corporativa</p>
+</div>
+
+</div>
+
+<div class="project">
+
+<img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200">
+
+<div class="overlay">
+<h3>Orion Shop</h3>
+<p>Ecommerce</p>
+</div>
 
 </div>
 
@@ -95,35 +115,65 @@
 </section>
 
 
-<!-- CONTACTO -->
+<section id="precios">
 
-<section id="maxi2121@live.com.ar" class="contacto">
+<h2>Planes</h2>
 
-<h2>Contáctame</h2>
+<div class="pricing">
 
-<form class="formulario">
+<div class="price-card">
+<h3>Landing</h3>
+<p class="price">$300</p>
+<p>Landing optimizada para ventas.</p>
+</div>
 
-<input type="text" placeholder="Tu Nombre" required>
+<div class="price-card">
+<h3>Web Profesional</h3>
+<p class="price">$800</p>
+<p>Sitio completo + SEO.</p>
+</div>
 
-<input type="email" placeholder="Tu Email" required>
+<div class="price-card">
+<h3>Ecommerce</h3>
+<p class="price">$1500</p>
+<p>Tienda online completa.</p>
+</div>
 
-<textarea placeholder="Cuéntame sobre tu proyecto"></textarea>
-
-<button type="submit">Enviar mensaje</button>
-
-</form>
-
-
-<a class="whatsapp-btn"
-href="https://wa.me/+5491140304782"
-target="_blank">
-
-Hablar por WhatsApp
-
-</a>
+</div>
 
 </section>
 
+
+<section>
+
+<h2>Testimonios</h2>
+
+<div class="testimonial">
+“Duplicamos nuestras conversiones en 3 meses gracias al rediseño web.”
+<br><br>
+— Carlos R., CEO Nova Studio
+</div>
+
+</section>
+
+
+<section class="cta" id="contacto">
+
+<h2>¿Listo para crear algo grande?</h2>
+
+<button>Hablemos</button>
+
+</section>
+
+
+<footer>
+
+© 2026 MM Web & Design
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <script src="script.js"></script>
 
