@@ -203,3 +203,31 @@ window.addEventListener("scroll", () => {
   header.classList.toggle("scrolled", window.scrollY > 60);
 
 });
+
+// animación hover cards
+
+document.querySelectorAll(".card").forEach(card => {
+
+card.addEventListener("mouseenter", () => {
+
+gsap.to(card.querySelectorAll(".fan-images img"),{
+y:-8,
+stagger:.06,
+duration:.35,
+ease:"power2.out"
+})
+
+})
+
+card.addEventListener("mouseleave", () => {
+
+gsap.to(card.querySelectorAll(".fan-images img"),{
+y:0,
+stagger:.05,
+duration:.35,
+ease:"power2.out"
+})
+
+})
+
+})
