@@ -189,17 +189,24 @@ body{
 /* Fan images */
 
 .fan-images{
-  position:absolute;
-  top:-36px;
-  left:50%;
-  transform:translateX(-50%);
-  width:220px;
-  height:90px;
-  pointer-events:none;
+position:relative;
+margin-bottom:18px;
+height:80px;
+display:flex;
+align-items:center;
+justify-content:center;
+pointer-events:none;
 }
 
 .fan-images picture{
-  position:absolute;
+position:absolute;
+top:0;
+left:50%;
+transform:translateX(-50%);
+}
+
+.card{
+padding:40px 20px 28px;
 }
 
 .fan-images img{
