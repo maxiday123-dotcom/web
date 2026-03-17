@@ -1,233 +1,153 @@
 
-// ============================
-// Cursor personalizado
-// ============================
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-const cursor = document.querySelector(".cursor");
-
-if (cursor) {
-  let mouseX = 0;
-  let mouseY = 0;
-
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  function updateCursor() {
-    cursor.style.left = mouseX + "px";
-    cursor.style.top = mouseY + "px";
-    requestAnimationFrame(updateCursor);
-  }
-
-  updateCursor();
-
-  document.addEventListener("mousedown", () => {
-    cursor.style.transform = "translate(-50%,-50%) scale(0.8)";
-  });
-
-  document.addEventListener("mouseup", () => {
-    cursor.style.transform = "translate(-50%,-50%) scale(1)";
-  });
+body{
+background:#0b0b0f;
+color:white;
+font-family:'Montserrat',sans-serif;
 }
 
 
-// ============================
-// Glow que sigue el cursor
-// ============================
+/* CONTENEDOR */
 
-const glow = document.querySelector(".glow");
-
-if (glow) {
-  document.addEventListener("mousemove", (e) => {
-    glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
-  });
+.container{
+max-width:1200px;
+margin:auto;
+padding:80px 20px;
 }
 
 
-// ============================
-// tsParticles
-// ============================
+/* TITULO */
 
-if (window.tsParticles) {
-
-  tsParticles.load("particles", {
-
-    fullScreen: { enable: false },
-
-    particles: {
-
-      number: { value: 60 },
-
-      color: { value: "#a855f7" },
-
-      links: {
-        enable: true,
-        color: "#7e22ce",
-        distance: 120,
-        opacity: 0.15
-      },
-
-      move: {
-        enable: true,
-        speed: 1
-      },
-
-      size: { value: 2 },
-
-      opacity: { value: 0.8 }
-
-    },
-
-    detectRetina: true
-
-  }).catch((err) => console.warn("tsParticles:", err));
-
+.section-title{
+text-align:center;
+font-size:36px;
+margin-bottom:50px;
+font-weight:800;
 }
 
 
-// ============================
-// GSAP Animaciones
-// ============================
+/* GRID */
 
-if (window.gsap) {
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.from(".hero h1", {
-    y: 80,
-    opacity: 0,
-    duration: 1.2,
-    ease: "power3.out"
-  });
-
-  gsap.from(".cta-btn", {
-    y: 30,
-    opacity: 0,
-    delay: 0.6,
-    duration: 0.9,
-    ease: "power3.out"
-  });
-
-  gsap.utils.toArray(".card").forEach((card, i) => {
-
-    gsap.from(card, {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      delay: 0.12 * i,
-      ease: "power3.out",
-
-      scrollTrigger: {
-        trigger: card,
-        start: "top 85%"
-      }
-
-    });
-
-  });
-
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
 }
 
 
-// ============================
-// Efecto 3D en cards
-// ============================
+/* CARD */
 
-document.querySelectorAll(".card").forEach((card) => {
+.card{
+background:#121218;
+border-radius:16px;
+padding:25px;
+text-align:center;
+transition:.3s;
+}
 
-  card.style.willChange = "transform";
-
-  card.addEventListener("mousemove", (e) => {
-
-    const rect = card.getBoundingClientRect();
-
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = -(y - centerY) / 14;
-    const rotateY = (x - centerX) / 14;
-
-    card.style.transform =
-      `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
-
-  });
-
-  card.addEventListener("mouseleave", () => {
-
-    card.style.transition = "transform 0.35s ease";
-
-    card.style.transform =
-      "perspective(900px) rotateX(0) rotateY(0) scale(1)";
-
-  });
-
-});
-
-
-// ============================
-// Lenis Smooth Scroll
-// ============================
-
-if (window.Lenis) {
-
-  const lenis = new Lenis({
-    duration: 1.2,
-    smooth: true
-  });
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
-  requestAnimationFrame(raf);
-
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
 }
 
 
-// ============================
-// Header scroll effect
-// ============================
+/* IMAGEN */
 
-window.addEventListener("scroll", () => {
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:20px;
+}
 
-  const header = document.querySelector(".main-header");
 
-  if (!header) return;
+/* TITULO */
 
-  header.classList.toggle("scrolled", window.scrollY > 60);
+.card h3{
+margin-bottom:10px;
+font-size:20px;
+}
 
-});
 
-// animación hover cards
+/* TEXTO */
 
-document.querySelectorAll(".card").forEach(card => {
+.card p{
+font-size:14px;
+opacity:.8;
+margin-bottom:20px;
+}
 
-card.addEventListener("mouseenter", () => {
 
-gsap.to(card.querySelectorAll(".fan-images img"),{
-y:-8,
-stagger:.06,
-duration:.35,
-ease:"power2.out"
-})
+/* BOTON */
 
-})
+.btn{
+display:inline-block;
+padding:10px 18px;
+border-radius:30px;
+text-decoration:none;
+background:linear-gradient(90deg,#a855f7,#7e22ce);
+color:white;
+font-weight:600;
+font-size:14px;
+transition:.3s;
+}
 
-card.addEventListener("mouseleave", () => {
+.btn:hover{
+transform:scale(1.05);
+}
 
-gsap.to(card.querySelectorAll(".fan-images img"),{
-y:0,
-stagger:.05,
-duration:.35,
-ease:"power2.out"
-})
 
-})
+/* CONTACTO */
 
-})
+.contacto{
+padding:100px 20px;
+text-align:center;
+}
+
+.formulario{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+margin-top:30px;
+}
+
+.formulario input,
+.formulario textarea{
+padding:12px;
+border:none;
+border-radius:8px;
+background:#1a1a22;
+color:white;
+}
+
+.formulario button{
+padding:12px;
+border:none;
+border-radius:30px;
+background:#a855f7;
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+
+/* WHATSAPP */
+
+.whatsapp-btn{
+display:inline-block;
+margin-top:30px;
+padding:12px 22px;
+border-radius:30px;
+background:#25D366;
+color:white;
+text-decoration:none;
+font-weight:600;
+}
