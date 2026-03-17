@@ -132,6 +132,21 @@ margin-bottom:18px;
 display:block;
 }
 
+.card-img{
+height:180px;
+overflow:hidden;
+border-radius:12px;
+margin-bottom:18px;
+}
+
+.card-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+
 .card:hover{
 transform:translateY(-10px);
 border-color:#a855f7;
