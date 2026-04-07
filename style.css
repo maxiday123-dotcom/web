@@ -285,11 +285,10 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-.card-img {
-  height: clamp(160px, 25vw, 200px);
-  overflow: hidden;
-  border-radius: var(--radius-sm);
-  margin-bottom: var(--space-md);
+/* BORRA estas líneas rotas del CSS original: */
+.card-img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* Y PEGA el FIX de arriba */
 }
 
 .card-img img {
