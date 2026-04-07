@@ -248,65 +248,145 @@ body {
 /* ==========================================================================
    SECCIÓN SERVICIOS
    ========================================================================== */
-.services-section,
-.projects-section,
-.pricing-section,
-.testimonials-section {
-  padding: clamp(var(--space-xl), 10vh, var(--space-xl)*2) 0;
-}
+/* ========================================
+   FIX PARA TUS CLASES ORIGINALES
+   ======================================== */
 
-.services-grid,
-.portfolio-grid,
-.pricing-grid,
-.testimonials-grid {
-  display: grid;
-  gap: clamp(var(--space-lg), 5vw, var(--space-xl));
-  margin-top: var(--space-xl);
-}
-
-.services-grid {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.service-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
+/* Cards de servicios - CORREGIDO */
+.card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  padding: 2rem;
+  border-radius: 1.5rem;
   text-align: center;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
+  transition: all .4s cubic-bezier(.4,0,.2,1);
   backdrop-filter: blur(10px);
+  will-change: transform;
 }
 
-.service-card:hover {
+.card:hover {
   transform: translateY(-12px);
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
+  border-color: #a855f7;
+  box-shadow: 0 25px 50px -12px rgba(168,85,247,.25);
 }
 
-/* BORRA estas líneas rotas del CSS original: */
-.card-img{ width:100%; height:100%; object-fit:cover; display:block; }
-
-/* Y PEGA el FIX de arriba */
+.card-img {
+  height: 180px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
 }
 
 .card-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform .6s cubic-bezier(.4,0,.2,1);
 }
 
-.service-card:hover .card-img img {
+.card:hover .card-img img {
   transform: scale(1.05);
 }
 
-.service-card h3 {
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--space-sm);
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: 700;
 }
+
+.card p {
+  color: rgba(255,255,255,.8);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Portfolio - CORREGIDO */
+.portfolio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.project {
+  height: 260px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.project img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .6s cubic-bezier(.4,0,.2,1);
+}
+
+.project:hover img {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,.9), transparent);
+  opacity: 0;
+  transition: .4s ease;
+}
+
+.project:hover .overlay {
+  opacity: 1;
+}
+
+/* Precios - CORREGIDO */
+.pricing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.price-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  transition: all .4s ease;
+  position: relative;
+}
+
+.price-card:hover {
+  transform: translateY(-8px);
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 1rem 0 .75rem;
+  background: linear-gradient(135deg, #a855f7, #d8b4fe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grids responsive */
+@media (max-width: 768px) {
+  .services,
+  .pricing,
+  .portfolio {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-img {
+    height: 200px;
+  }
+}
+
 
 /* ==========================================================================
    PROYECTOS
