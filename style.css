@@ -1,279 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+}
 
-/* ==========================================================================
-   CSS RESET & BASE
-   ========================================================================== */
 :root {
-  /* Colores principales */
   --primary: #a855f7;
   --primary-dark: #7e22ce;
   --secondary: #d8b4fe;
   --bg-primary: #0b0b0f;
   --bg-secondary: #09090c;
-  --bg-card: rgba(255, 255, 255, 0.04);
-  --border: rgba(255, 255, 255, 0.08);
+  --bg-card: rgba(255,255,255,.04);
+  --border: rgba(255,255,255,.08);
   --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.8);
-  --text-muted: rgba(255, 255, 255, 0.6);
-  
-  /* Espaciado */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2.5rem;
-  --space-xl: 4rem;
-  
-  /* Tipografía */
-  --font-size-xs: 0.875rem;
-  --font-size-sm: 1rem;
-  --font-size-base: 1.125rem;
-  --font-size-lg: 1.5rem;
-  --font-size-xl: 2.25rem;
-  --font-size-xxl: 3.5rem;
-  
-  /* Efectos */
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --radius-sm: 0.5rem;
-  --radius-lg: 1.5rem;
-}
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 120px; /* Offset para header fijo */
+  --text-secondary: rgba(255,255,255,.8);
+  --radius: 1.5rem;
+  --radius-sm: .75rem;
+  --shadow: 0 25px 50px -12px rgba(168,85,247,.25);
 }
 
 body {
-  font-family: 'Montserrat', -apple-system, sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.6;
   overflow-x: hidden;
-  min-height: 100vh;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.6;
 }
 
-/* ==========================================================================
-   UTILIDADES
-   ========================================================================== */
-.container {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 clamp(var(--space-sm), 5vw, var(--space-xl));
-}
-
-.visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-/* ==========================================================================
-   CURSOR PERSONALIZADO
-   ========================================================================== */
 .cursor {
-  width: 20px;
-  height: 20px;
+  width: 20px;height: 20px;
   border: 2px solid var(--primary);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: difference;
-  transition: transform 0.1s ease-out;
+  transition: transform .1s ease-out;
   will-change: transform;
 }
 
-.cursor.hover {
-  transform: scale(2) !important;
-  background: var(--primary);
-}
-
-/* ==========================================================================
-   HEADER
-   ========================================================================== */
 .main-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: fixed;top: 0;width: 100%;
+  padding: clamp(1.5rem,3vw,2.5rem) clamp(3rem,8vw,5rem);
   z-index: 1000;
-  padding: clamp(1rem, 3vw, 2.5rem) clamp(2rem, 8vw, 5rem);
   backdrop-filter: blur(20px);
-  background: rgba(11, 11, 15, 0.8);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: background, padding;
+  background: rgba(11,11,15,.8);
+  transition: all .4s cubic-bezier(.4,0,.2,1);
 }
 
 .main-header.scrolled {
-  background: rgba(10, 10, 15, 0.95);
-  padding: clamp(0.75rem, 2vw, 1.5rem) clamp(2rem, 8vw, 5rem);
-  box-shadow: var(--shadow-md);
+  background: rgba(10,10,15,.95);
+  padding: clamp(1rem,2vw,1.75rem) clamp(3rem,8vw,5rem);
+  box-shadow: var(--shadow);
 }
 
-.logo .mm {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem,5vw,2.5rem);
+}
+
+.mm {
+  font-size: clamp(2rem,5vw,3rem);
   font-weight: 800;
-  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  background: linear-gradient(135deg,var(--secondary),var(--primary));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
-  display: block;
 }
 
 .menu {
   display: flex;
-  gap: clamp(1.5rem, 2.5vw, 2.5rem);
-  align-items: center;
+  gap: 2rem;
 }
 
-.nav-link {
+.menu a {
   color: var(--text-primary);
   text-decoration: none;
-  font-size: clamp(0.875rem, 1.2vw, 0.9375rem);
+  font-size: 1rem;
   font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
-  transition: all 0.3s ease;
-  position: relative;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  transition: all .3s ease;
 }
 
-.nav-link:hover,
-.nav-link:focus {
+.menu a:hover {
   color: var(--primary);
-  background: rgba(168, 85, 247, 0.1);
-  outline: none;
+  background: rgba(168,85,247,.1);
 }
 
-/* ==========================================================================
-   HERO
-   ========================================================================== */
 .hero {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
-  background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center,rgba(168,85,247,.1) 0%,transparent 70%);
 }
 
 #particles {
   position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-.hero-content {
-  max-width: 900px;
-  z-index: 2;
-  position: relative;
+  width: 100%;height: 100%;
 }
 
 .hero h1 {
-  font-size: clamp(var(--font-size-xl), 8vw, var(--font-size-xxl));
+  font-size: clamp(3rem,8vw,5rem);
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: var(--space-lg);
+  margin-bottom: 2.5rem;
 }
 
 .hero h1 span {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg,var(--primary),var(--secondary));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* ==========================================================================
-   BOTONES
-   ========================================================================== */
-.cta-btn,
-.service-btn,
-.price-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: clamp(1rem, 2.5vw, 1.25rem) clamp(2rem, 4vw, 3rem);
-  font-size: clamp(0.9375rem, 1.5vw, var(--font-size-base));
+.cta-btn,.service-btn {
+  display: inline-block;
+  padding: 1.25rem 3rem;
   font-weight: 600;
+  font-size: 1.125rem;
   text-decoration: none;
   border-radius: 50px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all .4s cubic-bezier(.4,0,.2,1);
   border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
-  will-change: transform, box-shadow;
 }
 
-.cta-btn,
-.price-btn {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+.cta-btn {
+  background: linear-gradient(135deg,var(--primary),var(--primary-dark));
   color: white;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow);
 }
 
-.cta-btn:hover,
-.price-btn:hover {
+.cta-btn:hover {
   transform: translateY(-4px);
-  box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.4);
+  box-shadow: 0 35px 60px -12px rgba(168,85,247,.4);
 }
 
 .service-btn {
   background: transparent;
   color: var(--text-primary);
-  border-color: rgba(168, 85, 247, 0.3);
+  border-color: rgba(168,85,247,.3);
 }
 
 .service-btn:hover {
-  background: rgba(168, 85, 247, 0.1);
+  background: rgba(168,85,247,.1);
   border-color: var(--primary);
   color: var(--primary);
 }
 
-/* ==========================================================================
-   SECCIÓN SERVICIOS
-   ========================================================================== */
-/* ========================================
-   FIX PARA TUS CLASES ORIGINALES
-   ======================================== */
+#servicios {
+  padding: 6rem 0;
+}
 
-/* Cards de servicios - CORREGIDO */
+#servicios h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .card {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   padding: 2rem;
-  border-radius: 1.5rem;
+  border-radius: var(--radius);
   text-align: center;
   transition: all .4s cubic-bezier(.4,0,.2,1);
   backdrop-filter: blur(10px);
-  will-change: transform;
 }
 
 .card:hover {
   transform: translateY(-12px);
-  border-color: #a855f7;
-  box-shadow: 0 25px 50px -12px rgba(168,85,247,.25);
+  border-color: var(--primary);
+  box-shadow: var(--shadow);
 }
 
 .card-img {
   height: 180px;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   margin-bottom: 1.5rem;
 }
 
@@ -295,22 +216,32 @@ body {
 }
 
 .card p {
-  color: rgba(255,255,255,.8);
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
-  line-height: 1.6;
 }
 
-/* Portfolio - CORREGIDO */
+#proyectos {
+  padding: 6rem 0;
+  background: rgba(255,255,255,.02);
+}
+
+#proyectos h2,#precios h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+}
+
 .portfolio {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
   gap: 2rem;
-  margin-top: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .project {
   height: 260px;
-  border-radius: 1.5rem;
+  border-radius: var(--radius);
   overflow: hidden;
   position: relative;
   cursor: pointer;
@@ -320,7 +251,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: .6s cubic-bezier(.4,0,.2,1);
+  transition: transform .6s cubic-bezier(.4,0,.2,1);
 }
 
 .project:hover img {
@@ -330,34 +261,36 @@ body {
 .overlay {
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
   padding: 1.5rem;
-  background: linear-gradient(to top, rgba(0,0,0,.9), transparent);
+  background: linear-gradient(to top,rgba(0,0,0,.9),transparent);
   opacity: 0;
-  transition: .4s ease;
+  transition: opacity .4s ease;
 }
 
 .project:hover .overlay {
   opacity: 1;
 }
 
-/* Precios - CORREGIDO */
+#precios {
+  padding: 6rem 0;
+}
+
 .pricing {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
   gap: 2rem;
-  margin-top: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .price-card {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   padding: 2.5rem 2rem;
-  border-radius: 1.5rem;
+  border-radius: var(--radius);
   text-align: center;
   transition: all .4s ease;
-  position: relative;
 }
 
 .price-card:hover {
@@ -368,438 +301,75 @@ body {
   font-size: 2.5rem;
   font-weight: 800;
   margin: 1rem 0 .75rem;
-  background: linear-gradient(135deg, #a855f7, #d8b4fe);
+  background: linear-gradient(135deg,var(--primary),var(--secondary));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Grids responsive */
-@media (max-width: 768px) {
-  .services,
-  .pricing,
-  .portfolio {
-    grid-template-columns: 1fr;
-  }
-  
-  .card-img {
-    height: 200px;
-  }
-}
-
-
-/* ==========================================================================
-   PROYECTOS
-   ========================================================================== */
-.project-card {
-  height: clamp(250px, 35vw, 320px);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  aspect-ratio: 16/10;
-}
-
-.project-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.project-card:hover img {
-  transform: scale(1.1);
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  padding: var(--space-lg);
-  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.project-card:hover .overlay {
-  opacity: 1;
-}
-
-/* ==========================================================================
-   PRECIOS
-   ========================================================================== */
-.pricing-grid {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.price-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: clamp(var(--space-lg), 5vw, var(--space-xl));
-  border-radius: var(--radius-lg);
-  text-align: center;
-  position: relative;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.price-card.featured {
-  border-color: var(--primary);
-  transform: scale(1.05);
-}
-
-.featured-badge {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--primary);
-  color: white;
-  padding: 0.25rem 1rem;
-  border-radius: 50px;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-}
-
-.price {
-  font-size: clamp(2rem, 6vw, 3rem);
-  font-weight: 800;
-  margin: var(--space-md) 0 var(--space-sm);
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.period {
-  font-size: 0.5em;
-  opacity: 0.8;
-}
-
-.features {
-  list-style: none;
-  margin: var(--space-md) 0;
-}
-
-.features li {
-  padding: 0.5rem 0;
-  opacity: 0.9;
-}
-
-/* ==========================================================================
-   TESTIMONIOS
-   ========================================================================== */
-.testimonials-grid {
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  max-width: 1000px;
-  margin: 0 auto;
+.price-card p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
 }
 
 .testimonial {
+  max-width: 700px;
+  margin: 4rem auto 0;
+  text-align: center;
+  padding: 3rem 2rem;
   background: var(--bg-card);
-  padding: var(--space-xl);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
   border-left: 4px solid var(--primary);
+  opacity: .95;
   font-style: italic;
-  opacity: 0.95;
+  font-size: 1.125rem;
 }
 
-.testimonial p {
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--space-md);
-  line-height: 1.6;
-}
-
-.testimonial cite {
-  font-size: var(--font-size-sm);
-  opacity: 0.8;
-  font-weight: 500;
-}
-
-/* ==========================================================================
-   CTA FINAL
-   ========================================================================== */
-.cta-section {
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+.cta {
+  padding: 6rem 0;
   text-align: center;
-  padding: clamp(var(--space-xl), 12vh, var(--space-xl)*1.5) 0;
+  background: linear-gradient(135deg,var(--bg-secondary) 0%,var(--bg-primary) 100%);
 }
 
-.cta-subtitle {
-  font-size: var(--font-size-base);
-  margin-bottom: var(--space-xl);
-  opacity: 0.9;
+.cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.cta-buttons {
-  display: flex;
-  gap: var(--space-md);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.cta-btn.primary {
-  order: 1;
-}
-
-.cta-btn.secondary {
-  background: transparent;
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.cta-btn.secondary:hover {
-  background: var(--primary);
-  color: white;
-}
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-.main-footer {
-  background: var(--bg-secondary);
-  padding: clamp(var(--space-xl), 8vh, var(--space-xl)*1.5) 0;
-  border-top: 1px solid var(--border);
-  opacity: 0.8;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-lg);
-  text-align: center;
-}
-
-.footer-brand .mm {
-  font-size: 2rem;
-  margin-bottom: var(--space-sm);
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  justify-content: center;
-}
-
-.footer-legal {
-  opacity: 0.7;
-  font-size: var(--font-size-sm);
-}
-
-/* ==========================================================================
-   MENU MÓVIL
-   ========================================================================== */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  background: none;
+.cta button {
+  padding: 1.25rem 3rem;
   border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 600;
   cursor: pointer;
-  padding: 0.5rem;
-  z-index: 1001;
+  transition: all .4s ease;
 }
 
-.menu-toggle span {
-  width: 25px;
-  height: 3px;
-  background: var(--text-primary);
-  transition: all 0.3s ease;
-  border-radius: 2px;
+.cta button:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
 }
 
-.menu-toggle[aria-expanded="true"] span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
-}
-
-.menu-toggle[aria-expanded="true"] span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle[aria-expanded="true"] span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* ==========================================================================
-   RESPONSIVE
-   ========================================================================== */
-@media (max-width: 768px) {
-  .cursor {
-    display: none !important;
-  }
-  
-  .menu-toggle {
-    display: flex;
-  }
-  
-  .menu {
-    position: fixed;
-    inset: 0;
-    background: rgba(11, 11, 15, 0.98);
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--space-lg);
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(20px);
-  }
-  
-  .menu.active {
-    transform: translateX(0);
-  }
-  
-  body.menu-open {
-    overflow: hidden;
-  }
-  
-  .hero h1 {
-    font-size: clamp(2.5rem, 10vw, 4rem);
-  }
-  
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .services-grid,
-  .pricing-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ==========================================================================
-   ACCESIBILIDAD & PERFORMANCE
-   ========================================================================== */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  
-  .cursor {
-    display: none !important;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg-primary: #f8fafc;
-    --bg-secondary: #f1f5f9;
-    --bg-card: rgba(255, 255, 255, 0.9);
-    --text-primary: #1e293b;
-    --text-secondary: rgba(15, 23, 42, 0.8);
-    --border: rgba(148, 163, 184, 0.2);
-  }
-}
-
-@media print {
-  .main-header,
-  .cursor,
-  #particles {
-    display: none !important;
-  }
-}
-
-/* ==========================================================================
-   LOADING STATES & PWA
-   ========================================================================== */
-body.loaded .service-card,
-body.loaded .project-card {
-  opacity: 1;
-}
-
-body:not(.loaded) {
-  overflow: hidden;
-}
-
-/* Skeleton loading */
-.skeleton {
-  background: linear-gradient(90deg, var(--border) 25%, rgba(255,255,255,0.1) 50%, var(--border) 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
-}
-
-@keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-/* ==========================================================================
-   MICRO-INTERACCIONES
-   ========================================================================== */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-.service-card:hover,
-.price-card:hover {
-  animation: float 2s ease-in-out infinite;
-}
-
-/* Focus visible para accesibilidad */
-*:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-}
-
-/* ==========================================================================
-   SECCIONES COMUNES (h2, h3)
-   ========================================================================== */
-h2 {
-  font-size: clamp(var(--font-size-lg), 5vw, var(--font-size-xl));
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: var(--space-xl);
-  position: relative;
-}
-
-h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-  border-radius: 2px;
-}
-
-.services-section h2,
-.projects-section h2,
-.pricing-section h2 {
-  margin-bottom: var(--space-xl)*1.5;
-}
-
-/* ==========================================================================
-   SCROLLBAR PERSONALIZADA
-   ========================================================================== */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
+footer {
+  padding: 3rem 0;
   background: var(--bg-secondary);
+  text-align: center;
+  border-top: 1px solid var(--border);
+  opacity: .8;
 }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--primary), var(--primary-dark));
-  border-radius: 4px;
+/* Responsive */
+@media (max-width:768px) {
+  .cursor{display:none!important;}
+  .services,.pricing,.portfolio{grid-template-columns:1fr;gap:1.5rem;}
+  .card-img{height:200px;}
+  .hero h1{font-size:2.5rem;}
+  #servicios,#proyectos,#precios,.cta{padding:4rem 0;}
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+@media (prefers-reduced-motion:reduce) {
+  *{transition:none!important;}
 }
