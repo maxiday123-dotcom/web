@@ -619,3 +619,108 @@ body {
     --bg-primary: #f8fafc;
     --bg-secondary: #f1f5f9;
     --bg-card: rgba(255, 255, 255, 0.9);
+    --text-primary: #1e293b;
+    --text-secondary: rgba(15, 23, 42, 0.8);
+    --border: rgba(148, 163, 184, 0.2);
+  }
+}
+
+@media print {
+  .main-header,
+  .cursor,
+  #particles {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   LOADING STATES & PWA
+   ========================================================================== */
+body.loaded .service-card,
+body.loaded .project-card {
+  opacity: 1;
+}
+
+body:not(.loaded) {
+  overflow: hidden;
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, var(--border) 25%, rgba(255,255,255,0.1) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ==========================================================================
+   MICRO-INTERACCIONES
+   ========================================================================== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.service-card:hover,
+.price-card:hover {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Focus visible para accesibilidad */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   SECCIONES COMUNES (h2, h3)
+   ========================================================================== */
+h2 {
+  font-size: clamp(var(--font-size-lg), 5vw, var(--font-size-xl));
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  border-radius: 2px;
+}
+
+.services-section h2,
+.projects-section h2,
+.pricing-section h2 {
+  margin-bottom: var(--space-xl)*1.5;
+}
+
+/* ==========================================================================
+   SCROLLBAR PERSONALIZADA
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary), var(--primary-dark));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
