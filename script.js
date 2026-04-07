@@ -1,6 +1,6 @@
 
-/**
- * MM Web & Design - Script Principal
+    /**
+ * MM Web & Design - Script Principal v2.0
  * Optimizado para performance y compatibilidad
  */
 
@@ -52,15 +52,17 @@ class CustomCursor {
 
     handleResize() {
         this.enabled = window.innerWidth > 768;
-        this.cursor.style.display = this.enabled ? 'block' : 'none';
+        if (this.cursor) {
+            this.cursor.style.display = this.enabled ? 'block' : 'none';
+        }
     }
 
     animateCursor() {
         // Suavizado con lerp
-        this.cursorX += (this.mouseX - this.cursorX) * 0.1;
-        this.cursorY += (this.mouseY - this.cursorY) * 0.1;
+        this.cursorX += (this.mouseX - this.cursorX) * 0.12;
+        this.cursorY += (this.mouseY - this.cursorY) * 0.12;
 
-        if (this.cursor) {
+        if (this.cursor && this.enabled) {
             this.cursor.style.transform = `translate(${this.cursorX}px, ${this.cursorY}px)`;
         }
 
@@ -72,6 +74,7 @@ class CustomCursor {
 class HeaderScroll {
     constructor() {
         this.header = document.querySelector(".main-header");
+        this.lastScrollY = window.scrollY;
         this.init();
     }
 
@@ -79,12 +82,24 @@ class HeaderScroll {
         if (!this.header) return;
         
         window.addEventListener('scroll', this.handleScroll.bind(this), { passive: true });
-        window.addEventListener('resize', this.handleScroll.bind(this), { passive: true });
+        window.addEventListener('resize', this.handleResize.bind(this), { passive: true });
     }
 
     handleScroll() {
-        const scrolled = window.scrollY > CONFIG.scrollThreshold;
-        this.header.classList.toggle("scrolled", scrolled);
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > this.scrollThreshold) {
+            this.header.style.background = 'rgba(10, 10, 10, 0.98)';
+            this.header.style.backdropFilter = 'blur(20px)';
+        } else {
+            this.header.style.background = 'rgba(10, 10, 10, 0.95)';
+        }
+        
+        this.lastScrollY = currentScrollY;
+    }
+
+    handleResize() {
+        this.lastScrollY = window.scrollY;
     }
 }
 
@@ -95,48 +110,28 @@ class Animations {
     }
 
     initGSAP() {
-        // Verificar si GSAP está cargado
-        if (typeof gsap === 'undefined') {
-            console.warn('GSAP no encontrado. Animaciones desactivadas.');
-            return;
-        }
+        if (typeof gsap === 'undefined') return;
 
-        // Registrar ScrollTrigger
-        if (ScrollTrigger) {
-            gsap.registerPlugin(ScrollTrigger);
-        }
-
-        this.animateHero();
-        this.animateStagger();
-    }
-
-    animateHero() {
-        const heroTitle = document.querySelector(".hero h1");
-        if (!heroTitle) return;
-
-        gsap.from(heroTitle, {
+        // Hero animation
+        gsap.from('.hero-content', {
+            duration: CONFIG.animations.hero.duration,
             y: CONFIG.animations.hero.y,
             opacity: CONFIG.animations.hero.opacity,
-            duration: CONFIG.animations.hero.duration,
-            ease: "power3.out"
+            ease: 'power3.out'
         });
-    }
 
-    animateStagger() {
-        const elements = gsap.utils.toArray(".service-card, .project-card, .price-card");
-        
-        elements.forEach((el, index) => {
+        // Stagger animations
+        gsap.utils.toArray('.service-card, .price-card, .testimonial').forEach((el, i) => {
             gsap.from(el, {
                 scrollTrigger: {
                     trigger: el,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
                 },
+                duration: CONFIG.animations.stagger.duration,
                 y: CONFIG.animations.stagger.y,
                 opacity: CONFIG.animations.stagger.opacity,
-                duration: CONFIG.animations.stagger.duration,
-                ease: "power3.out",
-                delay: index * 0.1
+                ease: 'power3.out'
             });
         });
     }
@@ -150,7 +145,7 @@ class Particles {
 
     init() {
         if (typeof tsParticles === 'undefined') {
-            console.warn('tsParticles no encontrado.');
+            console.warn('tsParticles no encontrado. Cargando fallback...');
             return;
         }
 
@@ -164,17 +159,42 @@ class Particles {
                     color: { value: CONFIG.particles.color },
                     links: {
                         enable: true,
-                        color: CONFIG.particles.linksColor
+                        color: CONFIG.particles.linksColor,
+                        width: 1,
+                        opacity: 0.3
                     },
                     move: {
                         enable: true,
-                        speed: CONFIG.particles.speed
+                        speed: CONFIG.particles.speed,
+                        outModes: {
+                            default: "out"
+                        }
                     },
-                    size: { value: CONFIG.particles.size }
+                    size: { 
+                        value: CONFIG.particles.size,
+                        random: true
+                    },
+                    opacity: {
+                        value: 0.4,
+                        random: true
+                    }
                 },
                 detectRetina: true,
-                fullScreen: { enable: false },
-                background: { color: { value: "transparent" } }
+                fullScreen: { 
+                    enable: false,
+                    zIndex: 1
+                },
+                background: { 
+                    color: { value: "transparent" } 
+                },
+                interactivity: {
+                    events: {
+                        onHover: {
+                            enable: true,
+                            mode: "grab"
+                        }
+                    }
+                }
             });
         } catch (error) {
             console.error('Error cargando partículas:', error);
@@ -200,6 +220,9 @@ class MobileMenu {
         document.querySelectorAll('.menu a').forEach(link => {
             link.addEventListener('click', this.closeMenu.bind(this));
         });
+
+        // Cerrar menú al hacer click fuera
+        document.addEventListener('click', this.handleOutsideClick.bind(this));
     }
 
     toggleMenu() {
@@ -214,6 +237,12 @@ class MobileMenu {
         this.toggle.setAttribute('aria-expanded', false);
         this.menu.classList.remove('active');
         document.body.classList.remove('menu-open');
+    }
+
+    handleOutsideClick(e) {
+        if (this.isOpen && !this.menu.contains(e.target) && !this.toggle.contains(e.target)) {
+            this.closeMenu();
+        }
     }
 }
 
@@ -241,6 +270,8 @@ class App {
 
         // Prevenir FOUC (Flash of Unstyled Content)
         document.body.classList.add('loaded');
+
+        console.log('🎉 MM Web & Design - App iniciada correctamente');
     }
 }
 
@@ -251,6 +282,7 @@ new App();
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
-            .catch(err => console.log('Service Worker no soportado'));
+            .then(reg => console.log('SW registrado'))
+            .catch(err => console.log('SW no soportado:', err));
     });
 }
