@@ -286,3 +286,31 @@ if ('serviceWorker' in navigator) {
             .catch(err => console.log('SW no soportado:', err));
     });
 }
+
+// Destellos dinámicos
+function createSparkle() {
+  const sparkle = document.createElement('div');
+  sparkle.className = 'sparkle';
+  sparkle.style.left = Math.random() * 100 + '%';
+  sparkle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+  sparkle.style.animationDelay = Math.random() * 2 + 's';
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 5000);
+}
+setInterval(createSparkle, 300);
+
+// Formulario
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  alert(`¡Gracias ${name}! Hemos recibido tu consulta y nos pondremos en contacto contigo pronto.`);
+  this.reset();
+});
+
+// Scroll suave
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
