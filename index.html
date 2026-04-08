@@ -2,236 +2,123 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Prioridad: Critical meta tags primero -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MM Web & Design | Diseño web profesional y ecommerce</title>
-    <meta name="description" content="Diseño web profesional, ecommerce y landing pages optimizadas para conversión. Resultados garantizados.">
-    
-    <!-- Open Graph / SEO -->
-    <meta property="og:title" content="MM Web & Design">
-    <meta property="og:description" content="Diseño web profesional, ecommerce y landing pages optimizadas para conversión.">
-    <meta property="og:type" content="website">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="imagenes/landingpages1.png" as="image">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MM Web & Design | Diseño web profesional</title>
+  <meta name="description" content="Diseño web profesional, ecommerce y landing pages optimizadas para conversión.">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <!-- Cursor custom -->
-    <div class="cursor" aria-hidden="true"></div>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <div class="logo">MM Web & Design</div>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Header -->
-    <header class="main-header" role="banner">
-        <div class="container">
-            <div class="logo">
-                <a href="#inicio" class="mm">MM</a>
-            </div>
-            <nav class="menu" role="navigation" aria-label="Menú principal">
-                <a href="#inicio" class="nav-link">Inicio</a>
-                <a href="#servicios" class="nav-link">Servicios</a>
-                <a href="#proyectos" class="nav-link">Proyectos</a>
-                <a href="#precios" class="nav-link">Precios</a>
-                <a href="#contacto" class="nav-link">Contacto</a>
-            </nav>
-            <button class="menu-toggle" aria-label="Abrir menú móvil" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Diseñamos experiencias digitales que convierten</h1>
+    <p>Potenciamos tu negocio con sitios web a medida.</p>
+    <a href="#contacto" class="btn">Solicitar proyecto</a>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="services">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h3>Landing Page</h3>
+        <p>Páginas optimizadas para captar clientes.</p>
+        <div class="service-price">$150</div>
+        <a href="#contacto" class="btn">Quiero mi proyecto</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛒</div>
+        <h3>Tienda Online</h3>
+        <p>Tiendas listas para vender tus productos.</p>
+        <div class="service-price">$300</div>
+        <a href="#contacto" class="btn">Quiero mi proyecto</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>Web Empresarial</h3>
+        <p>Presencia digital profesional para tu negocio.</p>
+        <div class="service-price">$250</div>
+        <a href="#contacto" class="btn">Quiero mi proyecto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proyectos -->
+  <section id="proyectos" class="projects">
+    <h2 class="section-title">Proyectos Destacados</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Fashion Boutique</h3>
+        <p>+35% Ventas Online</p>
+        <a href="#contacto" class="btn">Ver Proyecto</a>
+      </div>
+      <div class="service-card">
+        <h3>Tech Solutions</h3>
+        <p>+40% Leads Generados</p>
+        <a href="#contacto" class="btn">Ver Proyecto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section class="testimonials">
+    <h2 class="section-title">Testimonios</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Fashion Store</h3>
+        <p>Incremento del 50% en ventas en 3 meses.</p>
+      </div>
+      <div class="service-card">
+        <h3>InnovaTech</h3>
+        <p>Mayor captación de leads y clientes potenciales.</p>
+      </div>
+      <div class="service-card">
+        <h3>Constructora Andes</h3>
+        <p>Mejoró la imagen y confianza de la empresa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario -->
+  <section id="contacto" class="form-section">
+    <div class="form-container">
+      <h2 class="form-title">Quiero mi proyecto</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder="Nombre" required>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <main>
-        <section class="hero" id="inicio" role="banner" aria-labelledby="hero-title">
-            <div id="particles" aria-hidden="true"></div>
-            <div class="hero-content">
-                <h1 id="hero-title">Diseñamos <span>experiencias digitales</span> que convierten visitantes en clientes.</h1>
-                <a href="#contacto" class="cta-btn" aria-label="Solicitar proyecto">Solicitar proyecto</a>
-            </div>
-        </section>
-
-        <!-- Servicios -->
-        <section id="servicios" class="services-section" aria-labelledby="servicios-title">
-            <div class="container">
-                <h2 id="servicios-title">Nuestros Servicios</h2>
-                <div class="services-grid">
-                    <article class="service-card">
-                        <div class="card-img">
-                            <img src="imagenes/landingpages1.png" alt="Ejemplo de landing page optimizada" loading="lazy">
-                        </div>
-                        <h3>Landing Pages</h3>
-                        <p>Páginas diseñadas para convertir tráfico en ventas. Optimizadas para máxima conversión.</p>
-                        <a href="#contacto" class="service-btn">Quiero este proyecto</a>
-                    </article>
-
-                    <article class="service-card">
-                        <div class="card-img">
-                            <img src="imagenes/webcorporativa.png" alt="Ejemplo de web corporativa profesional" loading="lazy">
-                        </div>
-                        <h3>Web Corporativa</h3>
-                        <p>Sitios web modernos y profesionales para tu empresa.</p>
-                        <a href="#contacto" class="service-btn">Quiero este proyecto</a>
-                    </article>
-
-                    <article class="service-card">
-                        <div class="card-img">
-                            <img src="imagenes/ecommerce.png" alt="Ejemplo de tienda online ecommerce" loading="lazy">
-                        </div>
-                        <h3>Ecommerce</h3>
-                        <p>Tiendas online preparadas para vender 24/7. Integración de pagos completa.</p>
-                        <a href="#contacto" class="service-btn">Quiero este proyecto</a>
-                    </article>
-
-                    <article class="service-card">
-                        <div class="card-img">
-                            <img src="imagenes/seo.png" alt="Optimización SEO y velocidad web" loading="lazy">
-                        </div>
-                        <h3>SEO & Optimización</h3>
-                        <p>Mejoramos posicionamiento y velocidad. Resultados medibles.</p>
-                        <a href="#contacto" class="service-btn">Quiero este proyecto</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Proyectos -->
-        <section id="proyectos" class="projects-section" aria-labelledby="proyectos-title">
-            <div class="container">
-                <h2 id="proyectos-title">Proyectos Destacados</h2>
-                <div class="portfolio-grid">
-                    <article class="project-card">
-                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1200&auto=format&fit=crop" 
-                             alt="Nova Studio - Web corporativa moderna" loading="lazy">
-                        <div class="overlay">
-                            <h3>Nova Studio</h3>
-                            <p>Web corporativa</p>
-                            <a href="#" class="project-link" aria-label="Ver proyecto Nova Studio">Ver proyecto</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop" 
-                             alt="Orion Shop - Tienda ecommerce completa" loading="lazy">
-                        <div class="overlay">
-                            <h3>Orion Shop</h3>
-                            <p>Ecommerce</p>
-                            <a href="#" class="project-link" aria-label="Ver proyecto Orion Shop">Ver proyecto</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Precios -->
-        <section id="precios" class="pricing-section" aria-labelledby="precios-title">
-            <div class="container">
-                <h2 id="precios-title">Planes Transparentes</h2>
-                <div class="pricing-grid">
-                    <div class="price-card">
-                        <h3>Landing</h3>
-                        <p class="price">$300<span class="period">/una vez</span></p>
-                        <ul class="features">
-                            <li>✅ Diseño responsive</li>
-                            <li>✅ Optimización velocidad</li>
-                            <li>✅ 1 revisión incluida</li>
-                        </ul>
-                        <a href="#contacto" class="price-btn">Elegir plan</a>
-                    </div>
-
-                    <div class="price-card featured">
-                        <div class="featured-badge">Más popular</div>
-                        <h3>Web Profesional</h3>
-                        <p class="price">$800<span class="period">/una vez</span></p>
-                        <ul class="features">
-                            <li>✅ 5-8 páginas</li>
-                            <li>✅ SEO On-page</li>
-                            <li>✅ 3 revisiones</li>
-                            <li>✅ Hosting 1 año</li>
-                        </ul>
-                        <a href="#contacto" class="price-btn">Elegir plan</a>
-                    </div>
-
-                    <div class="price-card">
-                        <h3>Ecommerce</h3>
-                        <p class="price">$1500<span class="period">/una vez</span></p>
-                        <ul class="features">
-                            <li>✅ Productos ilimitados</li>
-                            <li>✅ Pasarelas de pago</li>
-                            <li>✅ Panel admin</li>
-                            <li>✅ 5 revisiones</li>
-                        </ul>
-                        <a href="#contacto" class="price-btn">Elegir plan</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonios -->
-        <section class="testimonials-section" aria-labelledby="testimonios-title">
-            <div class="container">
-                <h2 id="testimonios-title">Lo que dicen nuestros clientes</h2>
-                <div class="testimonials-grid">
-                    <blockquote class="testimonial">
-                        <p>"Duplicamos nuestras conversiones en 3 meses gracias al rediseño web. ¡Excelente trabajo!"</p>
-                        <cite>— Carlos R., CEO <strong>Nova Studio</strong></cite>
-                    </blockquote>
-                    
-                    <blockquote class="testimonial">
-                        <p>"La tienda online está generando ventas desde el primer día. Soporte excelente."</p>
-                        <cite>— María G., Fundadora <strong>Orion Shop</strong></cite>
-                    </blockquote>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Final -->
-        <section class="cta-section" id="contacto" aria-labelledby="cta-title">
-            <div class="container">
-                <h2 id="cta-title">¿Listo para crear algo grande?</h2>
-                <p class="cta-subtitle">Agenda una llamada gratuita de 30 minutos</p>
-                <div class="cta-buttons">
-                    <a href="tel:+123456789" class="cta-btn primary">Llamar ahora</a>
-                    <a href="mailto:info@mmwebdesign.com" class="cta-btn secondary">Enviar email</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="main-footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#inicio" class="mm">MM</a>
-                    <p>Web & Design</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#servicios">Servicios</a>
-                    <a href="#proyectos">Proyectos</a>
-                    <a href="#contacto">Contacto</a>
-                </div>
-                <div class="footer-legal">
-                    <p>&copy; 2024 MM Web & Design. Todos los derechos reservados.</p>
-                    <p><a href="#">Política de privacidad</a> | <a href="#">Términos de servicio</a></p>
-                </div>
-            </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="Email" required>
         </div>
-    </footer>
+        <div class="form-group">
+          <input type="tel" id="phone" name="phone" placeholder="Teléfono" required>
+        </div>
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </div>
+  </section>
 
-    <!-- Scripts (defer para mejor rendimiento) -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="script.js" defer></script>
+  <!-- WhatsApp -->
+  <a href="https://wa.me/XXXXXXXXXX" class="whatsapp-btn" target="_blank">📱</a>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 MM Web & Design. Política de Privacidad | Términos y Condiciones.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
