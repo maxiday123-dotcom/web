@@ -396,27 +396,25 @@ body {
   padding: 6rem 0;
 }
 
-.testimonial {
-  max-width: 700px;
-  margin: 4rem auto 0;
-  text-align: center;
-  padding: 3rem 2rem;
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  border-left: 4px solid var(--primary);
-  opacity: .95;
-  font-style: italic;
-  font-size: 1.125rem;
+.testimonials {
+  padding: 100px 2rem;
+  background: rgba(139, 92, 246, 0.05);
 }
 
-.testimonial cite {
-  display: block;
-  margin-top: 1.5rem;
-  font-weight: 600;
-  color: var(--primary);
-  font-style: normal;
-  font-size: 1rem;
+.testimonials .service-card {
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.4s ease;
 }
+
+.testimonials .service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+}
+
 
 /* CTA */
 .cta-section {
